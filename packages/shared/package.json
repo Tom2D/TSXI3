@@ -1,0 +1,17 @@
+{
+  "name": "@tsxinsider/shared",
+  "version": "1.0.0",
+  "main": "dist/index",
+  "types": "dist/index",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "pnpm run clean && pnpm run compile",
+    "compile": "tsc -p tsconfig.build.json",
+    "prepublishOnly": "pnpm run build"
+  },
+  "devDependencies": {
+    "typescript": "~4.9.0"
+  }
+}
