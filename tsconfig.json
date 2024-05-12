@@ -4,8 +4,10 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@nighttrax/components/*": ["packages/components/src/*"],
-      "@nighttrax/*": ["packages/*/src"]
+      "@nighttrax/components/*": ["packages/components/src/*"], // TDD_TODO: To remove eventually
+      "@tsxinsider/components/*": ["packages/components/src/*"],
+      "@nighttrax/*": ["packages/*/src"], // TDD_TODO: To remove eventually
+      "@tsxinsider/*": ["packages/*/src"]
     },
     "noEmit": true
   }
