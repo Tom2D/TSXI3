@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import {API_PLAYGROUND_COUNT} from "@tsxinsider/shared";
+import { API_PLAYGROUND_COUNT } from '@tsxinsider/shared';
 
 @Injectable()
 export class AppService {
