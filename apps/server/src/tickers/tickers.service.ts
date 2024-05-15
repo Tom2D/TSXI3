@@ -1,8 +1,13 @@
-import { Injectable } from '@nestjs/common';
+import {Injectable} from '@nestjs/common';
+import {PrismaService} from "../prisma/prisma.service";
+import {tickers} from '@prisma/client';
 
 @Injectable()
 export class TickersService {
-    async findall(): Promise<string[]> {
-        return ['GME', 'HUYA'];
+    constructor(private readonly prisma: PrismaService) {
+    }
+
+    async findAll(): Promise<tickers[]> {
+        return this.prisma.tickers.findMany();
     }
 }
