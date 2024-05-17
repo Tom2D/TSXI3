@@ -13,6 +13,9 @@
     "outDir": "./dist",
     "incremental": true,
     "noEmit": false,
-    "types": ["jest", "node"]
+    "types": ["jest", "node"],
+    "exclude": [
+      "./dist/**/*"
+    ]
   }
 }

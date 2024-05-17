@@ -12,7 +12,7 @@ export class TickersController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string): Promise<tickers | null> {
+  findOne(@Param('id') id: number): Promise<tickers | null> {
     return this.tickersService.findOne(+id);
   }
 }
