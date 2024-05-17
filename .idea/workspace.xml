@@ -4,10 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f48acd8a-e246-4264-9ac4-41713844a250" name="Changes" comment="Ajustement packages eslint au niveau du workspace + cleanup format fichiers">
+    <list default="true" id="f48acd8a-e246-4264-9ac4-41713844a250" name="Changes" comment="Issuers endpoint added">
+      <change afterPath="$PROJECT_DIR$/apps/server/src/issuers/issuers.controller.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/server/src/issuers/issuers.controller.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/server/src/issuers/issuers.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/server/src/issuers/issuers.service.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/server/src/issuers/issuers.service.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/server/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/apps/server/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/server/test/app.e2e-spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/server/test/app.e2e-spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/server/src/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/server/src/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/server/src/nestjs_cmds.txt" beforeDir="false" afterPath="$PROJECT_DIR$/apps/server/src/nestjs_cmds.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/server/src/tickers/tickers.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/server/src/tickers/tickers.service.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pnpm-lock.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pnpm-lock.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -149,7 +156,7 @@
       <workItem from="1715665294383" duration="359000" />
       <workItem from="1715730130062" duration="7987000" />
       <workItem from="1715738157253" duration="4610000" />
-      <workItem from="1715833159361" duration="397000" />
+      <workItem from="1715833159361" duration="3753000" />
     </task>
     <task id="LOCAL-00001" summary="Prisma setup">
       <option name="closed" value="true" />
@@ -215,7 +222,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715833321454</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="fix supertest">
+      <option name="closed" value="true" />
+      <created>1715833756147</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1715833756147</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -241,6 +256,8 @@
     <MESSAGE value="fix error types jest" />
     <MESSAGE value="Actually returning tickers!!!" />
     <MESSAGE value="Ajustement packages eslint au niveau du workspace + cleanup format fichiers" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ajustement packages eslint au niveau du workspace + cleanup format fichiers" />
+    <MESSAGE value="fix supertest" />
+    <MESSAGE value="Issuers endpoint added" />
+    <option name="LAST_COMMIT_MESSAGE" value="Issuers endpoint added" />
   </component>
 </project>

@@ -1,4 +1,10 @@
 // To add module/controller/service:
-nest g module _NAME_
-nest g controller _NAME_
-nest g service _NAME_
+nest g module _name_
+nest g controller _name_
+nest g service _name_
+
+// OR, All at once:
+nest g resource _name_
+
+// Penser à ajouter au module créé:
+imports: [PrismaModule],
