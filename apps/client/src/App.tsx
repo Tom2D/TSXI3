@@ -5,33 +5,34 @@ import "./App.css";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { SERVER_AUTHORITY } from "@tsxinsider/shared";
+import { transactions } from "@tsxinsider/prisma-types";
 
-interface Transaction {
-  id: number;
-  sediId: number;
-  insiderId: number;
-  issuerId: number;
-  securityId: number;
-  trnFlagId: number;
-  trnDate: string;
-  filingDate: string;
-  ownershipType: string;
-  ownershipExtraInfo: string;
-  trnNatureCode: number;
-  nb: number;
-  nbType: string;
-  price: number;
-  priceCurrencyId: number;
-  closingBalance: number;
-  closingBalanceType: string;
-  calculatedBalance: number;
-  calculatedBalanceType: string;
-  underlyingSecurityId: number;
-  GeneralRemarks: string;
-}
+// interface Transaction {
+//   id: number;
+//   sediId: number;
+//   insiderId: number;
+//   issuerId: number;
+//   securityId: number;
+//   trnFlagId: number;
+//   trnDate: string;
+//   filingDate: string;
+//   ownershipType: string;
+//   ownershipExtraInfo: string;
+//   trnNatureCode: number;
+//   nb: number;
+//   nbType: string;
+//   price: number;
+//   priceCurrencyId: number;
+//   closingBalance: number;
+//   closingBalanceType: string;
+//   calculatedBalance: number;
+//   calculatedBalanceType: string;
+//   underlyingSecurityId: number;
+//   GeneralRemarks: string;
+// }
 
 function App() {
-  const [transactions, setTransactions] = useState<Transaction[]>([]);
+  const [trns, setTransactions] = useState<transactions[]>([]);
   const [startDate, setStartDate] = useState<Date | null>(
     new Date("2021-01-22")
   );
@@ -50,7 +51,7 @@ function App() {
       );
 
       if (response.ok) {
-        const data: Transaction[] = await response.json();
+        const data: transactions[] = await response.json();
         setTransactions(data);
       } else {
         console.error("Failed to fetch transactions");
@@ -122,25 +123,25 @@ function App() {
           </tr>
         </thead>
         <tbody>
-          {transactions.map((transaction) => (
-            <tr key={transaction.id}>
-              <td>{transaction.id}</td>
-              <td>{transaction.sediId}</td>
-              <td>{transaction.insiderId}</td>
-              <td>{transaction.issuerId}</td>
-              <td>{transaction.securityId}</td>
-              <td>{transaction.trnFlagId}</td>
-              <td>{new Date(transaction.trnDate).toLocaleDateString()}</td>
-              <td>{new Date(transaction.filingDate).toLocaleDateString()}</td>
-              <td>{transaction.ownershipType}</td>
-              <td>{transaction.trnNatureCode}</td>
-              <td>{transaction.nb}</td>
-              <td>{transaction.price}</td>
-              <td>{transaction.priceCurrencyId}</td>
-              <td>{transaction.closingBalance}</td>
-              <td>{transaction.calculatedBalance}</td>
-              <td>{transaction.underlyingSecurityId}</td>
-              <td>{transaction.GeneralRemarks}</td>
+          {trns.map((trn) => (
+            <tr key={trn.id}>
+              <td>{trn.id}</td>
+              <td>{trn.sediId}</td>
+              <td>{trn.insiderId}</td>
+              <td>{trn.issuerId}</td>
+              <td>{trn.securityId}</td>
+              <td>{trn.trnFlagId}</td>
+              <td>{new Date(trn.trnDate).toLocaleDateString()}</td>
+              <td>{new Date(trn.filingDate).toLocaleDateString()}</td>
+              <td>{trn.ownershipType}</td>
+              <td>{trn.trnNatureCode}</td>
+              <td>{trn.nb}</td>
+              <td>{trn.price}</td>
+              <td>{trn.priceCurrencyId}</td>
+              <td>{trn.closingBalance}</td>
+              <td>{trn.calculatedBalance}</td>
+              <td>{trn.underlyingSecurityId}</td>
+              <td>{trn.GeneralRemarks}</td>
             </tr>
           ))}
         </tbody>

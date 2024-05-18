@@ -2,6 +2,12 @@ generator client {
   provider = "prisma-client-js"
 }
 
+// Pour exporter/partager les types générés avec le client
+generator types {
+  provider = "prisma-types-export"
+  output   = "../../client/src/prisma-types"
+}
+
 datasource db {
   provider = "mysql"
   url      = env("DATABASE_URL")

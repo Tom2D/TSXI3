@@ -5,7 +5,8 @@
     "baseUrl": ".",
     "paths": {
       "@tsxinsider/components/*": ["packages/components/src/*"],
-      "@tsxinsider/*": ["packages/*/src"]
+      "@tsxinsider/*": ["packages/*/src"],
+      "@tsxinsider/prisma-types": ["apps/client/src/prisma-types"]
     },
     "noEmit": true
   }
