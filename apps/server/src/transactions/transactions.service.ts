@@ -7,15 +7,15 @@ import { MAX_TRANSACTIONS_PER_REQUEST } from '../server-constants';
 export class TransactionsService {
   constructor(private readonly prisma: PrismaService) {}
 
-  async findAll(beginFilingDate: Date, endFilingDate: Date): Promise<transactions[]> {
+  async findAll(beginFilingDate: Date, endFilingDate: Date, limit: number): Promise<transactions[]> {
     return this.prisma.transactions.findMany({
       where: {
         filingDate: {
-          gte: beginFilingDate, // greater than or equal to
-          lte: endFilingDate, // less than or equal to
+          gte: beginFilingDate, // >= beginFilingDate
+          lte: endFilingDate, // <= endFilingDate
         },
       },
-      take: MAX_TRANSACTIONS_PER_REQUEST, // Limit
+      take: Math.min(limit, MAX_TRANSACTIONS_PER_REQUEST), // Max number of transactions per request
     });
   }
 
