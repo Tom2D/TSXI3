@@ -1,0 +1,216 @@
+Here is some context for my future questions:
+
+I work on a website project, using nestjs and prisma for the backend and react for the frontend, my IDE is webstorm.
+
+I use a mysql database, here is the queries that makes the schema:
+
+CREATE TABLE `issuers` (
+  `id` int PRIMARY KEY AUTO_INCREMENT,
+  `sedarId` int UNIQUE,
+  `name` varchar(255) UNIQUE,
+  `tickerId` int,
+  `sizeId` int
+);
+
+CREATE TABLE `tickers` (
+  `id` int PRIMARY KEY AUTO_INCREMENT,
+  `name` varchar(255)
+);
+
+CREATE TABLE `sizes` (
+  `id` int PRIMARY KEY AUTO_INCREMENT,
+  `name` varchar(255)
+);
+
+CREATE TABLE `exchanges` (
+  `id` int PRIMARY KEY AUTO_INCREMENT,
+  `name` varchar(255)
+);
+
+CREATE TABLE `issuerExchanges` (
+  `issuerId` int,
+  `exchangeId` int,
+  PRIMARY KEY (`issuerId`, `exchangeId`)
+);
+
+CREATE TABLE `transactions` (
+  `id` int PRIMARY KEY AUTO_INCREMENT,
+  `sediId` int,
+  `insiderId` int,
+  `issuerId` int,
+  `securityId` int,
+  `trnFlagId` int,
+  `trnDate` date,
+  `filingDate` date,
+  `ownershipType` ENUM ('Direct', 'Indirect', 'ControlOrDirection'),
+  `ownershipExtraInfo` varchar(255),
+  `trnNatureCode` int,
+  `nb` int,
+  `nbType` ENUM ('Quantity', 'Value'),
+  `price` float4,
+  `priceCurrencyId` int,
+  `closingBalance` float4,
+  `closingBalanceType` ENUM ('Quantity', 'Value'),
+  `calculatedBalance` float4,
+  `calculatedBalanceType` ENUM ('Quantity', 'Value'),
+  `underlyingSecurityId` int,
+  `GeneralRemarks` varchar(255)
+);
+
+CREATE TABLE `underlyingSecurities` (
+  `id` int PRIMARY KEY AUTO_INCREMENT,
+  `securityId` int,
+  `nb` int,
+  `nbType` ENUM ('Quantity', 'Value'),
+  `Balance` int,
+  `BalanceType` ENUM ('Quantity', 'Value'),
+  `exercisePrice` float4,
+  `exercisePriceCurrencyId` int,
+  `expiryDate` date
+);
+
+CREATE TABLE `insiders` (
+  `id` int PRIMARY KEY AUTO_INCREMENT,
+  `name` varchar(255),
+  `issuerId` int,
+  `ceasedToBeInsider` varchar(255)
+);
+
+CREATE TABLE `relationsToIssuer` (
+  `type` ENUM ('Issuer', 'Subsidiary', 'TenPercentHolder', 'Director', 'SeniorOfficer', 'DirOrOfficerOfTenPercentHolder', 'DirOrOfficerOfInsiderOrSubsidiary', 'DeemedInsider'),
+  `insiderId` int,
+  PRIMARY KEY (`type`, `insiderId`)
+);
+
+CREATE TABLE `securityDesignations` (
+  `id` int PRIMARY KEY AUTO_INCREMENT,
+  `name` varchar(255)
+);
+
+CREATE TABLE `trnFlag` (
+  `id` int PRIMARY KEY AUTO_INCREMENT,
+  `name` varchar(255)
+);
+
+CREATE TABLE `trnNatures` (
+  `code` int PRIMARY KEY,
+  `description` varchar(255)
+);
+
+CREATE TABLE `currency` (
+  `id` int PRIMARY KEY AUTO_INCREMENT,
+  `name` varchar(255)
+);
+
+ALTER TABLE `transactions` ADD FOREIGN KEY (`issuerId`) REFERENCES `issuers` (`id`);
+
+ALTER TABLE `insiders` ADD FOREIGN KEY (`issuerId`) REFERENCES `issuers` (`id`);
+
+ALTER TABLE `issuerExchanges` ADD FOREIGN KEY (`issuerId`) REFERENCES `issuers` (`id`) ON DELETE NO ACTION;
+
+ALTER TABLE `issuers` ADD FOREIGN KEY (`tickerId`) REFERENCES `tickers` (`id`);
+
+ALTER TABLE `issuers` ADD FOREIGN KEY (`sizeId`) REFERENCES `sizes` (`id`);
+
+ALTER TABLE `issuerExchanges` ADD FOREIGN KEY (`exchangeId`) REFERENCES `exchanges` (`id`);
+
+ALTER TABLE `transactions` ADD FOREIGN KEY (`insiderId`) REFERENCES `insiders` (`id`);
+
+ALTER TABLE `relationsToIssuer` ADD FOREIGN KEY (`insiderId`) REFERENCES `insiders` (`id`);
+
+ALTER TABLE `transactions` ADD FOREIGN KEY (`securityId`) REFERENCES `securityDesignations` (`id`);
+
+ALTER TABLE `underlyingSecurities` ADD FOREIGN KEY (`securityId`) REFERENCES `securityDesignations` (`id`);
+
+ALTER TABLE `transactions` ADD FOREIGN KEY (`trnFlagId`) REFERENCES `trnFlag` (`id`);
+
+ALTER TABLE `transactions` ADD FOREIGN KEY (`trnNatureCode`) REFERENCES `trnNatures` (`code`);
+
+ALTER TABLE `transactions` ADD FOREIGN KEY (`underlyingSecurityId`) REFERENCES `underlyingSecurities` (`id`);
+
+ALTER TABLE `transactions` ADD FOREIGN KEY (`priceCurrencyId`) REFERENCES `currency` (`id`);
+
+ALTER TABLE `underlyingSecurities` ADD FOREIGN KEY (`exercisePriceCurrencyId`) REFERENCES `currency` (`id`);
+
+CREATE INDEX `issuers_index_0` ON `issuers` (`id`);
+
+CREATE INDEX `issuers_index_1` ON `issuers` (`sedarId`);
+
+CREATE INDEX `issuers_index_2` ON `issuers` (`name`);
+
+CREATE INDEX `transactions_index_3` ON `transactions` (`id`);
+
+CREATE INDEX `transactions_index_4` ON `transactions` (`sediId`);
+
+-----------------------------------------------
+
+I'm currently working on on the transactions endpoint here is the code of the controler and service:
+Controller:
+import { Controller, DefaultValuePipe, Get, Param, ParseIntPipe, Query } from '@nestjs/common';
+import { TransactionsService } from './transactions.service';
+import { transactions } from '@prisma/client';
+import { ParseDatePipe } from '../ParsePipes/ParseDatePipe';
+import { MAX_TRANSACTIONS_PER_REQUEST } from '../server-constants';
+
+@Controller('transactions')
+export class TransactionsController {
+  constructor(private readonly transactionsService: TransactionsService) {}
+
+  @Get()
+  async findAll(
+    @Query('beginFilingDate', ParseDatePipe) beginFilingDate: Date,
+    @Query('endFilingDate', ParseDatePipe) endFilingDate: Date,
+    @Query('limit', new DefaultValuePipe(MAX_TRANSACTIONS_PER_REQUEST), ParseIntPipe) limit: number,
+  ): Promise<transactions[]> {
+    return this.transactionsService.findAll(beginFilingDate, endFilingDate, limit);
+  }
+
+  @Get(':id')
+  findOne(@Param('id', ParseIntPipe) id: number): Promise<transactions | null> {
+    return this.transactionsService.findOne(+id);
+  }
+}
+
+
+Service:
+import { Injectable } from '@nestjs/common';
+import { PrismaService } from '../prisma/prisma.service';
+import { transactions } from '@prisma/client';
+import { MAX_TRANSACTIONS_PER_REQUEST } from '../server-constants';
+
+@Injectable()
+export class TransactionsService {
+  constructor(private readonly prisma: PrismaService) {}
+
+  async findAll(beginFilingDate: Date, endFilingDate: Date, limit: number): Promise<transactions[]> {
+    return this.prisma.transactions.findMany({
+      where: {
+        filingDate: {
+          gte: beginFilingDate, // >= beginFilingDate
+          lte: endFilingDate, // <= endFilingDate
+        },
+      },
+      take: Math.min(limit, MAX_TRANSACTIONS_PER_REQUEST), // Max number of transactions per request
+    });
+  }
+
+  async findOne(id: number): Promise<transactions | null> {
+    return this.prisma.transactions.findUnique({ where: { id } });
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
