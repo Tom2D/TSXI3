@@ -1,4 +1,4 @@
-import { Controller, Get, Param } from '@nestjs/common';
+import {Controller, Get, Param, ParseIntPipe} from '@nestjs/common';
 import { TickersService } from './tickers.service';
 import { tickers } from '@prisma/client';
 
@@ -12,7 +12,7 @@ export class TickersController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: number): Promise<tickers | null> {
+  findOne(@Param('id', ParseIntPipe) id: number): Promise<tickers | null> {
     return this.tickersService.findOne(+id);
   }
 }

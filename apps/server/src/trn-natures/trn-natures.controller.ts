@@ -1,4 +1,4 @@
-import { Controller, Get, Param } from '@nestjs/common';
+import {Controller, Get, Param, ParseIntPipe} from '@nestjs/common';
 import { trnnatures } from '@prisma/client';
 import { TrnNaturesService } from './trn-natures.service';
 
@@ -12,7 +12,7 @@ export class TrnNaturesController {
   }
 
   @Get(':code')
-  findOne(@Param('code') code: number): Promise<trnnatures | null> {
+  findOne(@Param('code', ParseIntPipe) code: number): Promise<trnnatures | null> {
     return this.trnNaturesService.findOne(+code);
   }
 }

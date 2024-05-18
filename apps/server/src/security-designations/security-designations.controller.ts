@@ -1,4 +1,4 @@
-import { Controller, Get, Param } from '@nestjs/common';
+import {Controller, Get, Param, ParseIntPipe} from '@nestjs/common';
 import { securitydesignations } from '@prisma/client';
 import { SecurityDesignationsService } from './security-designations.service';
 
@@ -14,7 +14,7 @@ export class SecurityDesignationsController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: number): Promise<securitydesignations | null> {
+  findOne(@Param('id', ParseIntPipe) id: number): Promise<securitydesignations | null> {
     return this.securityDesignationsService.findOne(+id);
   }
 }

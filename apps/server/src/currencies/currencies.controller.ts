@@ -1,4 +1,4 @@
-import { Controller, Get, Param } from '@nestjs/common';
+import {Controller, Get, Param, ParseIntPipe} from '@nestjs/common';
 import { CurrenciesService } from './currencies.service';
 import { currency } from '@prisma/client';
 
@@ -12,7 +12,7 @@ export class CurrenciesController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: number): Promise<currency | null> {
+  findOne(@Param('id', ParseIntPipe) id: number): Promise<currency | null> {
     return this.currenciesService.findOne(+id);
   }
 }

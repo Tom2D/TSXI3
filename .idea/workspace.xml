@@ -4,11 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f48acd8a-e246-4264-9ac4-41713844a250" name="Changes" comment="Added all basic endpoints">
+    <list default="true" id="f48acd8a-e246-4264-9ac4-41713844a250" name="Changes" comment="Prettier Max line len = 150">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/server/.eslintrc.js" beforeDir="false" afterPath="$PROJECT_DIR$/apps/server/.eslintrc.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/server/.prettierrc" beforeDir="false" afterPath="$PROJECT_DIR$/apps/server/.prettierrc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/server/src/currencies/currencies.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/server/src/currencies/currencies.controller.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/server/src/exchanges/exchanges.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/server/src/exchanges/exchanges.controller.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/server/src/insiders/insiders.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/server/src/insiders/insiders.controller.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/server/src/issuer-exchanges/issuer-exchanges.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/server/src/issuer-exchanges/issuer-exchanges.controller.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/server/src/issuer-relationships/issuer-relationships.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/server/src/issuer-relationships/issuer-relationships.controller.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/server/src/issuer-sizes/issuer-sizes.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/server/src/issuer-sizes/issuer-sizes.controller.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/server/src/issuers/issuers.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/server/src/issuers/issuers.controller.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/server/src/security-designations/security-designations.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/server/src/security-designations/security-designations.controller.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/server/src/tickers/tickers.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/server/src/tickers/tickers.controller.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/server/src/transactions/transactions.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/server/src/transactions/transactions.controller.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/server/src/trn-flags/trn-flags.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/server/src/trn-flags/trn-flags.controller.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/server/src/trn-natures/trn-natures.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/server/src/trn-natures/trn-natures.controller.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,32 +69,32 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "JavaScript Debug.client JavaScript.executor": "Debug",
-    "JavaScript Debug.client.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "E:/Thomas/Prog/TsxExampleProj",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.standard": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.standard": "",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_interpreter_path": "node",
-    "nodejs_package_manager_path": "C:\\Users\\TomDD\\AppData\\Roaming\\npm\\pnpm.cmd",
-    "npm.client.executor": "Debug",
-    "npm.server debug.executor": "Run",
-    "prettierjs.PrettierConfiguration.Package": "E:\\Thomas\\Prog\\TSXInsiderJS2\\node_modules\\prettier",
-    "settings.editor.selected.configurable": "preferences.keymap",
-    "ts.external.directory.path": "E:\\Thomas\\Prog\\TSXInsiderJS2\\apps\\client\\node_modules\\typescript\\lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;JavaScript Debug.client JavaScript.executor&quot;: &quot;Debug&quot;,
+    &quot;JavaScript Debug.client.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;E:/Thomas/Prog/TsxExampleProj&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_interpreter_path&quot;: &quot;node&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;C:\\Users\\TomDD\\AppData\\Roaming\\npm\\pnpm.cmd&quot;,
+    &quot;npm.client.executor&quot;: &quot;Debug&quot;,
+    &quot;npm.server debug.executor&quot;: &quot;Run&quot;,
+    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;E:\\Thomas\\Prog\\TSXInsiderJS2\\node_modules\\prettier&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;E:\\Thomas\\Prog\\TSXInsiderJS2\\apps\\client\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="npm.server debug">
     <configuration name="client JavaScript" type="JavascriptDebugType" uri="http://localhost:5173">
       <method v="2" />
@@ -152,7 +161,8 @@
       <workItem from="1715665294383" duration="359000" />
       <workItem from="1715730130062" duration="7987000" />
       <workItem from="1715738157253" duration="4610000" />
-      <workItem from="1715833159361" duration="10728000" />
+      <workItem from="1715833159361" duration="14648000" />
+      <workItem from="1716000604590" duration="132000" />
     </task>
     <task id="LOCAL-00001" summary="Prisma setup">
       <option name="closed" value="true" />
@@ -242,7 +252,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715912441948</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Prettier Max line len = 150">
+      <option name="closed" value="true" />
+      <created>1715913583118</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1715913583118</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -272,6 +290,7 @@
     <MESSAGE value="Issuers endpoint added" />
     <MESSAGE value="added tickersService.findOne" />
     <MESSAGE value="Added all basic endpoints" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added all basic endpoints" />
+    <MESSAGE value="Prettier Max line len = 150" />
+    <option name="LAST_COMMIT_MESSAGE" value="Prettier Max line len = 150" />
   </component>
 </project>

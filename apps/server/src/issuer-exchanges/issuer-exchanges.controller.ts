@@ -1,4 +1,4 @@
-import { Controller, Get, Param } from '@nestjs/common';
+import {Controller, Get, Param, ParseIntPipe} from '@nestjs/common';
 import { IssuerExchangesService } from './issuer-exchanges.service';
 import { issuerexchanges } from '@prisma/client';
 
@@ -14,7 +14,7 @@ export class IssuerExchangesController {
   }
 
   @Get(':issuerId')
-  findOne(@Param('issuerId') issuerId: number): Promise<issuerexchanges[]> {
+  findOne(@Param('issuerId', ParseIntPipe) issuerId: number): Promise<issuerexchanges[]> {
     return this.issuerExchangesService.findAllForIssuer(+issuerId);
   }
 }

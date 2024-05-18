@@ -1,4 +1,4 @@
-import { Controller, Get, Param } from '@nestjs/common';
+import {Controller, Get, Param, ParseIntPipe} from '@nestjs/common';
 import { trnflag } from '@prisma/client';
 import { TrnFlagsService } from './trn-flags.service';
 
@@ -12,7 +12,7 @@ export class TrnFlagsController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: number): Promise<trnflag | null> {
+  findOne(@Param('id', ParseIntPipe) id: number): Promise<trnflag | null> {
     return this.trnFlags.findOne(+id);
   }
 }
