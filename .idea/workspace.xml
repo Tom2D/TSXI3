@@ -4,20 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f48acd8a-e246-4264-9ac4-41713844a250" name="Changes" comment="Prettier Max line len = 150">
+    <list default="true" id="f48acd8a-e246-4264-9ac4-41713844a250" name="Changes" comment="ParseIntPipe">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/server/src/currencies/currencies.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/server/src/currencies/currencies.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/server/src/exchanges/exchanges.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/server/src/exchanges/exchanges.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/server/src/insiders/insiders.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/server/src/insiders/insiders.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/server/src/issuer-exchanges/issuer-exchanges.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/server/src/issuer-exchanges/issuer-exchanges.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/server/src/issuer-relationships/issuer-relationships.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/server/src/issuer-relationships/issuer-relationships.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/server/src/issuer-sizes/issuer-sizes.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/server/src/issuer-sizes/issuer-sizes.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/server/src/issuers/issuers.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/server/src/issuers/issuers.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/server/src/security-designations/security-designations.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/server/src/security-designations/security-designations.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/server/src/tickers/tickers.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/server/src/tickers/tickers.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/server/src/transactions/transactions.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/server/src/transactions/transactions.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/server/src/trn-flags/trn-flags.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/server/src/trn-flags/trn-flags.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/server/src/trn-natures/trn-natures.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/server/src/trn-natures/trn-natures.controller.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/server/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/apps/server/tsconfig.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -162,7 +151,7 @@
       <workItem from="1715730130062" duration="7987000" />
       <workItem from="1715738157253" duration="4610000" />
       <workItem from="1715833159361" duration="14648000" />
-      <workItem from="1716000604590" duration="132000" />
+      <workItem from="1716000604590" duration="771000" />
     </task>
     <task id="LOCAL-00001" summary="Prisma setup">
       <option name="closed" value="true" />
@@ -260,7 +249,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715913583118</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="ParseIntPipe">
+      <option name="closed" value="true" />
+      <created>1716000908902</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1716000908902</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -291,6 +288,7 @@
     <MESSAGE value="added tickersService.findOne" />
     <MESSAGE value="Added all basic endpoints" />
     <MESSAGE value="Prettier Max line len = 150" />
-    <option name="LAST_COMMIT_MESSAGE" value="Prettier Max line len = 150" />
+    <MESSAGE value="ParseIntPipe" />
+    <option name="LAST_COMMIT_MESSAGE" value="ParseIntPipe" />
   </component>
 </project>
