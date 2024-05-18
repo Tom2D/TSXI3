@@ -1,16 +1,17 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { CLIENT_AUTHORITY, SERVER_PORT } from '@tsxinsider/shared';
+import { AllExceptionsFilter } from './exceptions.filter';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
-  // Enable CORS
   app.enableCors({
     origin: CLIENT_AUTHORITY, // or '*' to allow all origins
   });
 
-  //app.useGlobalPipes(new ValidationPipe()); // TDD_TODO_2 Pertinent?
+  app.useGlobalFilters(new AllExceptionsFilter());
+
   await app.listen(SERVER_PORT);
 }
 
