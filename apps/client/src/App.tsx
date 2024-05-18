@@ -4,7 +4,7 @@ import viteLogo from "/vite.svg";
 import "./App.css";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { CLIENT_AUTHORITY } from "@tsxinsider/shared";
+import { SERVER_AUTHORITY } from "@tsxinsider/shared";
 
 interface Transaction {
   id: number;
@@ -32,8 +32,10 @@ interface Transaction {
 
 function App() {
   const [transactions, setTransactions] = useState<Transaction[]>([]);
-  const [startDate, setStartDate] = useState<Date | null>(null);
-  const [endDate, setEndDate] = useState<Date | null>(null);
+  const [startDate, setStartDate] = useState<Date | null>(
+    new Date("2021-01-22")
+  );
+  const [endDate, setEndDate] = useState<Date | null>(new Date("2021-01-22"));
   const [limit, setLimit] = useState<number>(10);
 
   const fetchTransactions = async () => {
@@ -44,7 +46,7 @@ function App() {
 
     try {
       const response = await fetch(
-        `${CLIENT_AUTHORITY}/transactions?beginFilingDate=${startDate.toISOString()}&endFilingDate=${endDate.toISOString()}&limit=${limit}`
+        `${SERVER_AUTHORITY}/transactions?beginFilingDate=${startDate.toISOString()}&endFilingDate=${endDate.toISOString()}&limit=${limit}`
       );
 
       if (response.ok) {

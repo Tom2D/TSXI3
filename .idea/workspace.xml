@@ -4,20 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f48acd8a-e246-4264-9ac4-41713844a250" name="Changes" comment="misc">
-      <change afterPath="$PROJECT_DIR$/apps/client/tsconfig.build.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/shared/src/constants/app-config.ts" afterDir="false" />
+    <list default="true" id="f48acd8a-e246-4264-9ac4-41713844a250" name="Changes" comment="- Ajout frontend basic généré par gpt pour afficher les trn (pas testé yet)&#10;- FIX sharing client -&gt; shared&#10;** IL FALLAIT ADAPTER vite.config.ts POUR AJOUTER plugin tsconfigPaths() **">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/apps/client/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/client/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/client/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/client/vite.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/client/vite.config.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/server/src/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/server/src/app.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/server/src/app.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/server/src/app.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/server/src/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/server/src/main.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/shared/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/shared/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/shared/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/shared/src/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/shared/tsconfig.build.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/shared/tsconfig.build.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pnpm-lock.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pnpm-lock.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -106,7 +95,7 @@
       <recent name="E:\Thomas\Prog\TSXInsiderJS2\packages\shared\src" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.client">
+  <component name="RunManager" selected="npm.server run">
     <configuration name="client JavaScript" type="JavascriptDebugType" uri="http://localhost:5173">
       <method v="2" />
     </configuration>
@@ -173,7 +162,7 @@
       <workItem from="1715730130062" duration="7987000" />
       <workItem from="1715738157253" duration="4610000" />
       <workItem from="1715833159361" duration="14648000" />
-      <workItem from="1716000604590" duration="12496000" />
+      <workItem from="1716000604590" duration="13196000" />
     </task>
     <task id="LOCAL-00001" summary="Prisma setup">
       <option name="closed" value="true" />
@@ -319,7 +308,15 @@
       <option name="project" value="LOCAL" />
       <updated>1716010010420</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="- Ajout frontend basic généré par gpt pour afficher les trn (pas testé yet)&#10;- FIX sharing client -&gt; shared&#10;** IL FALLAIT ADAPTER vite.config.ts POUR AJOUTER plugin tsconfigPaths() **">
+      <option name="closed" value="true" />
+      <created>1716014002738</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1716014002738</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -356,6 +353,7 @@
     <MESSAGE value="transactions Optional limit" />
     <MESSAGE value="Fixed dependency client -&gt; shared&#10;temp: added datepicker to client" />
     <MESSAGE value="misc" />
-    <option name="LAST_COMMIT_MESSAGE" value="misc" />
+    <MESSAGE value="- Ajout frontend basic généré par gpt pour afficher les trn (pas testé yet)&#10;- FIX sharing client -&gt; shared&#10;** IL FALLAIT ADAPTER vite.config.ts POUR AJOUTER plugin tsconfigPaths() **" />
+    <option name="LAST_COMMIT_MESSAGE" value="- Ajout frontend basic généré par gpt pour afficher les trn (pas testé yet)&#10;- FIX sharing client -&gt; shared&#10;** IL FALLAIT ADAPTER vite.config.ts POUR AJOUTER plugin tsconfigPaths() **" />
   </component>
 </project>
