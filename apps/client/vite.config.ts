@@ -1,11 +1,11 @@
 import { defineConfig } from "vite";
-import { CLIENT_PORT } from "@tsxinsider/shared/src/constants/app-config";
 import react from "@vitejs/plugin-react";
+import tsconfigPaths from "vite-tsconfig-paths";
 
 // https://vitejs.dev/config/
 export default defineConfig({
   server: {
-    port: CLIENT_PORT,
+    port: 5173,
   },
-  plugins: [react()],
+  plugins: [react(), tsconfigPaths()],
 });

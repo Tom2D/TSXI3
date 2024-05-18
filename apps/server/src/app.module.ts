@@ -15,7 +15,20 @@ import { IssuerExchangesModule } from './issuer-exchanges/issuer-exchanges.modul
 import { IssuerRelationshipsModule } from './issuer-relationships/issuer-relationships.module';
 
 @Module({
-  imports: [TickersModule, IssuersModule, ExchangesModule, InsidersModule, TransactionsModule, TrnNaturesModule, CurrenciesModule, SecurityDesignationsModule, TrnFlagsModule, IssuerSizesModule, IssuerExchangesModule, IssuerRelationshipsModule],
+  imports: [
+    TickersModule,
+    IssuersModule,
+    ExchangesModule,
+    InsidersModule,
+    TransactionsModule,
+    TrnNaturesModule,
+    CurrenciesModule,
+    SecurityDesignationsModule,
+    TrnFlagsModule,
+    IssuerSizesModule,
+    IssuerExchangesModule,
+    IssuerRelationshipsModule,
+  ],
   controllers: [AppController],
   providers: [AppService],
 })
