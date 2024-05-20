@@ -4,12 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f48acd8a-e246-4264-9ac4-41713844a250" name="Changes" comment="Requete avec date seulement, pas de time&#10;Ajout util/date - FormatDate()">
+    <list default="true" id="f48acd8a-e246-4264-9ac4-41713844a250" name="Changes" comment="Ajout de pagination rudimentaire&#10;Fix timezone date (UTC internal)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/client/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/client/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/client/src/util/date.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/client/src/util/date.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/server/src/transactions/transactions.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/server/src/transactions/transactions.controller.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/server/src/transactions/transactions.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/server/src/transactions/transactions.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/server/src/trn-natures/trn-natures.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/server/src/trn-natures/trn-natures.controller.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,7 +98,7 @@
       <recent name="E:\Thomas\Prog\TSXInsiderJS2\packages\shared\src" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.server run">
+  <component name="RunManager" selected="npm.client">
     <configuration name="client JavaScript" type="JavascriptDebugType" uri="http://localhost:5173">
       <method v="2" />
     </configuration>
@@ -167,7 +167,7 @@
       <workItem from="1715833159361" duration="14648000" />
       <workItem from="1716000604590" duration="14407000" />
       <workItem from="1716184295586" duration="1505000" />
-      <workItem from="1716185907122" duration="3078000" />
+      <workItem from="1716185907122" duration="6978000" />
     </task>
     <task id="LOCAL-00001" summary="Prisma setup">
       <option name="closed" value="true" />
@@ -353,7 +353,15 @@
       <option name="project" value="LOCAL" />
       <updated>1716186779015</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="Ajout de pagination rudimentaire&#10;Fix timezone date (UTC internal)">
+      <option name="closed" value="true" />
+      <created>1716189034918</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1716189034918</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -394,6 +402,7 @@
     <MESSAGE value="V0.0.0.0.0.0.0.0.0.1 ACTUALLY WORKING!!!!" />
     <MESSAGE value="Sharing prisma types to the client&#10;(copy to client on prisma generate)" />
     <MESSAGE value="Requete avec date seulement, pas de time&#10;Ajout util/date - FormatDate()" />
-    <option name="LAST_COMMIT_MESSAGE" value="Requete avec date seulement, pas de time&#10;Ajout util/date - FormatDate()" />
+    <MESSAGE value="Ajout de pagination rudimentaire&#10;Fix timezone date (UTC internal)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ajout de pagination rudimentaire&#10;Fix timezone date (UTC internal)" />
   </component>
 </project>

@@ -14,8 +14,10 @@ export class TransactionsController {
     @Query('endFilingDate', ParseDatePipe) endFilingDate: Date,
     @Query('limit', new DefaultValuePipe(MAX_TRANSACTIONS_PER_REQUEST), ParseIntPipe) limit: number,
     @Query('page', new DefaultValuePipe(1), ParseIntPipe) page: number,
+    @Query('trnNatureCodes') trnNatureCodes?: string,
   ): Promise<transactions[]> {
-    return this.transactionsService.findAll(beginFilingDate, endFilingDate, limit, page);
+    const trnNatureCodeArray = trnNatureCodes ? trnNatureCodes.split(',').map(Number) : [];
+    return this.transactionsService.findAll(beginFilingDate, endFilingDate, limit, page, trnNatureCodeArray);
   }
 
   @Get(':id')
