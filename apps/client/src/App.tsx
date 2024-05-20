@@ -6,7 +6,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { SERVER_AUTHORITY } from "@tsxinsider/shared";
 import { transactions } from "./prisma-types";
-import { FormatDate } from "./util/date.ts";
+import { FormatDateUTC } from "./util/date";
 
 function App() {
   const [trns, setTransactions] = useState<transactions[]>([]);
@@ -15,23 +15,25 @@ function App() {
   );
   const [endDate, setEndDate] = useState<Date | null>(new Date("2021-01-22"));
   const [limit, setLimit] = useState<number>(10);
+  const [page, setPage] = useState<number>(1);
 
-  const fetchTransactions = async () => {
+  const fetchTransactions = async (pageNumber: number = 1) => {
     if (!startDate || !endDate) {
       alert("Please select both start and end dates.");
       return;
     }
 
     try {
-      const startDateStr = FormatDate(startDate);
-      const endDateStr = FormatDate(startDate);
+      const startDateStr = FormatDateUTC(startDate);
+      const endDateStr = FormatDateUTC(endDate);
       const response = await fetch(
-        `${SERVER_AUTHORITY}/transactions?beginFilingDate=${startDateStr}&endFilingDate=${endDateStr}&limit=${limit}`
+        `${SERVER_AUTHORITY}/transactions?beginFilingDate=${startDateStr}&endFilingDate=${endDateStr}&limit=${limit}&page=${pageNumber}`
       );
 
       if (response.ok) {
         const data: transactions[] = await response.json();
         setTransactions(data);
+        setPage(pageNumber);
       } else {
         console.error("Failed to fetch transactions");
       }
@@ -77,7 +79,7 @@ function App() {
             <option value={100}>100</option>
           </select>
         </div>
-        <button onClick={fetchTransactions}>Fetch Transactions</button>
+        <button onClick={() => fetchTransactions(1)}>Fetch Transactions</button>
       </div>
       <table>
         <thead>
@@ -129,6 +131,16 @@ function App() {
           ))}
         </tbody>
       </table>
+      <div className="pagination">
+        <button
+          disabled={page === 1}
+          onClick={() => fetchTransactions(page - 1)}
+        >
+          Previous
+        </button>
+        <span>Page {page}</span>
+        <button onClick={() => fetchTransactions(page + 1)}>Next</button>
+      </div>
     </div>
   );
 }

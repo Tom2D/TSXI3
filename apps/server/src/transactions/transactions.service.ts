@@ -7,7 +7,9 @@ import { MAX_TRANSACTIONS_PER_REQUEST } from '../server-constants';
 export class TransactionsService {
   constructor(private readonly prisma: PrismaService) {}
 
-  async findAll(beginFilingDate: Date, endFilingDate: Date, limit: number): Promise<transactions[]> {
+  async findAll(beginFilingDate: Date, endFilingDate: Date, limit: number, page: number): Promise<transactions[]> {
+    const offset = (page - 1) * limit;
+
     return this.prisma.transactions.findMany({
       where: {
         filingDate: {
@@ -16,6 +18,7 @@ export class TransactionsService {
         },
       },
       take: Math.min(limit, MAX_TRANSACTIONS_PER_REQUEST), // Max number of transactions per request
+      skip: offset, // Skip the number of records based on the page number
     });
   }
 

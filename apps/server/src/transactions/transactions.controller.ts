@@ -1,7 +1,7 @@
-import { Controller, DefaultValuePipe, Get, Param, ParseIntPipe, Query } from '@nestjs/common';
+import { Controller, Get, Query, DefaultValuePipe, ParseIntPipe, Param } from '@nestjs/common';
 import { TransactionsService } from './transactions.service';
-import { transactions } from '@prisma/client';
 import { ParseDatePipe } from '../ParsePipes/ParseDatePipe';
+import { transactions } from '@prisma/client';
 import { MAX_TRANSACTIONS_PER_REQUEST } from '../server-constants';
 
 @Controller('transactions')
@@ -13,12 +13,13 @@ export class TransactionsController {
     @Query('beginFilingDate', ParseDatePipe) beginFilingDate: Date,
     @Query('endFilingDate', ParseDatePipe) endFilingDate: Date,
     @Query('limit', new DefaultValuePipe(MAX_TRANSACTIONS_PER_REQUEST), ParseIntPipe) limit: number,
+    @Query('page', new DefaultValuePipe(1), ParseIntPipe) page: number,
   ): Promise<transactions[]> {
-    return this.transactionsService.findAll(beginFilingDate, endFilingDate, limit);
+    return this.transactionsService.findAll(beginFilingDate, endFilingDate, limit, page);
   }
 
   @Get(':id')
   findOne(@Param('id', ParseIntPipe) id: number): Promise<transactions | null> {
-    return this.transactionsService.findOne(+id);
+    return this.transactionsService.findOne(id);
   }
 }
