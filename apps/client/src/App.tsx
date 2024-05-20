@@ -15,6 +15,30 @@ const customStyles: StylesConfig<trnnatures> = {
   control: (provided) => ({
     ...provided,
     width: 300,
+    backgroundColor: '#333',  // Dark background for the control
+    color: '#fff',            // White text
+    border: '1px solid #444', // Border color to match dark theme
+  }),
+  menu: (provided) => ({
+    ...provided,
+    backgroundColor: '#333', // Dark background for the menu
+    color: '#fff',           // White text
+  }),
+  multiValue: (provided) => ({
+    ...provided,
+    backgroundColor: '#555', // Dark background for selected options
+  }),
+  multiValueLabel: (provided) => ({
+    ...provided,
+    color: '#fff', // White text for selected options
+  }),
+  option: (provided, state) => ({
+    ...provided,
+    backgroundColor: state.isSelected ? '#555' : state.isFocused ? '#444' : '#333',
+    color: '#fff', // White text for options
+    '&:hover': {
+      backgroundColor: '#444', // Background color on hover
+    }
   }),
 };
 
