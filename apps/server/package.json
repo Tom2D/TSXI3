@@ -6,6 +6,7 @@
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
+    "prisma:generate": "prisma generate && node dist/apps/server/prisma/copy-types-to-client.js",
     "clean": "rimraf dist",
     "prebuild": "pnpm run clean",
     "build": "nest build",
