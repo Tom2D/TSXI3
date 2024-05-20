@@ -7,18 +7,22 @@ import "react-datepicker/dist/react-datepicker.css";
 import { SERVER_AUTHORITY } from "@tsxinsider/shared";
 import { transactions, trnnatures } from "./prisma-types";
 import { FormatDateUTC } from "./util/date";
+import Select, { MultiValue, StylesConfig } from 'react-select';
 
 const DEFAULT_TRN_NATURE = 10;
+
+const customStyles: StylesConfig<trnnatures> = {
+  control: (provided) => ({
+    ...provided,
+    width: 300,
+  }),
+};
 
 function App() {
   const [trns, setTransactions] = useState<transactions[]>([]);
   const [trnNatureOptions, setTrnNatureOptions] = useState<trnnatures[]>([]);
-  const [selectedTrnNatures, setSelectedTrnNatures] = useState<number[]>([
-    DEFAULT_TRN_NATURE,
-  ]);
-  const [startDate, setStartDate] = useState<Date | null>(
-    new Date("2021-01-22")
-  );
+  const [selectedTrnNatures, setSelectedTrnNatures] = useState<number[]>([DEFAULT_TRN_NATURE]);
+  const [startDate, setStartDate] = useState<Date | null>(new Date("2021-01-22"));
   const [endDate, setEndDate] = useState<Date | null>(new Date("2021-01-22"));
   const [limit, setLimit] = useState<number>(10);
   const [page, setPage] = useState<number>(1);
@@ -32,7 +36,11 @@ function App() {
       const response = await fetch(`${SERVER_AUTHORITY}/trn-natures`);
       if (response.ok) {
         const data: trnnatures[] = await response.json();
-        setTrnNatureOptions(data);
+        const options: trnnatures[] = data.map((trnNature) => ({
+          value: trnNature.code,
+          label: trnNature.description,
+        }));
+        setTrnNatureOptions(options);
       } else {
         console.error("Failed to fetch transaction natures");
       }
@@ -52,7 +60,7 @@ function App() {
       const endDateStr = FormatDateUTC(endDate);
       const trnNatureCodes = selectedTrnNatures.join(",");
       const response = await fetch(
-        `${SERVER_AUTHORITY}/transactions?beginFilingDate=${startDateStr}&endFilingDate=${endDateStr}&limit=${limit}&page=${pageNumber}&trnNatureCodes=${trnNatureCodes}`
+          `${SERVER_AUTHORITY}/transactions?beginFilingDate=${startDateStr}&endFilingDate=${endDateStr}&limit=${limit}&page=${pageNumber}&trnNatureCodes=${trnNatureCodes}`
       );
 
       if (response.ok) {
@@ -67,68 +75,53 @@ function App() {
     }
   };
 
-  const handleTrnNatureChange = (code: number) => {
-    setSelectedTrnNatures((prevSelected) =>
-      prevSelected.includes(code)
-        ? prevSelected.filter((c) => c !== code)
-        : [...prevSelected, code]
-    );
+  const handleTrnNatureChange = (selectedOptions: MultiValue<trnnatures>) => {
+    const selectedCodes = selectedOptions ? selectedOptions.map((option) => option.value) : [];
+    setSelectedTrnNatures(selectedCodes);
   };
 
   return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Transactions</h1>
-      <div className="filters">
+      <div className="App">
         <div>
-          <label>Start Date:</label>
-          <DatePicker
-            selected={startDate}
-            onChange={(date) => setStartDate(date)}
-          />
+          <a href="https://vitejs.dev" target="_blank">
+            <img src={viteLogo} className="logo" alt="Vite logo" />
+          </a>
+          <a href="https://react.dev" target="_blank">
+            <img src={reactLogo} className="logo react" alt="React logo" />
+          </a>
         </div>
-        <div>
-          <label>End Date:</label>
-          <DatePicker
-            selected={endDate}
-            onChange={(date) => setEndDate(date)}
-          />
+        <h1>Transactions</h1>
+        <div className="filters">
+          <div>
+            <label>Start Date:</label>
+            <DatePicker selected={startDate} onChange={(date) => setStartDate(date)} />
+          </div>
+          <div>
+            <label>End Date:</label>
+            <DatePicker selected={endDate} onChange={(date) => setEndDate(date)} />
+          </div>
+          <div>
+            <label>Results Limit:</label>
+            <select value={limit} onChange={(e) => setLimit(parseInt(e.target.value))}>
+              <option value={10}>10</option>
+              <option value={50}>50</option>
+              <option value={100}>100</option>
+            </select>
+          </div>
+          <div>
+            <label>Transaction Natures:</label>
+            <Select
+                styles={customStyles}
+                options={trnNatureOptions}
+                isMulti
+                defaultValue={trnNatureOptions.find(option => option.value === DEFAULT_TRN_NATURE)}
+                onChange={handleTrnNatureChange}
+            />
+          </div>
+          <button onClick={() => fetchTransactions(1)}>Fetch Transactions</button>
         </div>
-        <div>
-          <label>Results Limit:</label>
-          <select
-            value={limit}
-            onChange={(e) => setLimit(parseInt(e.target.value))}
-          >
-            <option value={10}>10</option>
-            <option value={50}>50</option>
-            <option value={100}>100</option>
-          </select>
-        </div>
-        <div>
-          <label>Transaction Natures:</label>
-          {trnNatureOptions.map((trnNature) => (
-            <div key={trnNature.code}>
-              <input
-                type="checkbox"
-                checked={selectedTrnNatures.includes(trnNature.code)}
-                onChange={() => handleTrnNatureChange(trnNature.code)}
-              />
-              <span>{trnNature.description}</span>
-            </div>
-          ))}
-        </div>
-        <button onClick={() => fetchTransactions(1)}>Fetch Transactions</button>
-      </div>
-      <table>
-        <thead>
+        <table>
+          <thead>
           <tr>
             <th>ID</th>
             <th>SEDI ID</th>
@@ -148,42 +141,39 @@ function App() {
             <th>Underlying Security ID</th>
             <th>General Remarks</th>
           </tr>
-        </thead>
-        <tbody>
+          </thead>
+          <tbody>
           {trns.map((trn) => (
-            <tr key={trn.id}>
-              <td>{trn.id}</td>
-              <td>{trn.sediId}</td>
-              <td>{trn.insiderId}</td>
-              <td>{trn.issuerId}</td>
-              <td>{trn.securityId}</td>
-              <td>{trn.trnFlagId}</td>
-              <td>{new Date(trn.trnDate).toLocaleDateString()}</td>
-              <td>{new Date(trn.filingDate).toLocaleDateString()}</td>
-              <td>{trn.ownershipType}</td>
-              <td>{trn.trnNatureCode}</td>
-              <td>{trn.nb}</td>
-              <td>{trn.price}</td>
-              <td>{trn.priceCurrencyId}</td>
-              <td>{trn.closingBalance}</td>
-              <td>{trn.calculatedBalance}</td>
-              <td>{trn.underlyingSecurityId}</td>
-              <td>{trn.GeneralRemarks}</td>
-            </tr>
+              <tr key={trn.id}>
+                <td>{trn.id}</td>
+                <td>{trn.sediId}</td>
+                <td>{trn.insiderId}</td>
+                <td>{trn.issuerId}</td>
+                <td>{trn.securityId}</td>
+                <td>{trn.trnFlagId}</td>
+                <td>{new Date(trn.trnDate).toLocaleDateString()}</td>
+                <td>{new Date(trn.filingDate).toLocaleDateString()}</td>
+                <td>{trn.ownershipType}</td>
+                <td>{trn.trnNatureCode}</td>
+                <td>{trn.nb}</td>
+                <td>{trn.price}</td>
+                <td>{trn.priceCurrencyId}</td>
+                <td>{trn.closingBalance}</td>
+                <td>{trn.calculatedBalance}</td>
+                <td>{trn.underlyingSecurityId}</td>
+                <td>{trn.GeneralRemarks}</td>
+              </tr>
           ))}
-        </tbody>
-      </table>
-      <div className="pagination">
-        <button
-          disabled={page === 1}
-          onClick={() => fetchTransactions(page - 1)}
-        >
-          Previous
-        </button>
-        <span>Page {page}</span>
-        <button onClick={() => fetchTransactions(page + 1)}>Next</button>
+          </tbody>
+        </table>
+        <div className="pagination">
+          <button disabled={page === 1} onClick={() => fetchTransactions(page - 1)}>
+            Previous
+          </button>
+          <span>Page {page}</span>
+          <button onClick={() => fetchTransactions(page + 1)}>Next</button>
+        </div>
       </div>
-    </div>
   );
 }
 

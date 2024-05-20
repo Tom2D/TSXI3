@@ -4,12 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f48acd8a-e246-4264-9ac4-41713844a250" name="Changes" comment="Ajout de pagination rudimentaire&#10;Fix timezone date (UTC internal)">
+    <list default="true" id="f48acd8a-e246-4264-9ac4-41713844a250" name="Changes" comment="Checkboxes trnNatures">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/client/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/client/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/server/src/transactions/transactions.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/server/src/transactions/transactions.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/server/src/transactions/transactions.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/server/src/transactions/transactions.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/server/src/trn-natures/trn-natures.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/server/src/trn-natures/trn-natures.controller.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,7 +76,7 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_interpreter_path": "node",
     "nodejs_package_manager_path": "C:\\Users\\TomDD\\AppData\\Roaming\\npm\\pnpm.cmd",
-    "npm.client.executor": "Debug",
+    "npm.client.executor": "Run",
     "npm.server debug.executor": "Run",
     "npm.server run.executor": "Run",
     "prettierjs.PrettierConfiguration.Package": "E:\\Thomas\\Prog\\TSXInsiderJS2\\node_modules\\prettier",
@@ -167,7 +164,7 @@
       <workItem from="1715833159361" duration="14648000" />
       <workItem from="1716000604590" duration="14407000" />
       <workItem from="1716184295586" duration="1505000" />
-      <workItem from="1716185907122" duration="6978000" />
+      <workItem from="1716185907122" duration="7792000" />
     </task>
     <task id="LOCAL-00001" summary="Prisma setup">
       <option name="closed" value="true" />
@@ -361,7 +358,15 @@
       <option name="project" value="LOCAL" />
       <updated>1716189034918</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="Checkboxes trnNatures">
+      <option name="closed" value="true" />
+      <created>1716193361064</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1716193361064</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -403,6 +408,7 @@
     <MESSAGE value="Sharing prisma types to the client&#10;(copy to client on prisma generate)" />
     <MESSAGE value="Requete avec date seulement, pas de time&#10;Ajout util/date - FormatDate()" />
     <MESSAGE value="Ajout de pagination rudimentaire&#10;Fix timezone date (UTC internal)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ajout de pagination rudimentaire&#10;Fix timezone date (UTC internal)" />
+    <MESSAGE value="Checkboxes trnNatures" />
+    <option name="LAST_COMMIT_MESSAGE" value="Checkboxes trnNatures" />
   </component>
 </project>
