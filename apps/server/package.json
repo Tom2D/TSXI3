@@ -1,15 +1,10 @@
 {
-  "name": "@tsxinsider/server",
+  "name": "tsxinsider-server",
   "version": "0.0.1",
   "description": "",
   "author": "",
   "private": true,
   "license": "UNLICENSED",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "files": [
-    "dist"
-  ],
   "scripts": {
     "clean": "rimraf dist",
     "prebuild": "pnpm run clean",
@@ -71,11 +66,5 @@
     ],
     "coverageDirectory": "../coverage",
     "testEnvironment": "node"
-  },
-  "exports": {
-    ".": {
-      "import": "./dist/index.js",
-      "require": "./dist/index.js"
-    }
   }
 }

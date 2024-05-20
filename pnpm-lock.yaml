@@ -35,9 +35,6 @@ importers:
 
   apps/client:
     dependencies:
-      '@tsxinsider/server':
-        specifier: workspace:*
-        version: link:../server
       '@tsxinsider/shared':
         specifier: workspace:*
         version: link:../../packages/shared

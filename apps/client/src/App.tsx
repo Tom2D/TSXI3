@@ -5,7 +5,7 @@ import "./App.css";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { SERVER_AUTHORITY } from "@tsxinsider/shared";
-import { transactions } from "@tsxinsider/server";
+import { transactions } from "@tsxinsider/shared";
 
 function App() {
   const [trns, setTransactions] = useState<transactions[]>([]);
@@ -107,12 +107,8 @@ function App() {
               <td>{trn.issuerId}</td>
               <td>{trn.securityId}</td>
               <td>{trn.trnFlagId}</td>
-              <td>
-                {new Date(trn.trnDate ?? new Date()).toLocaleDateString()}
-              </td>
-              <td>
-                {new Date(trn.filingDate ?? new Date()).toLocaleDateString()}
-              </td>
+              <td>{new Date(trn.trnDate??new Date()).toLocaleDateString()}</td>
+              <td>{new Date(trn.filingDate??new Date()).toLocaleDateString()}</td>
               <td>{trn.ownershipType}</td>
               <td>{trn.trnNatureCode}</td>
               <td>{trn.nb}</td>
