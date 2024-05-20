@@ -5,9 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f48acd8a-e246-4264-9ac4-41713844a250" name="Changes" comment="Sharing prisma types to the client&#10;(copy to client on prisma generate)">
+      <change afterPath="$PROJECT_DIR$/apps/client/src/util/date.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/server/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/apps/server/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/server/prisma/readme.txt" beforeDir="false" afterPath="$PROJECT_DIR$/apps/server/prisma/readme.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/client/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/client/src/App.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,7 +77,7 @@
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_interpreter_path&quot;: &quot;node&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;C:\\Users\\TomDD\\AppData\\Roaming\\npm\\pnpm.cmd&quot;,
-    &quot;npm.client.executor&quot;: &quot;Run&quot;,
+    &quot;npm.client.executor&quot;: &quot;Debug&quot;,
     &quot;npm.server debug.executor&quot;: &quot;Run&quot;,
     &quot;npm.server run.executor&quot;: &quot;Run&quot;,
     &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;E:\\Thomas\\Prog\\TSXInsiderJS2\\node_modules\\prettier&quot;,
@@ -96,11 +96,11 @@
       <recent name="E:\Thomas\Prog\TSXInsiderJS2\packages\shared\src" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.client">
+  <component name="RunManager" selected="npm.server run">
     <configuration name="client JavaScript" type="JavascriptDebugType" uri="http://localhost:5173">
       <method v="2" />
     </configuration>
-    <configuration name="client" type="js.build_tools.npm">
+    <configuration name="client" type="js.build_tools.npm" singleton="false">
       <package-json value="$PROJECT_DIR$/apps/client/package.json" />
       <command value="run" />
       <scripts>
@@ -109,7 +109,7 @@
       <node-interpreter value="project" />
       <envs />
       <EXTENSION ID="com.intellij.lang.javascript.buildTools.npm.rc.StartBrowserRunConfigurationExtension">
-        <browser name="98ca6316-2f89-46d9-a9e5-fa9e2b0625b3" start="true" with-js-debugger="true" url="http://localhost:5173" />
+        <browser name="37cae5b9-e8b2-4949-9172-aafa37fbc09c" start="true" with-js-debugger="true" url="http://localhost:5173" />
       </EXTENSION>
       <method v="2" />
     </configuration>
@@ -164,6 +164,8 @@
       <workItem from="1715738157253" duration="4610000" />
       <workItem from="1715833159361" duration="14648000" />
       <workItem from="1716000604590" duration="14407000" />
+      <workItem from="1716184295586" duration="1505000" />
+      <workItem from="1716185907122" duration="726000" />
     </task>
     <task id="LOCAL-00001" summary="Prisma setup">
       <option name="closed" value="true" />
@@ -333,7 +335,15 @@
       <option name="project" value="LOCAL" />
       <updated>1716182146969</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="Sharing prisma types to the client&#10;(copy to client on prisma generate)">
+      <option name="closed" value="true" />
+      <created>1716182764132</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1716182764132</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

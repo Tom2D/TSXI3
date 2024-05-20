@@ -6,6 +6,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { SERVER_AUTHORITY } from "@tsxinsider/shared";
 import { transactions } from "./prisma-types";
+import { FormatDate } from "./util/date.ts";
 
 function App() {
   const [trns, setTransactions] = useState<transactions[]>([]);
@@ -22,8 +23,10 @@ function App() {
     }
 
     try {
+      const startDateStr = FormatDate(startDate);
+      const endDateStr = FormatDate(startDate);
       const response = await fetch(
-        `${SERVER_AUTHORITY}/transactions?beginFilingDate=${startDate.toISOString()}&endFilingDate=${endDate.toISOString()}&limit=${limit}`
+        `${SERVER_AUTHORITY}/transactions?beginFilingDate=${startDateStr}&endFilingDate=${endDateStr}&limit=${limit}`
       );
 
       if (response.ok) {
