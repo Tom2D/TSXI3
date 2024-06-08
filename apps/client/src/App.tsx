@@ -6,7 +6,7 @@ import { SERVER_AUTHORITY } from "@tsxinsider/shared";
 import { transactions, trnnatures } from "./prisma-types";
 import { FormatDateUTC } from "./util/date";
 import Select, { MultiValue, StylesConfig } from 'react-select';
-import DataEditor, { GridCell, GridCellKind, GridColumn, Item } from "@glideapps/glide-data-grid";
+import DataEditor, { DataEditorProps, GridCell, GridCellKind, GridColumn, Item } from "@glideapps/glide-data-grid";
 import "@glideapps/glide-data-grid/dist/index.css"
 
 const DEFAULT_TRN_NATURE = 10;
@@ -157,6 +157,14 @@ function App() {
       [trns]
   );
 
+  const gridProps: Partial<DataEditorProps> = {
+    smoothScrollX: true,
+    smoothScrollY: true,
+    isDraggable: false,
+    rowMarkers: "none",
+    width: "100%",
+  };
+
   return (
       <div className="App">
         <h1>Transactions</h1>
@@ -189,12 +197,15 @@ function App() {
           </div>
           <button onClick={() => fetchTransactions(1)}>Fetch Transactions</button>
         </div>
-        <DataEditor
-            columns={columns}
-            rows={trns.length}
-            getCellContent={getData}
-            rowHeight={35}
-        />
+        <div className="grid-container">
+          <DataEditor
+              {...gridProps}
+              columns={columns}
+              rows={trns.length}
+              getCellContent={getData}
+              rowHeight={35}
+          />
+        </div>
         <div className="pagination">
           <button disabled={page === 1} onClick={() => fetchTransactions(page - 1)}>
             Previous
