@@ -8,6 +8,7 @@ import { FormatDateUTC } from "./util/date";
 import Select, { MultiValue, StylesConfig } from 'react-select';
 import DataEditor, { DataEditorProps, GridCell, GridCellKind, GridColumn, Item } from "@glideapps/glide-data-grid";
 import "@glideapps/glide-data-grid/dist/index.css"
+import { darkTheme } from "./grid/dark-theme.tsx";
 
 const DEFAULT_TRN_NATURE = 10;
 
@@ -197,8 +198,9 @@ function App() {
           </div>
           <button onClick={() => fetchTransactions(1)}>Fetch Transactions</button>
         </div>
-        <div className="grid-container">
+        <div className="grid-container dark-theme">
           <DataEditor
+              theme={darkTheme}
               {...gridProps}
               columns={columns}
               rows={trns.length}
