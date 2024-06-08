@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import "./App.css";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -6,6 +6,7 @@ import { SERVER_AUTHORITY } from "@tsxinsider/shared";
 import { transactions, trnnatures } from "./prisma-types";
 import { FormatDateUTC } from "./util/date";
 import Select, { MultiValue, StylesConfig } from 'react-select';
+import DataEditor, { GridCell, GridCellKind, GridColumn, Item } from "@glideapps/glide-data-grid";
 
 const DEFAULT_TRN_NATURE = 10;
 
@@ -38,11 +39,39 @@ const customStyles: StylesConfig<trnnatures> = {
       backgroundColor: '#444', // Background color on hover
     }
   }),
+  singleValue: (provided) => ({
+    ...provided,
+    color: '#fff', // White text for single value
+  }),
+  input: (provided) => ({
+    ...provided,
+    color: '#fff', // White text for input
+  }),
 };
+
+const columns: GridColumn[] = [
+  { id: "id", title: "ID" },
+  { id: "sediId", title: "SEDI ID" },
+  { id: "insiderId", title: "Insider ID" },
+  { id: "issuerId", title: "Issuer ID" },
+  { id: "securityId", title: "Security ID" },
+  { id: "trnFlagId", title: "Transaction Flag ID" },
+  { id: "trnDate", title: "Transaction Date" },
+  { id: "filingDate", title: "Filing Date" },
+  { id: "ownershipType", title: "Ownership Type" },
+  { id: "trnNatureCode", title: "Transaction Nature Code" },
+  { id: "nb", title: "Number" },
+  { id: "price", title: "Price" },
+  { id: "priceCurrencyId", title: "Price Currency ID" },
+  { id: "closingBalance", title: "Closing Balance" },
+  { id: "calculatedBalance", title: "Calculated Balance" },
+  { id: "underlyingSecurityId", title: "Underlying Security ID" },
+  { id: "GeneralRemarks", title: "General Remarks" },
+];
 
 function App() {
   const [trns, setTransactions] = useState<transactions[]>([]);
-  const [trnNatureOptions, setTrnNatureOptions] = useState<trnnatures[]>([]);
+  const [trnNatureOptions, setTrnNatureOptions] = useState<{ value: number; label: string }[]>([]);
   const [selectedTrnNatures, setSelectedTrnNatures] = useState<number[]>([DEFAULT_TRN_NATURE]);
   const [startDate, setStartDate] = useState<Date | null>(new Date("2021-01-22"));
   const [endDate, setEndDate] = useState<Date | null>(new Date("2021-01-22"));
@@ -58,7 +87,7 @@ function App() {
       const response = await fetch(`${SERVER_AUTHORITY}/trn-natures`);
       if (response.ok) {
         const data: trnnatures[] = await response.json();
-        const options: trnnatures[] = data.map((trnNature) => ({
+        const options = data.map((trnNature) => ({
           value: trnNature.code,
           label: trnNature.description,
         }));
@@ -97,10 +126,37 @@ function App() {
     }
   };
 
-  const handleTrnNatureChange = (selectedOptions: MultiValue<trnnatures>) => {
+  const handleTrnNatureChange = (selectedOptions: MultiValue<{ value: number; label: string }>) => {
     const selectedCodes = selectedOptions ? selectedOptions.map((option) => option.value) : [];
     setSelectedTrnNatures(selectedCodes);
   };
+
+  const getData = useCallback(
+      ([col, row]: Item): GridCell => {
+        const transaction = trns[row];
+        if (!transaction) return { kind: GridCellKind.Text, data: "", displayData: "", allowOverlay: false };
+
+        const column = columns[col];
+        const value = transaction[column.id as keyof transactions];
+
+        if (column.id === "trnDate" || column.id === "filingDate") {
+          return {
+            kind: GridCellKind.Text,
+            allowOverlay: false,
+            displayData: new Date(value as string).toLocaleDateString(),
+            data: new Date(value as string).toLocaleDateString(),
+          };
+        }
+
+        return {
+          kind: GridCellKind.Text,
+          allowOverlay: false,
+          displayData: String(value),
+          data: String(value),
+        };
+      },
+      [trns]
+  );
 
   return (
       <div className="App">
@@ -134,52 +190,14 @@ function App() {
           </div>
           <button onClick={() => fetchTransactions(1)}>Fetch Transactions</button>
         </div>
-        <table>
-          <thead>
-          <tr>
-            <th>ID</th>
-            <th>SEDI ID</th>
-            <th>Insider ID</th>
-            <th>Issuer ID</th>
-            <th>Security ID</th>
-            <th>Transaction Flag ID</th>
-            <th>Transaction Date</th>
-            <th>Filing Date</th>
-            <th>Ownership Type</th>
-            <th>Transaction Nature Code</th>
-            <th>Number</th>
-            <th>Price</th>
-            <th>Price Currency ID</th>
-            <th>Closing Balance</th>
-            <th>Calculated Balance</th>
-            <th>Underlying Security ID</th>
-            <th>General Remarks</th>
-          </tr>
-          </thead>
-          <tbody>
-          {trns.map((trn) => (
-              <tr key={trn.id}>
-                <td>{trn.id}</td>
-                <td>{trn.sediId}</td>
-                <td>{trn.insiderId}</td>
-                <td>{trn.issuerId}</td>
-                <td>{trn.securityId}</td>
-                <td>{trn.trnFlagId}</td>
-                <td>{new Date(trn.trnDate).toLocaleDateString()}</td>
-                <td>{new Date(trn.filingDate).toLocaleDateString()}</td>
-                <td>{trn.ownershipType}</td>
-                <td>{trn.trnNatureCode}</td>
-                <td>{trn.nb}</td>
-                <td>{trn.price}</td>
-                <td>{trn.priceCurrencyId}</td>
-                <td>{trn.closingBalance}</td>
-                <td>{trn.calculatedBalance}</td>
-                <td>{trn.underlyingSecurityId}</td>
-                <td>{trn.GeneralRemarks}</td>
-              </tr>
-          ))}
-          </tbody>
-        </table>
+        <div style={{ height: 600, width: '100%' }}>
+          <DataEditor
+              columns={columns}
+              rows={trns.length}
+              getCellContent={getData}
+              rowHeight={35}
+          />
+        </div>
         <div className="pagination">
           <button disabled={page === 1} onClick={() => fetchTransactions(page - 1)}>
             Previous
