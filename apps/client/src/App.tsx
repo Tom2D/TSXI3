@@ -171,7 +171,7 @@ function App() {
         data: String(value),
       };
     },
-    [trns, columns, trnNatureOptions, getTrnNatureDescription]
+    [trns, columns, getTrnNatureDescription]
   );
 
   const onColumnResize = useCallback(

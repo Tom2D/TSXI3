@@ -5,7 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f48acd8a-e246-4264-9ac4-41713844a250" name="Changes" comment="Trade type name instead of code">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/client/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/client/src/App.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -133,7 +132,7 @@
       <workItem from="1716000604590" duration="14407000" />
       <workItem from="1716184295586" duration="1505000" />
       <workItem from="1716185907122" duration="10102000" />
-      <workItem from="1716347840126" duration="31289000" />
+      <workItem from="1716347840126" duration="31305000" />
     </task>
     <task id="LOCAL-00001" summary="Prisma setup">
       <option name="closed" value="true" />
@@ -423,7 +422,15 @@
       <option name="project" value="LOCAL" />
       <updated>1717915403641</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="Trade type name instead of code">
+      <option name="closed" value="true" />
+      <created>1717915633515</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1717915633515</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
