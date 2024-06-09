@@ -134,6 +134,11 @@ function App() {
     setSelectedTrnNatures(selectedCodes);
   };
 
+  const getTrnNatureDescription = (code: number): string => {
+    const trnNature = trnNatureOptions.find((option) => option.value === code);
+    return trnNature ? trnNature.label : String(code);
+  };
+
   const getData = useCallback(
     ([col, row]: Item): GridCell => {
       const transaction = trns[row];
@@ -149,6 +154,16 @@ function App() {
         };
       }
 
+      if (column.id === "trnNatureCode") {
+        const description = getTrnNatureDescription(value as number);
+        return {
+          kind: GridCellKind.Text,
+          allowOverlay: false,
+          displayData: description,
+          data: description,
+        };
+      }
+
       return {
         kind: GridCellKind.Text,
         allowOverlay: false,
@@ -156,7 +171,7 @@ function App() {
         data: String(value),
       };
     },
-    [trns, columns]
+    [trns, columns, trnNatureOptions, getTrnNatureDescription]
   );
 
   const onColumnResize = useCallback(
