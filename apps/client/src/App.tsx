@@ -134,11 +134,6 @@ function App() {
     setSelectedTrnNatures(selectedCodes);
   };
 
-  const getTrnNatureDescription = (code: number): string => {
-    const trnNature = trnNatures.find((trnNature) => trnNature.code === code);
-    return trnNature ? trnNature.description : String(code);
-  };
-
   const getData = useCallback(
     ([col, row]: Item): GridCell => {
       const transaction = trns[row];
@@ -153,6 +148,11 @@ function App() {
           data: new Date(value as string).toLocaleDateString(),
         };
       }
+
+      const getTrnNatureDescription = (code: number): string => {
+        const trnNature = trnNatures.find((trnNature) => trnNature.code === code);
+        return trnNature ? trnNature.description : String(code);
+      };
 
       if (column.id === "trnNatureCode") {
         const description = getTrnNatureDescription(value as number);
@@ -171,7 +171,7 @@ function App() {
         data: String(value),
       };
     },
-    [trns, columns, getTrnNatureDescription]
+    [trns, trnNatures, columns]
   );
 
   const onColumnResize = useCallback(
