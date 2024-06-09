@@ -6,7 +6,7 @@ export const initialColumns: GridColumn[] = [
     { id: "trnDate", title: "Trade Date", width: 100 },
     { id: "issuerId", title: "Issuer ID", width: 100 },
     { id: "insiderId", title: "Insider ID", width: 100 },
-    { id: "trnNatureCode", title: "Trade Type", width: 100 },
+    { id: "trnNatureCode", title: "Trade Type", width: 200 },
     { id: "price", title: "Price", width: 90 },
     { id: "nb", title: "Number", width: 100 },
     { id: "securityId", title: "Security Type", width: 100 },
@@ -21,5 +21,6 @@ export const gridProps: Partial<DataEditorProps> = {
     isDraggable: false,
     rowMarkers: "none",
     width: "100%",
+    rowHeight: 35, // 53 to allow 3 lines of text
     getCellsForSelection: true, // Allow copying
 };

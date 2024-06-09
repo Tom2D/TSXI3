@@ -140,35 +140,47 @@ function App() {
       const column = columns[col];
       const value = transaction[column.id as keyof transactions];
 
-      if (column.id === "trnDate" || column.id === "filingDate") {
-        return {
-          kind: GridCellKind.Text,
-          allowOverlay: false,
-          displayData: new Date(value as string).toLocaleDateString(),
-          data: new Date(value as string).toLocaleDateString(),
-        };
-      }
+      const kind = GridCellKind.Text;
+      const allowOverlay = false;
+      let data = String(value);
+      let allowWrapping = false;
 
       const getTrnNatureDescription = (code: number): string => {
-        const trnNature = trnNatures.find((trnNature) => trnNature.code === code);
+        const trnNature = trnNatures.find(
+          (trnNature) => trnNature.code === code
+        );
         return trnNature ? trnNature.description : String(code);
       };
 
-      if (column.id === "trnNatureCode") {
-        const description = getTrnNatureDescription(value as number);
-        return {
-          kind: GridCellKind.Text,
-          allowOverlay: false,
-          displayData: description,
-          data: description,
-        };
+      switch (column.id) {
+        case "issuerId":
+          allowWrapping = true;
+          break;
+
+        case "trnDate":
+        case "filingDate":
+          data = new Date(value as string).toLocaleDateString();
+          break;
+
+        case "trnNatureCode":
+          data = getTrnNatureDescription(value as number);
+          allowWrapping = true;
+          break;
+
+          case "GeneralRemarks":
+            allowWrapping = true;
+            break;
+
+        default:
+          break;
       }
 
       return {
-        kind: GridCellKind.Text,
-        allowOverlay: false,
-        displayData: String(value),
-        data: String(value),
+        kind: kind,
+        allowOverlay: allowOverlay,
+        displayData: data,
+        data: data,
+        allowWrapping: allowWrapping,
       };
     },
     [trns, trnNatures, columns]
@@ -239,7 +251,6 @@ function App() {
           columns={columns}
           rows={trns.length}
           getCellContent={getData}
-          rowHeight={35}
           onColumnResize={onColumnResize}
         />
       </div>
