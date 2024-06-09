@@ -4,7 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f48acd8a-e246-4264-9ac4-41713844a250" name="Changes" comment="- Retrait colonnes superflues&#10;- Permettre de resize les colonnes">
+    <list default="true" id="f48acd8a-e246-4264-9ac4-41713844a250" name="Changes" comment="Ajustements mineurs">
+      <change afterPath="$PROJECT_DIR$/apps/client/src/grid/constants.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/client/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/client/src/App.tsx" afterDir="false" />
     </list>
@@ -16,8 +17,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="TypeScript File" />
         <option value="TypeScript JSX File" />
+        <option value="TypeScript File" />
       </list>
     </option>
   </component>
@@ -96,7 +97,7 @@
       <recent name="E:\Thomas\Prog\TSXInsiderJS2\packages\shared\src" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.server run">
+  <component name="RunManager" selected="npm.client">
     <configuration name="client JavaScript" type="JavascriptDebugType" uri="http://localhost:5173">
       <method v="2" />
     </configuration>
@@ -133,7 +134,7 @@
       <workItem from="1716000604590" duration="14407000" />
       <workItem from="1716184295586" duration="1505000" />
       <workItem from="1716185907122" duration="10102000" />
-      <workItem from="1716347840126" duration="29321000" />
+      <workItem from="1716347840126" duration="31047000" />
     </task>
     <task id="LOCAL-00001" summary="Prisma setup">
       <option name="closed" value="true" />
@@ -407,7 +408,15 @@
       <option name="project" value="LOCAL" />
       <updated>1717828051310</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="Ajustements mineurs">
+      <option name="closed" value="true" />
+      <created>1717884374282</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1717884374282</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -426,7 +435,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Issuers endpoint added" />
     <MESSAGE value="added tickersService.findOne" />
     <MESSAGE value="Added all basic endpoints" />
     <MESSAGE value="Prettier Max line len = 150" />
@@ -451,6 +459,7 @@
     <MESSAGE value="glide data grid css width fix" />
     <MESSAGE value="dark theme grid" />
     <MESSAGE value="- Retrait colonnes superflues&#10;- Permettre de resize les colonnes" />
-    <option name="LAST_COMMIT_MESSAGE" value="- Retrait colonnes superflues&#10;- Permettre de resize les colonnes" />
+    <MESSAGE value="Ajustements mineurs" />
+    <option name="LAST_COMMIT_MESSAGE" value="Ajustements mineurs" />
   </component>
 </project>

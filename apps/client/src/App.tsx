@@ -7,7 +7,6 @@ import { transactions, trnnatures } from "./prisma-types";
 import { FormatDateUTC } from "./util/date";
 import Select, { MultiValue, StylesConfig } from "react-select";
 import DataEditor, {
-  DataEditorProps,
   GridCell,
   GridCellKind,
   GridColumn,
@@ -15,6 +14,7 @@ import DataEditor, {
 } from "@glideapps/glide-data-grid";
 import "@glideapps/glide-data-grid/dist/index.css";
 import { darkTheme } from "./grid/dark-theme.tsx";
+import { initialColumns, gridProps } from "./grid/constants.ts";
 
 const DEFAULT_TRN_NATURE = 10;
 
@@ -60,21 +60,6 @@ const customStyles: StylesConfig<trnnatures> = {
     color: "#fff", // White text for input
   }),
 };
-
-const initialColumns: GridColumn[] = [
-  { id: "trnFlagId", title: "Flag", width: 50 },
-  { id: "filingDate", title: "Filing Date", width: 100 },
-  { id: "trnDate", title: "Trade Date", width: 100 },
-  { id: "issuerId", title: "Issuer ID", width: 100 },
-  { id: "insiderId", title: "Insider ID", width: 100 },
-  { id: "trnNatureCode", title: "Trade Type", width: 100 },
-  { id: "price", title: "Price", width: 90 },
-  { id: "nb", title: "Number", width: 100 },
-  { id: "securityId", title: "Security Type", width: 100 },
-  { id: "closingBalance", title: "New Balance", width: 100 },
-  { id: "ownershipType", title: "Ownership", width: 125 },
-  { id: "GeneralRemarks", title: "General Remarks", width: 200, grow: 1 },
-];
 
 function App() {
   const [trns, setTransactions] = useState<transactions[]>([]);
@@ -174,26 +159,20 @@ function App() {
     [trns, columns]
   );
 
-  const onColumnResize = useCallback((column: GridColumn, newSize: number) => {
-    setColumns((prevColsMap: GridColumn[]) => {
-      const index = columns.findIndex((ci) => ci.title === column.title);
-      const newArray = [...prevColsMap];
-      newArray.splice(index, 1, {
-        ...prevColsMap[index],
-        width: newSize,
+  const onColumnResize = useCallback(
+    (column: GridColumn, newSize: number) => {
+      setColumns((prevColsMap: GridColumn[]) => {
+        const index = columns.findIndex((ci) => ci.title === column.title);
+        const newArray = [...prevColsMap];
+        newArray.splice(index, 1, {
+          ...prevColsMap[index],
+          width: newSize,
+        });
+        return newArray;
       });
-      return newArray;
-    });
-  }, [columns]);
-
-  const gridProps: Partial<DataEditorProps> = {
-    smoothScrollX: true,
-    smoothScrollY: true,
-    isDraggable: false,
-    rowMarkers: "none",
-    width: "100%",
-    getCellsForSelection: true, // Allow copying
-  };
+    },
+    [columns]
+  );
 
   return (
     <div className="App">
