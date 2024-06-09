@@ -63,9 +63,7 @@ const customStyles: StylesConfig<trnnatures> = {
 
 function App() {
   const [trns, setTransactions] = useState<transactions[]>([]);
-  const [trnNatureOptions, setTrnNatureOptions] = useState<
-    { value: number; label: string }[]
-  >([]);
+  const [trnNatures, setTrnNatures] = useState<trnnatures[]>([]);
   const [selectedTrnNatures, setSelectedTrnNatures] = useState<number[]>([
     DEFAULT_TRN_NATURE,
   ]);
@@ -85,12 +83,7 @@ function App() {
     try {
       const response = await fetch(`${SERVER_AUTHORITY}/trn-natures`);
       if (response.ok) {
-        const data: trnnatures[] = await response.json();
-        const options = data.map((trnNature) => ({
-          value: trnNature.code,
-          label: trnNature.description,
-        }));
-        setTrnNatureOptions(options);
+        setTrnNatures(await response.json());
       } else {
         console.error("Failed to fetch transaction natures");
       }
@@ -98,6 +91,13 @@ function App() {
       console.error("Error fetching transaction natures:", error);
     }
   };
+
+  function getTrnNaturesSelectOptions() {
+    return trnNatures.map((trnNature) => ({
+      value: trnNature.code,
+      label: trnNature.description,
+    }));
+  }
 
   const fetchTransactions = async (pageNumber: number = 1) => {
     if (!startDate || !endDate) {
@@ -135,8 +135,8 @@ function App() {
   };
 
   const getTrnNatureDescription = (code: number): string => {
-    const trnNature = trnNatureOptions.find((option) => option.value === code);
-    return trnNature ? trnNature.label : String(code);
+    const trnNature = trnNatures.find((trnNature) => trnNature.code === code);
+    return trnNature ? trnNature.description : String(code);
   };
 
   const getData = useCallback(
@@ -222,9 +222,9 @@ function App() {
           <label>Transaction Natures:</label>
           <Select
             styles={customStyles}
-            options={trnNatureOptions}
+            options={getTrnNaturesSelectOptions()}
             isMulti
-            defaultValue={trnNatureOptions.find(
+            defaultValue={getTrnNaturesSelectOptions().find(
               (option) => option.value === DEFAULT_TRN_NATURE
             )}
             onChange={handleTrnNatureChange}
