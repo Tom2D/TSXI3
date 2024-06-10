@@ -26,48 +26,30 @@ export class TransactionsService {
           in: trnNatureCodes.length > 0 ? trnNatureCodes : undefined,
         },
       },
-      include: {
-        issuers: {
-          include: {
-            tickers: true,
-          },
-        },
-        insiders: {
-          include: {
-            relationstoissuer: true,
-          },
-        },
-      },
       take: Math.min(limit, MAX_TRANSACTIONS_PER_REQUEST),
       skip: offset,
     });
 
-    const uniqueIssuers = new Map<number, issuers>();
-    const uniqueTickers = new Map<number, tickers>();
-    const uniqueInsiders = new Map<number, insiders>();
-    const uniqueRelationsToIssuer = new Map<string, relationstoissuer>();
+    const issuerIds = transactions.map((trn) => trn.issuerId).filter((id) => id !== null) as number[];
+    const insiderIds = transactions.map((trn) => trn.insiderId).filter((id) => id !== null) as number[];
 
-    transactions.forEach((trn) => {
-      if (trn.issuers) {
-        uniqueIssuers.set(trn.issuers.id, trn.issuers);
-        if (trn.issuers.tickers) {
-          uniqueTickers.set(trn.issuers.tickers.id, trn.issuers.tickers);
-        }
-      }
-      if (trn.insiders) {
-        uniqueInsiders.set(trn.insiders.id, trn.insiders);
-        trn.insiders.relationstoissuer.forEach((relation) => {
-          uniqueRelationsToIssuer.set(`${relation.type}-${relation.insiderId}`, relation);
-        });
-      }
+    const issuers = await this.prisma.issuers.findMany({ where: { id: { in: issuerIds } } });
+    const insiders = await this.prisma.insiders.findMany({ where: { id: { in: insiderIds } } });
+
+    const tickers = await this.prisma.tickers.findMany({
+      where: { id: { in: issuers.map((issuer) => issuer.tickerId).filter((id) => id !== null) as number[] } },
     });
+
+    const relationsToIssuer = await this.prisma.relationstoissuer.findMany({ where: { insiderId: { in: insiderIds } } });
 
     return {
       transactions,
-      issuers: Array.from(uniqueIssuers.values()),
-      tickers: Array.from(uniqueTickers.values()),
-      insiders: Array.from(uniqueInsiders.values()),
-      relationsToIssuer: Array.from(uniqueRelationsToIssuer.values()),
+      issuers: Array.from(new Map(issuers.map((issuer) => [issuer.id, issuer])).values()),
+      tickers: Array.from(new Map(tickers.map((ticker) => [ticker.id, ticker])).values()),
+      insiders: Array.from(new Map(insiders.map((insider) => [insider.id, insider])).values()),
+      relationsToIssuer: Array.from(
+        new Map(relationsToIssuer.map((relation) => [`${relation.type}-${relation.insiderId}`, relation])).values(),
+      ),
     };
   }
 

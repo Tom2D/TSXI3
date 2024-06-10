@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f48acd8a-e246-4264-9ac4-41713844a250" name="Changes" comment="cleanup generation cellules dans getData()">
+    <list default="true" id="f48acd8a-e246-4264-9ac4-41713844a250" name="Changes" comment="trn endpoint return extra info (issuer, insider, etc.)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/server/src/transactions/transactions.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/server/src/transactions/transactions.controller.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/server/src/transactions/transactions.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/server/src/transactions/transactions.service.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -97,7 +96,7 @@
       <recent name="E:\Thomas\Prog\TSXInsiderJS2\packages\shared\src" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.client">
+  <component name="RunManager" selected="npm.server run">
     <configuration name="client JavaScript" type="JavascriptDebugType" uri="http://localhost:5173">
       <method v="2" />
     </configuration>
@@ -134,7 +133,7 @@
       <workItem from="1716000604590" duration="14407000" />
       <workItem from="1716184295586" duration="1505000" />
       <workItem from="1716185907122" duration="10102000" />
-      <workItem from="1716347840126" duration="40738000" />
+      <workItem from="1716347840126" duration="42488000" />
     </task>
     <task id="LOCAL-00001" summary="Prisma setup">
       <option name="closed" value="true" />
@@ -464,7 +463,15 @@
       <option name="project" value="LOCAL" />
       <updated>1717963183004</updated>
     </task>
-    <option name="localTasksCounter" value="42" />
+    <task id="LOCAL-00042" summary="trn endpoint return extra info (issuer, insider, etc.)">
+      <option name="closed" value="true" />
+      <created>1717964662388</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1717964662388</updated>
+    </task>
+    <option name="localTasksCounter" value="43" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -483,7 +490,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="fix error bad option exlcude" />
     <MESSAGE value="Fetch trn date range + ParseDatePipe" />
     <MESSAGE value="transactions Optional limit" />
     <MESSAGE value="Fixed dependency client -&gt; shared&#10;temp: added datepicker to client" />
@@ -508,6 +514,7 @@
     <MESSAGE value="Trade type name instead of code" />
     <MESSAGE value="Simplified trn natures front end" />
     <MESSAGE value="cleanup generation cellules dans getData()" />
-    <option name="LAST_COMMIT_MESSAGE" value="cleanup generation cellules dans getData()" />
+    <MESSAGE value="trn endpoint return extra info (issuer, insider, etc.)" />
+    <option name="LAST_COMMIT_MESSAGE" value="trn endpoint return extra info (issuer, insider, etc.)" />
   </component>
 </project>
