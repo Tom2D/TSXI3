@@ -202,12 +202,10 @@ function App() {
         switch (column.id) {
           case "trnFlagId":
             data = getTrnFlagName(transaction.trnFlagId);
-            allowWrapping = true;
             break;
 
           case "ticker":
             data = getTickerName(transaction.issuerId);
-            allowWrapping = true;
             break;
 
           case "issuer":
