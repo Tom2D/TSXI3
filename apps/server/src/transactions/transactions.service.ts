@@ -32,9 +32,11 @@ export class TransactionsService {
 
     const issuerIds = transactions.map((trn) => trn.issuerId).filter((id) => id !== null) as number[];
     const insiderIds = transactions.map((trn) => trn.insiderId).filter((id) => id !== null) as number[];
+    const securityIds = transactions.map((trn) => trn.securityId).filter((id) => id !== null) as number[];
 
     const issuers = await this.prisma.issuers.findMany({ where: { id: { in: issuerIds } } });
     const insiders = await this.prisma.insiders.findMany({ where: { id: { in: insiderIds } } });
+    const securityDesignations = await this.prisma.securitydesignations.findMany({ where: { id: { in: securityIds } } });
 
     const tickers = await this.prisma.tickers.findMany({
       where: { id: { in: issuers.map((issuer) => issuer.tickerId).filter((id) => id !== null) as number[] } },
@@ -50,6 +52,7 @@ export class TransactionsService {
       relationsToIssuer: Array.from(
         new Map(relationsToIssuer.map((relation) => [`${relation.type}-${relation.insiderId}`, relation])).values(),
       ),
+      securityDesignations: Array.from(new Map(securityDesignations.map((security) => [security.id, security])).values()),
     };
   }
 
