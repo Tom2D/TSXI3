@@ -2,11 +2,11 @@ import { DataEditorProps, GridColumn } from "@glideapps/glide-data-grid";
 
 export const initialColumns: GridColumn[] = [
   { id: "trnFlagId", title: "Flag", width: 50 },
-  { id: "filingDate", title: "Filing Date", width: 100 },
-  { id: "trnDate", title: "Trade Date", width: 100 },
-  { id: "ticker", title: "Ticker", width: 100 },
+  { id: "filingDate", title: "Filing Date", width: 90 },
+  { id: "trnDate", title: "Trade Date", width: 90 },
+  { id: "ticker", title: "Ticker", width: 55 },
   { id: "issuer", title: "Issuer", width: 150 },
-  { id: "insider", title: "Insider", width: 150 },
+  { id: "insider", title: "Insider", width: 125 },
   { id: "titles", title: "Titles", width: 150 },
   { id: "trnNatureCode", title: "Trade Type", width: 200 },
   { id: "price", title: "Price", width: 90 },
@@ -23,6 +23,6 @@ export const gridProps: Partial<DataEditorProps> = {
   isDraggable: false,
   rowMarkers: "none",
   width: "100%",
-  rowHeight: 35, // 53 to allow 3 lines of text
+  rowHeight: 53, // 53 to allow 3 lines of text
   getCellsForSelection: true, // Allow copying
 };

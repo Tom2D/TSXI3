@@ -3,14 +3,7 @@ import "./App.css";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { SERVER_AUTHORITY } from "@tsxinsider/shared";
-import {
-  transactions,
-  trnnatures,
-  issuers,
-  insiders,
-  tickers,
-  relationstoissuer,
-} from "./prisma-types";
+import { transactions, trnnatures, issuers, insiders, tickers, relationstoissuer, trnflag } from "./prisma-types";
 import { FormatDateUTC } from "./util/date";
 import Select, { MultiValue, StylesConfig } from "react-select";
 import DataEditor, {
@@ -49,10 +42,10 @@ const customStyles: StylesConfig<trnnatures> = {
   option: (provided, state) => ({
     ...provided,
     backgroundColor: state.isSelected
-      ? "#555"
-      : state.isFocused
-      ? "#444"
-      : "#333",
+        ? "#555"
+        : state.isFocused
+            ? "#444"
+            : "#333",
     color: "#fff", // White text for options
     "&:hover": {
       backgroundColor: "#444", // Background color on hover
@@ -71,12 +64,9 @@ const customStyles: StylesConfig<trnnatures> = {
 function App() {
   const [trns, setTransactions] = useState<transactions[]>([]);
   const [trnNatures, setTrnNatures] = useState<trnnatures[]>([]);
-  const [selectedTrnNatures, setSelectedTrnNatures] = useState<number[]>([
-    DEFAULT_TRN_NATURE,
-  ]);
-  const [startDate, setStartDate] = useState<Date | null>(
-    new Date("2021-01-22")
-  );
+  const [trnFlags, setTrnFlags] = useState<trnflag[]>([]);
+  const [selectedTrnNatures, setSelectedTrnNatures] = useState<number[]>([DEFAULT_TRN_NATURE]);
+  const [startDate, setStartDate] = useState<Date | null>(new Date("2021-01-22"));
   const [endDate, setEndDate] = useState<Date | null>(new Date("2021-01-22"));
   const [limit, setLimit] = useState<number>(10);
   const [page, setPage] = useState<number>(1);
@@ -84,12 +74,11 @@ function App() {
   const [issuers, setIssuers] = useState<issuers[]>([]);
   const [tickers, setTickers] = useState<tickers[]>([]);
   const [insiders, setInsiders] = useState<insiders[]>([]);
-  const [relationsToIssuer, setRelationsToIssuer] = useState<
-    relationstoissuer[]
-  >([]);
+  const [relationsToIssuer, setRelationsToIssuer] = useState<relationstoissuer[]>([]);
 
   useEffect(() => {
     fetchTrnNatures();
+    fetchTrnFlags();
   }, []);
 
   const fetchTrnNatures = async () => {
@@ -102,6 +91,19 @@ function App() {
       }
     } catch (error) {
       console.error("Error fetching transaction natures:", error);
+    }
+  };
+
+  const fetchTrnFlags = async () => {
+    try {
+      const response = await fetch(`${SERVER_AUTHORITY}/trn-flags`);
+      if (response.ok) {
+        setTrnFlags(await response.json());
+      } else {
+        console.error("Failed to fetch transaction flags");
+      }
+    } catch (error) {
+      console.error("Error fetching transaction flags:", error);
     }
   };
 
@@ -123,7 +125,7 @@ function App() {
       const endDateStr = FormatDateUTC(endDate);
       const trnNatureCodes = selectedTrnNatures.join(",");
       const response = await fetch(
-        `${SERVER_AUTHORITY}/transactions?beginFilingDate=${startDateStr}&endFilingDate=${endDateStr}&limit=${limit}&page=${pageNumber}&trnNatureCodes=${trnNatureCodes}`
+          `${SERVER_AUTHORITY}/transactions?beginFilingDate=${startDateStr}&endFilingDate=${endDateStr}&limit=${limit}&page=${pageNumber}&trnNatureCodes=${trnNatureCodes}`
       );
 
       if (response.ok) {
@@ -143,185 +145,194 @@ function App() {
   };
 
   const handleTrnNatureChange = (
-    selectedOptions: MultiValue<{ value: number; label: string }>
+      selectedOptions: MultiValue<{ value: number; label: string }>
   ) => {
     const selectedCodes = selectedOptions
-      ? selectedOptions.map((option) => option.value)
-      : [];
+        ? selectedOptions.map((option) => option.value)
+        : [];
     setSelectedTrnNatures(selectedCodes);
   };
 
   const getData = useCallback(
-    ([col, row]: Item): GridCell => {
-      const transaction = trns[row];
-      const column = columns[col];
-      const value = transaction[column.id as keyof transactions];
+      ([col, row]: Item): GridCell => {
+        const transaction = trns[row];
+        const column = columns[col];
+        const value = transaction[column.id as keyof transactions];
 
-      const kind = GridCellKind.Text;
-      const allowOverlay = false;
-      let data = String(value);
-      let allowWrapping = false;
+        const kind = GridCellKind.Text;
+        const allowOverlay = false;
+        let data = String(value);
+        let allowWrapping = false;
 
-      const getTrnNatureDescription = (code: number): string => {
-        const trnNature = trnNatures.find(
-          (trnNature) => trnNature.code === code
-        );
-        return trnNature ? trnNature.description : String(code);
-      };
+        const getTrnNatureDescription = (code: number): string => {
+          const trnNature = trnNatures.find(
+              (trnNature) => trnNature.code === code
+          );
+          return trnNature ? trnNature.description : String(code);
+        };
 
-      const getIssuerName = (issuerId: number): string => {
-        const issuer = issuers.find((issuer) => issuer.id === issuerId);
-        return issuer ? issuer.name : String(issuerId);
-      };
+        const getTrnFlagName = (id: number): string => {
+          const trnFlag = trnFlags.find(
+              (trnFlag) => trnFlag.id === id
+          );
+          return trnFlag ? trnFlag.name : String(id);
+        };
 
-      const getTickerName = (issuerId: number): string => {
-        const issuer = issuers.find((issuer) => issuer.id === issuerId);
-        const ticker = issuer
-          ? tickers.find((ticker) => ticker.id === issuer.tickerId)
-          : undefined;
-        return ticker ? ticker.name : String(issuerId);
-      };
+        const getIssuerName = (issuerId: number): string => {
+          const issuer = issuers.find((issuer) => issuer.id === issuerId);
+          return issuer ? issuer.name : String(issuerId);
+        };
 
-      const getInsiderName = (insiderId: number): string => {
-        const insider = insiders.find((insider) => insider.id === insiderId);
-        return insider ? insider.name : String(insiderId);
-      };
+        const getTickerName = (issuerId: number): string => {
+          const issuer = issuers.find((issuer) => issuer.id === issuerId);
+          const ticker = issuer ? tickers.find((ticker) => ticker.id === issuer.tickerId) : null;
+          return ticker ? ticker.name : String(issuerId);
+        };
 
-      const getTitles = (insiderId: number): string => {
-        const titles = relationsToIssuer
-          .filter((relation) => relation.insiderId === insiderId)
-          .map((relation) => relation.type)
-          .join(", ");
-        return titles || String(insiderId);
-      };
+        const getInsiderName = (insiderId: number): string => {
+          const insider = insiders.find((insider) => insider.id === insiderId);
+          return insider ? insider.name : String(insiderId);
+        };
 
-      switch (column.id) {
-        case "issuer":
-          data = getIssuerName(transaction.issuerId);
-          allowWrapping = true;
-          break;
+        const getTitles = (insiderId: number): string => {
+          const relations = relationsToIssuer.filter((relation) => relation.insiderId === insiderId);
+          return relations.map((relation) => relation.type).join(", ");
+        };
 
-        case "ticker":
-          data = getTickerName(transaction.issuerId);
-          break;
+        switch (column.id) {
+          case "trnFlagId":
+            data = getTrnFlagName(transaction.trnFlagId);
+            allowWrapping = true;
+            break;
 
-        case "insider":
-          data = getInsiderName(transaction.insiderId);
-          break;
+          case "ticker":
+            data = getTickerName(transaction.issuerId);
+            allowWrapping = true;
+            break;
 
-        case "titles":
-          data = getTitles(transaction.insiderId);
-          allowWrapping = true;
-          break;
+          case "issuer":
+            data = getIssuerName(transaction.issuerId);
+            allowWrapping = true;
+            break;
 
-        case "trnDate":
-        case "filingDate":
-          data = new Date(value as string).toLocaleDateString();
-          break;
+          case "insider":
+            data = getInsiderName(transaction.insiderId);
+            allowWrapping = true;
+            break;
 
-        case "trnNatureCode":
-          data = getTrnNatureDescription(value as number);
-          allowWrapping = true;
-          break;
+          case "titles":
+            data = getTitles(transaction.insiderId);
+            allowWrapping = true;
+            break;
 
-        case "GeneralRemarks":
-          allowWrapping = true;
-          break;
+          case "trnDate":
+          case "filingDate":
+            data = new Date(value as string).toLocaleDateString();
+            break;
 
-        default:
-          break;
-      }
+          case "trnNatureCode":
+            data = getTrnNatureDescription(value as number);
+            allowWrapping = true;
+            break;
 
-      return {
-        kind: kind,
-        allowOverlay: allowOverlay,
-        displayData: data,
-        data: data,
-        allowWrapping: allowWrapping,
-      };
-    },
-    [trns, trnNatures, columns, issuers, tickers, insiders, relationsToIssuer]
+          case "GeneralRemarks":
+            allowWrapping = true;
+            break;
+
+          default:
+            break;
+        }
+
+        return {
+          kind: kind,
+          allowOverlay: allowOverlay,
+          displayData: data,
+          data: data,
+          allowWrapping: allowWrapping,
+        };
+      },
+      [trns, trnNatures, trnFlags, columns, issuers, tickers, insiders, relationsToIssuer]
   );
 
   const onColumnResize = useCallback(
-    (column: GridColumn, newSize: number) => {
-      setColumns((prevColsMap: GridColumn[]) => {
-        const index = columns.findIndex((ci) => ci.title === column.title);
-        const newArray = [...prevColsMap];
-        newArray.splice(index, 1, {
-          ...prevColsMap[index],
-          width: newSize,
+      (column: GridColumn, newSize: number) => {
+        setColumns((prevColsMap: GridColumn[]) => {
+          const index = columns.findIndex((ci) => ci.title === column.title);
+          const newArray = [...prevColsMap];
+          newArray.splice(index, 1, {
+            ...prevColsMap[index],
+            width: newSize,
+          });
+          return newArray;
         });
-        return newArray;
-      });
-    },
-    [columns]
+      },
+      [columns]
   );
 
   return (
-    <div className="App">
-      <h1>Transactions</h1>
-      <div className="filters">
-        <div>
-          <label>Start Date:</label>
-          <DatePicker
-            selected={startDate}
-            onChange={(date) => setStartDate(date)}
+      <div className="App">
+        <h1>Transactions</h1>
+        <div className="filters">
+          <div>
+            <label>Start Date:</label>
+            <DatePicker
+                selected={startDate}
+                onChange={(date) => setStartDate(date)}
+            />
+          </div>
+          <div>
+            <label>End Date:</label>
+            <DatePicker
+                selected={endDate}
+                onChange={(date) => setEndDate(date)}
+            />
+          </div>
+          <div>
+            <label>Results Limit:</label>
+            <select
+                value={limit}
+                onChange={(e) => setLimit(parseInt(e.target.value))}
+            >
+              <option value={10}>10</option>
+              <option value={50}>50</option>
+              <option value={100}>100</option>
+            </select>
+          </div>
+          <div>
+            <label>Transaction Natures:</label>
+            <Select
+                styles={customStyles}
+                options={getTrnNaturesSelectOptions()}
+                isMulti
+                defaultValue={getTrnNaturesSelectOptions().find(
+                    (option) => option.value === DEFAULT_TRN_NATURE
+                )}
+                onChange={handleTrnNatureChange}
+            />
+          </div>
+          <button onClick={() => fetchTransactions(1)}>Fetch Transactions</button>
+        </div>
+        <div className="grid-container dark-theme">
+          <DataEditor
+              theme={darkTheme}
+              {...gridProps}
+              columns={columns}
+              rows={trns.length}
+              getCellContent={getData}
+              onColumnResize={onColumnResize}
           />
         </div>
-        <div>
-          <label>End Date:</label>
-          <DatePicker
-            selected={endDate}
-            onChange={(date) => setEndDate(date)}
-          />
-        </div>
-        <div>
-          <label>Results Limit:</label>
-          <select
-            value={limit}
-            onChange={(e) => setLimit(parseInt(e.target.value))}
+        <div className="pagination">
+          <button
+              disabled={page === 1}
+              onClick={() => fetchTransactions(page - 1)}
           >
-            <option value={10}>10</option>
-            <option value={50}>50</option>
-            <option value={100}>100</option>
-          </select>
+            Previous
+          </button>
+          <span>Page {page}</span>
+          <button onClick={() => fetchTransactions(page + 1)}>Next</button>
         </div>
-        <div>
-          <label>Transaction Natures:</label>
-          <Select
-            styles={customStyles}
-            options={getTrnNaturesSelectOptions()}
-            isMulti
-            defaultValue={getTrnNaturesSelectOptions().find(
-              (option) => option.value === DEFAULT_TRN_NATURE
-            )}
-            onChange={handleTrnNatureChange}
-          />
-        </div>
-        <button onClick={() => fetchTransactions(1)}>Fetch Transactions</button>
       </div>
-      <div className="grid-container dark-theme">
-        <DataEditor
-          theme={darkTheme}
-          {...gridProps}
-          columns={columns}
-          rows={trns.length}
-          getCellContent={getData}
-          onColumnResize={onColumnResize}
-        />
-      </div>
-      <div className="pagination">
-        <button
-          disabled={page === 1}
-          onClick={() => fetchTransactions(page - 1)}
-        >
-          Previous
-        </button>
-        <span>Page {page}</span>
-        <button onClick={() => fetchTransactions(page + 1)}>Next</button>
-      </div>
-    </div>
   );
 }
 
