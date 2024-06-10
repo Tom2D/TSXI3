@@ -3,7 +3,14 @@ import "./App.css";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { SERVER_AUTHORITY } from "@tsxinsider/shared";
-import { transactions, trnnatures } from "./prisma-types";
+import {
+  transactions,
+  trnnatures,
+  issuers,
+  insiders,
+  tickers,
+  relationstoissuer,
+} from "./prisma-types";
 import { FormatDateUTC } from "./util/date";
 import Select, { MultiValue, StylesConfig } from "react-select";
 import DataEditor, {
@@ -13,8 +20,8 @@ import DataEditor, {
   Item,
 } from "@glideapps/glide-data-grid";
 import "@glideapps/glide-data-grid/dist/index.css";
-import { darkTheme } from "./grid/dark-theme.tsx";
-import { initialColumns, gridProps } from "./grid/constants.ts";
+import { darkTheme } from "./grid/dark-theme";
+import { initialColumns, gridProps } from "./grid/constants";
 
 const DEFAULT_TRN_NATURE = 10;
 
@@ -74,6 +81,12 @@ function App() {
   const [limit, setLimit] = useState<number>(10);
   const [page, setPage] = useState<number>(1);
   const [columns, setColumns] = useState<GridColumn[]>(initialColumns);
+  const [issuers, setIssuers] = useState<issuers[]>([]);
+  const [tickers, setTickers] = useState<tickers[]>([]);
+  const [insiders, setInsiders] = useState<insiders[]>([]);
+  const [relationsToIssuer, setRelationsToIssuer] = useState<
+    relationstoissuer[]
+  >([]);
 
   useEffect(() => {
     fetchTrnNatures();
@@ -114,8 +127,12 @@ function App() {
       );
 
       if (response.ok) {
-        const data: transactions[] = await response.json();
-        setTransactions(data);
+        const data = await response.json();
+        setTransactions(data.transactions);
+        setIssuers(data.issuers);
+        setTickers(data.tickers);
+        setInsiders(data.insiders);
+        setRelationsToIssuer(data.relationsToIssuer);
         setPage(pageNumber);
       } else {
         console.error("Failed to fetch transactions");
@@ -152,8 +169,48 @@ function App() {
         return trnNature ? trnNature.description : String(code);
       };
 
+      const getIssuerName = (issuerId: number): string => {
+        const issuer = issuers.find((issuer) => issuer.id === issuerId);
+        return issuer ? issuer.name : String(issuerId);
+      };
+
+      const getTickerName = (issuerId: number): string => {
+        const issuer = issuers.find((issuer) => issuer.id === issuerId);
+        const ticker = issuer
+          ? tickers.find((ticker) => ticker.id === issuer.tickerId)
+          : undefined;
+        return ticker ? ticker.name : String(issuerId);
+      };
+
+      const getInsiderName = (insiderId: number): string => {
+        const insider = insiders.find((insider) => insider.id === insiderId);
+        return insider ? insider.name : String(insiderId);
+      };
+
+      const getTitles = (insiderId: number): string => {
+        const titles = relationsToIssuer
+          .filter((relation) => relation.insiderId === insiderId)
+          .map((relation) => relation.type)
+          .join(", ");
+        return titles || String(insiderId);
+      };
+
       switch (column.id) {
-        case "issuerId":
+        case "issuer":
+          data = getIssuerName(transaction.issuerId);
+          allowWrapping = true;
+          break;
+
+        case "ticker":
+          data = getTickerName(transaction.issuerId);
+          break;
+
+        case "insider":
+          data = getInsiderName(transaction.insiderId);
+          break;
+
+        case "titles":
+          data = getTitles(transaction.insiderId);
           allowWrapping = true;
           break;
 
@@ -167,9 +224,9 @@ function App() {
           allowWrapping = true;
           break;
 
-          case "GeneralRemarks":
-            allowWrapping = true;
-            break;
+        case "GeneralRemarks":
+          allowWrapping = true;
+          break;
 
         default:
           break;
@@ -183,7 +240,7 @@ function App() {
         allowWrapping: allowWrapping,
       };
     },
-    [trns, trnNatures, columns]
+    [trns, trnNatures, columns, issuers, tickers, insiders, relationsToIssuer]
   );
 
   const onColumnResize = useCallback(

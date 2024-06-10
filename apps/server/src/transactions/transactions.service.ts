@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
-import { transactions, issuers, insiders, relationstoissuer, tickers } from '@prisma/client';
+import { transactions } from '@prisma/client';
 import { MAX_TRANSACTIONS_PER_REQUEST } from '../server-constants';
 
 @Injectable()
