@@ -9,11 +9,11 @@ export const initialColumns: GridColumn[] = [
   { id: "insider", title: "Insider", width: 125 },
   { id: "titles", title: "Titles", width: 150 },
   { id: "trnNatureCode", title: "Trade Type", width: 200 },
-  { id: "price", title: "Price", width: 90 },
-  { id: "nb", title: "Number", width: 100 },
+  { id: "price", title: "Price", width: 60 },
+  { id: "nb", title: "Quantity", width: 80 },
   { id: "securityId", title: "Security Type", width: 100 },
-  { id: "closingBalance", title: "New Balance", width: 100 },
-  { id: "ownershipType", title: "Ownership", width: 125 },
+  { id: "closingBalance", title: "New Balance", width: 80 },
+  { id: "ownershipType", title: "Ownership", width: 80  },
   { id: "GeneralRemarks", title: "General Remarks", width: 200, grow: 1 },
 ];
 

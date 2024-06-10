@@ -161,37 +161,38 @@ function App() {
 
         const kind = GridCellKind.Text;
         const allowOverlay = false;
-        let data = String(value);
+        let data = value ? String(value) : "";
         let allowWrapping = false;
 
+        // TDD_TODO Mettre fonctions en commun
         const getTrnNatureDescription = (code: number): string => {
           const trnNature = trnNatures.find(
               (trnNature) => trnNature.code === code
           );
-          return trnNature ? trnNature.description : String(code);
+          return trnNature ? trnNature.description : "";
         };
 
         const getTrnFlagName = (id: number): string => {
           const trnFlag = trnFlags.find(
               (trnFlag) => trnFlag.id === id
           );
-          return trnFlag ? trnFlag.name : String(id);
+          return trnFlag ? trnFlag.name : "";
         };
 
         const getIssuerName = (issuerId: number): string => {
           const issuer = issuers.find((issuer) => issuer.id === issuerId);
-          return issuer ? issuer.name : String(issuerId);
+          return issuer ? issuer.name : "";
         };
 
         const getTickerName = (issuerId: number): string => {
           const issuer = issuers.find((issuer) => issuer.id === issuerId);
           const ticker = issuer ? tickers.find((ticker) => ticker.id === issuer.tickerId) : null;
-          return ticker ? ticker.name : String(issuerId);
+          return ticker ? ticker.name : "";
         };
 
         const getInsiderName = (insiderId: number): string => {
           const insider = insiders.find((insider) => insider.id === insiderId);
-          return insider ? insider.name : String(insiderId);
+          return insider ? insider.name : "";
         };
 
         const getTitles = (insiderId: number): string => {
