@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f48acd8a-e246-4264-9ac4-41713844a250" name="Changes" comment="Updated server readme">
-      <change afterPath="$PROJECT_DIR$/robots.txt" afterDir="false" />
+    <list default="true" id="f48acd8a-e246-4264-9ac4-41713844a250" name="Changes" comment="robot.txt">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/client/src/prisma-types.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/client/src/prisma-types.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/client/src/grid/constants.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/client/src/grid/constants.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -139,15 +138,7 @@
       <workItem from="1716185907122" duration="10102000" />
       <workItem from="1716347840126" duration="51122000" />
       <workItem from="1718070602343" duration="1829000" />
-      <workItem from="1718073982154" duration="2914000" />
-    </task>
-    <task id="LOCAL-00002" summary="Added client&#10;+fix error type&#10;(old react/types version was installed at root)">
-      <option name="closed" value="true" />
-      <created>1715665619982</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1715665619983</updated>
+      <workItem from="1718073982154" duration="4017000" />
     </task>
     <task id="LOCAL-00003" summary="minor">
       <option name="closed" value="true" />
@@ -533,7 +524,15 @@
       <option name="project" value="LOCAL" />
       <updated>1718074289373</updated>
     </task>
-    <option name="localTasksCounter" value="51" />
+    <task id="LOCAL-00051" summary="robot.txt">
+      <option name="closed" value="true" />
+      <created>1718148707620</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1718148707620</updated>
+    </task>
+    <option name="localTasksCounter" value="52" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -552,7 +551,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Checkboxes trnNatures" />
     <MESSAGE value="Combo checkbox" />
     <MESSAGE value="Dark themed combo checkbox" />
     <MESSAGE value="Run configurations" />
@@ -577,6 +575,7 @@
     <MESSAGE value="Better prisma readme" />
     <MESSAGE value="ESLint / endofline changes" />
     <MESSAGE value="Updated server readme" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated server readme" />
+    <MESSAGE value="robot.txt" />
+    <option name="LAST_COMMIT_MESSAGE" value="robot.txt" />
   </component>
 </project>
