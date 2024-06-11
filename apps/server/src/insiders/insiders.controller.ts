@@ -1,4 +1,4 @@
-import {Controller, Get, Param, ParseIntPipe} from '@nestjs/common';
+import { Controller, Get, Param, ParseIntPipe } from '@nestjs/common';
 import { InsidersService } from './insiders.service';
 import { insiders } from '@prisma/client';
 

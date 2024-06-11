@@ -1,4 +1,4 @@
-import {Controller, Get, Param, ParseIntPipe} from '@nestjs/common';
+import { Controller, Get, Param, ParseIntPipe } from '@nestjs/common';
 import { IssuersService } from './issuers.service';
 import { issuers } from '@prisma/client';
 

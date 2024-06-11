@@ -1,11 +1,14 @@
 {
   "extends": "./tsconfig.build.json",
-
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@tsxinsider/components/*": ["packages/components/src/*"],
-      "@tsxinsider/*": ["packages/*/src"]
+      "@tsxinsider/components/*": [
+        "packages/components/src/*"
+      ],
+      "@tsxinsider/*": [
+        "packages/*/src"
+      ]
     },
     "noEmit": true
   }

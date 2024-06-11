@@ -15,7 +15,7 @@
 
 .grid-container {
     flex-grow: 1;
-    max-width: min( 90%);
+    max-width: min(90%);
     width: 90%;
     display: flex;
     justify-content: center;

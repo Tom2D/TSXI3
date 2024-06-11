@@ -91,7 +91,7 @@ function App() {
     relationstoissuer[]
   >([]);
   const [securityDesignations, setSecurityDesignations] = useState<
-      securitydesignations[]
+    securitydesignations[]
   >([]);
 
   useEffect(() => {

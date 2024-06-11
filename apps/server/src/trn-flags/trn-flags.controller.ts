@@ -1,4 +1,4 @@
-import {Controller, Get, Param, ParseIntPipe} from '@nestjs/common';
+import { Controller, Get, Param, ParseIntPipe } from '@nestjs/common';
 import { trnflag } from '@prisma/client';
 import { TrnFlagsService } from './trn-flags.service';
 

@@ -1,12 +1,10 @@
-import {Controller, Get, Param, ParseIntPipe} from '@nestjs/common';
+import { Controller, Get, Param, ParseIntPipe } from '@nestjs/common';
 import { securitydesignations } from '@prisma/client';
 import { SecurityDesignationsService } from './security-designations.service';
 
 @Controller('security-designations')
 export class SecurityDesignationsController {
-  constructor(
-    private readonly securityDesignationsService: SecurityDesignationsService,
-  ) {}
+  constructor(private readonly securityDesignationsService: SecurityDesignationsService) {}
 
   @Get()
   async findAll(): Promise<securitydesignations[]> {
