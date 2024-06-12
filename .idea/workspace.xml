@@ -4,9 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f48acd8a-e246-4264-9ac4-41713844a250" name="Changes" comment="robot.txt">
+    <list default="true" id="f48acd8a-e246-4264-9ac4-41713844a250" name="Changes" comment="'@typescript-eslint/no-explicit-any': 'off',">
+      <change afterPath="$PROJECT_DIR$/apps/client/.prettierrc" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/client/.eslintrc.cjs" beforeDir="false" afterPath="$PROJECT_DIR$/apps/client/.eslintrc.cjs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/client/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/client/src/App.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/client/src/grid/constants.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/client/src/grid/constants.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/client/src/main.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/client/src/main.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/server/.eslintrc.js" beforeDir="false" afterPath="$PROJECT_DIR$/apps/server/.eslintrc.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/server/.prettierrc" beforeDir="false" afterPath="$PROJECT_DIR$/apps/server/.prettierrc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/server/src/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/server/src/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/server/src/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/server/src/main.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/shared/.eslintrc.js" beforeDir="false" afterPath="$PROJECT_DIR$/packages/shared/.eslintrc.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/shared/.prettierrc" beforeDir="false" afterPath="$PROJECT_DIR$/packages/shared/.prettierrc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/shared/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/shared/src/index.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,7 +79,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;E:/Thomas/Prog/TSXI3/packages&quot;,
+    &quot;last_opened_file_path&quot;: &quot;E:/Thomas/Prog/TSXI3/apps/client&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -82,13 +93,14 @@
     &quot;npm.server run.executor&quot;: &quot;Run&quot;,
     &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;E:\\Thomas\\Prog\\TSXInsiderJS2\\node_modules\\prettier&quot;,
     &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode&quot;,
     &quot;ts.external.directory.path&quot;: &quot;E:\\Thomas\\Prog\\TSXI3\\apps\\client\\node_modules\\typescript\\lib&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\Thomas\Prog\TSXI3\apps\client" />
       <recent name="E:\Thomas\Prog\TSXI3\packages" />
       <recent name="E:\Thomas\Prog\TSXI3\packages\shared" />
       <recent name="E:\Thomas\Prog\TSXInsiderJS2\apps\client\src" />
@@ -138,15 +150,9 @@
       <workItem from="1716185907122" duration="10102000" />
       <workItem from="1716347840126" duration="51122000" />
       <workItem from="1718070602343" duration="1829000" />
-      <workItem from="1718073982154" duration="4017000" />
-    </task>
-    <task id="LOCAL-00003" summary="minor">
-      <option name="closed" value="true" />
-      <created>1715730147275</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1715730147275</updated>
+      <workItem from="1718073982154" duration="4884000" />
+      <workItem from="1718150799891" duration="956000" />
+      <workItem from="1718151765112" duration="110000" />
     </task>
     <task id="LOCAL-00004" summary="minor">
       <option name="closed" value="true" />
@@ -532,7 +538,15 @@
       <option name="project" value="LOCAL" />
       <updated>1718148707620</updated>
     </task>
-    <option name="localTasksCounter" value="52" />
+    <task id="LOCAL-00052" summary="minor fix">
+      <option name="closed" value="true" />
+      <created>1718149877229</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1718149877229</updated>
+    </task>
+    <option name="localTasksCounter" value="53" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -551,8 +565,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Combo checkbox" />
-    <MESSAGE value="Dark themed combo checkbox" />
     <MESSAGE value="Run configurations" />
     <MESSAGE value="Remove example logo &amp; css" />
     <MESSAGE value="Begin glide data grid (not working)" />
@@ -576,6 +588,8 @@
     <MESSAGE value="ESLint / endofline changes" />
     <MESSAGE value="Updated server readme" />
     <MESSAGE value="robot.txt" />
-    <option name="LAST_COMMIT_MESSAGE" value="robot.txt" />
+    <MESSAGE value="minor fix" />
+    <MESSAGE value="'@typescript-eslint/no-explicit-any': 'off'," />
+    <option name="LAST_COMMIT_MESSAGE" value="'@typescript-eslint/no-explicit-any': 'off'," />
   </component>
 </project>
