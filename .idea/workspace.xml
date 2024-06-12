@@ -4,8 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f48acd8a-e246-4264-9ac4-41713844a250" name="Changes" comment="Mise en commun eslint/prettier">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="f48acd8a-e246-4264-9ac4-41713844a250" name="Changes" comment="Mise en commun de code de getter">
       <change beforePath="$PROJECT_DIR$/apps/client/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/client/src/App.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -142,15 +141,7 @@
       <workItem from="1718070602343" duration="1829000" />
       <workItem from="1718073982154" duration="4884000" />
       <workItem from="1718150799891" duration="956000" />
-      <workItem from="1718151765112" duration="1207000" />
-    </task>
-    <task id="LOCAL-00006" summary="fix error types jest">
-      <option name="closed" value="true" />
-      <created>1715735023412</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1715735023412</updated>
+      <workItem from="1718151765112" duration="1589000" />
     </task>
     <task id="LOCAL-00007" summary="Actually returning tickers!!!">
       <option name="closed" value="true" />
@@ -536,7 +527,15 @@
       <option name="project" value="LOCAL" />
       <updated>1718152804908</updated>
     </task>
-    <option name="localTasksCounter" value="55" />
+    <task id="LOCAL-00055" summary="Mise en commun de code de getter">
+      <option name="closed" value="true" />
+      <created>1718153187697</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1718153187697</updated>
+    </task>
+    <option name="localTasksCounter" value="56" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -555,7 +554,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Begin glide data grid (not working)" />
     <MESSAGE value="Begin glide data grid working" />
     <MESSAGE value="glide data grid css width fix" />
     <MESSAGE value="dark theme grid" />
@@ -580,6 +578,7 @@
     <MESSAGE value="'@typescript-eslint/no-explicit-any': 'off'," />
     <MESSAGE value="Fixed newlines: now CRLF (windows default)" />
     <MESSAGE value="Mise en commun eslint/prettier" />
-    <option name="LAST_COMMIT_MESSAGE" value="Mise en commun eslint/prettier" />
+    <MESSAGE value="Mise en commun de code de getter" />
+    <option name="LAST_COMMIT_MESSAGE" value="Mise en commun de code de getter" />
   </component>
 </project>

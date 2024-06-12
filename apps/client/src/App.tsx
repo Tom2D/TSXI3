@@ -209,7 +209,7 @@ function App() {
 
       switch (column.id) {
         case 'trnFlagId':
-          data = getName(transaction.TrnFlagId, trnFlags);
+          data = getName(transaction.trnFlagId, trnFlags);
           break;
 
         case 'ticker':
