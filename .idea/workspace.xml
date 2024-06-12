@@ -5,16 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f48acd8a-e246-4264-9ac4-41713844a250" name="Changes" comment="Mise en commun eslint/prettier">
-      <change afterPath="$PROJECT_DIR$/.prettierrc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.eslintrc.js" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintrc.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/client/.eslintrc.cjs" beforeDir="false" afterPath="$PROJECT_DIR$/apps/client/.eslintrc.cjs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/client/.prettierrc" beforeDir="false" afterPath="$PROJECT_DIR$/apps/client/.prettierrc" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/client/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/client/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/server/.eslintrc.js" beforeDir="false" afterPath="$PROJECT_DIR$/apps/server/.eslintrc.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/server/.prettierrc" beforeDir="false" afterPath="$PROJECT_DIR$/apps/server/.prettierrc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/shared/.eslintrc.js" beforeDir="false" afterPath="$PROJECT_DIR$/packages/shared/.eslintrc.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/shared/.prettierrc" beforeDir="false" afterPath="$PROJECT_DIR$/packages/shared/.prettierrc" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -150,15 +142,7 @@
       <workItem from="1718070602343" duration="1829000" />
       <workItem from="1718073982154" duration="4884000" />
       <workItem from="1718150799891" duration="956000" />
-      <workItem from="1718151765112" duration="1031000" />
-    </task>
-    <task id="LOCAL-00005" summary="added sample tickers endpoint">
-      <option name="closed" value="true" />
-      <created>1715734580863</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1715734580863</updated>
+      <workItem from="1718151765112" duration="1207000" />
     </task>
     <task id="LOCAL-00006" summary="fix error types jest">
       <option name="closed" value="true" />
@@ -544,7 +528,15 @@
       <option name="project" value="LOCAL" />
       <updated>1718151941582</updated>
     </task>
-    <option name="localTasksCounter" value="54" />
+    <task id="LOCAL-00054" summary="Mise en commun eslint/prettier">
+      <option name="closed" value="true" />
+      <created>1718152804908</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1718152804908</updated>
+    </task>
+    <option name="localTasksCounter" value="55" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

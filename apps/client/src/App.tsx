@@ -183,10 +183,10 @@ function App() {
       let data = value ? String(value) : '';
       let allowWrapping = false;
 
-      /*const getName = (id: number, objs: any[]): string => {
+      const getName = (id: number, objs: any[]): string => {
         const obj = objs.find((obj) => obj.id === id);
         return obj ? obj.name : '';
-      };*/
+      };
 
       const getTrnNatureDescription = (code: number): string => {
         const trnNature = trnNatures.find(
@@ -195,27 +195,9 @@ function App() {
         return trnNature ? trnNature.description : '';
       };
 
-      const getTrnFlagName = (id: number): string => {
-        const trnFlag = trnFlags.find((trnFlag) => trnFlag.id === id);
-        return trnFlag ? trnFlag.name : '';
-      };
-
-      const getIssuerName = (issuerId: number): string => {
-        const issuer = issuers.find((issuer) => issuer.id === issuerId);
-        return issuer ? issuer.name : '';
-      };
-
       const getTickerName = (issuerId: number): string => {
         const issuer = issuers.find((issuer) => issuer.id === issuerId);
-        const ticker = issuer
-          ? tickers.find((ticker) => ticker.id === issuer.tickerId)
-          : null;
-        return ticker ? ticker.name : '';
-      };
-
-      const getInsiderName = (insiderId: number): string => {
-        const insider = insiders.find((insider) => insider.id === insiderId);
-        return insider ? insider.name : '';
+        return getName(issuer.tickerId, tickers);
       };
 
       const getTitles = (insiderId: number): string => {
@@ -225,16 +207,9 @@ function App() {
         return relations.map((relation) => relation.type).join(', ');
       };
 
-      const getSecurityDesignationName = (securityId: number): string => {
-        const security = securityDesignations.find(
-          (sec) => sec.id === securityId,
-        );
-        return security ? security.name : '';
-      };
-
       switch (column.id) {
         case 'trnFlagId':
-          data = getTrnFlagName(transaction.trnFlagId);
+          data = getName(transaction.TrnFlagId, trnFlags);
           break;
 
         case 'ticker':
@@ -242,12 +217,12 @@ function App() {
           break;
 
         case 'issuer':
-          data = getIssuerName(transaction.issuerId);
+          data = getName(transaction.issuerId, issuers);
           allowWrapping = true;
           break;
 
         case 'insider':
-          data = getInsiderName(transaction.insiderId);
+          data = getName(transaction.insiderId, insiders);
           allowWrapping = true;
           break;
 
@@ -257,7 +232,7 @@ function App() {
           break;
 
         case 'securityId':
-          data = getSecurityDesignationName(transaction.securityId);
+          data = getName(transaction.securityId, securityDesignations);
           allowWrapping = true;
           break;
 
