@@ -1,8 +1,8 @@
-import { useEffect, useState, useCallback } from "react";
-import "./App.css";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
-import { SERVER_AUTHORITY } from "@tsxinsider/shared";
+import { useEffect, useState, useCallback } from 'react';
+import './App.css';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
+import { SERVER_AUTHORITY } from '@tsxinsider/shared';
 import {
   transactions,
   trnnatures,
@@ -12,18 +12,18 @@ import {
   relationstoissuer,
   trnflag,
   securitydesignations,
-} from "./prisma-types";
-import { FormatDateUTC } from "./util/date";
-import Select, { MultiValue, StylesConfig } from "react-select";
+} from './prisma-types';
+import { FormatDateUTC } from './util/date';
+import Select, { MultiValue, StylesConfig } from 'react-select';
 import DataEditor, {
   GridCell,
   GridCellKind,
   GridColumn,
   Item,
-} from "@glideapps/glide-data-grid";
-import "@glideapps/glide-data-grid/dist/index.css";
-import { darkTheme } from "./grid/dark-theme";
-import { initialColumns, gridProps } from "./grid/constants";
+} from '@glideapps/glide-data-grid';
+import '@glideapps/glide-data-grid/dist/index.css';
+import { darkTheme } from './grid/dark-theme';
+import { initialColumns, gridProps } from './grid/constants';
 
 const DEFAULT_TRN_NATURE = 10;
 
@@ -31,42 +31,42 @@ const customStyles: StylesConfig<trnnatures> = {
   control: (provided) => ({
     ...provided,
     width: 300,
-    backgroundColor: "#333", // Dark background for the control
-    color: "#fff", // White text
-    border: "1px solid #444", // Border color to match dark theme
+    backgroundColor: '#333', // Dark background for the control
+    color: '#fff', // White text
+    border: '1px solid #444', // Border color to match dark theme
   }),
   menu: (provided) => ({
     ...provided,
-    backgroundColor: "#333", // Dark background for the menu
-    color: "#fff", // White text
+    backgroundColor: '#333', // Dark background for the menu
+    color: '#fff', // White text
   }),
   multiValue: (provided) => ({
     ...provided,
-    backgroundColor: "#555", // Dark background for selected options
+    backgroundColor: '#555', // Dark background for selected options
   }),
   multiValueLabel: (provided) => ({
     ...provided,
-    color: "#fff", // White text for selected options
+    color: '#fff', // White text for selected options
   }),
   option: (provided, state) => ({
     ...provided,
     backgroundColor: state.isSelected
-      ? "#555"
+      ? '#555'
       : state.isFocused
-      ? "#444"
-      : "#333",
-    color: "#fff", // White text for options
-    "&:hover": {
-      backgroundColor: "#444", // Background color on hover
+      ? '#444'
+      : '#333',
+    color: '#fff', // White text for options
+    '&:hover': {
+      backgroundColor: '#444', // Background color on hover
     },
   }),
   singleValue: (provided) => ({
     ...provided,
-    color: "#fff", // White text for single value
+    color: '#fff', // White text for single value
   }),
   input: (provided) => ({
     ...provided,
-    color: "#fff", // White text for input
+    color: '#fff', // White text for input
   }),
 };
 
@@ -78,9 +78,9 @@ function App() {
     DEFAULT_TRN_NATURE,
   ]);
   const [startDate, setStartDate] = useState<Date | null>(
-    new Date("2021-01-22")
+    new Date('2021-01-22'),
   );
-  const [endDate, setEndDate] = useState<Date | null>(new Date("2021-01-22"));
+  const [endDate, setEndDate] = useState<Date | null>(new Date('2021-01-22'));
   const [limit, setLimit] = useState<number>(10);
   const [page, setPage] = useState<number>(1);
   const [columns, setColumns] = useState<GridColumn[]>(initialColumns);
@@ -105,10 +105,10 @@ function App() {
       if (response.ok) {
         setTrnNatures(await response.json());
       } else {
-        console.error("Failed to fetch transaction natures");
+        console.error('Failed to fetch transaction natures');
       }
     } catch (error) {
-      console.error("Error fetching transaction natures:", error);
+      console.error('Error fetching transaction natures:', error);
     }
   };
 
@@ -118,10 +118,10 @@ function App() {
       if (response.ok) {
         setTrnFlags(await response.json());
       } else {
-        console.error("Failed to fetch transaction flags");
+        console.error('Failed to fetch transaction flags');
       }
     } catch (error) {
-      console.error("Error fetching transaction flags:", error);
+      console.error('Error fetching transaction flags:', error);
     }
   };
 
@@ -132,18 +132,18 @@ function App() {
     }));
   }
 
-  const fetchTransactions = async (pageNumber: number = 1) => {
+  const fetchTransactions = async (pageNumber = 1) => {
     if (!startDate || !endDate) {
-      alert("Please select both start and end dates.");
+      alert('Please select both start and end dates.');
       return;
     }
 
     try {
       const startDateStr = FormatDateUTC(startDate);
       const endDateStr = FormatDateUTC(endDate);
-      const trnNatureCodes = selectedTrnNatures.join(",");
+      const trnNatureCodes = selectedTrnNatures.join(',');
       const response = await fetch(
-        `${SERVER_AUTHORITY}/transactions?beginFilingDate=${startDateStr}&endFilingDate=${endDateStr}&limit=${limit}&page=${pageNumber}&trnNatureCodes=${trnNatureCodes}`
+        `${SERVER_AUTHORITY}/transactions?beginFilingDate=${startDateStr}&endFilingDate=${endDateStr}&limit=${limit}&page=${pageNumber}&trnNatureCodes=${trnNatureCodes}`,
       );
 
       if (response.ok) {
@@ -156,15 +156,15 @@ function App() {
         setSecurityDesignations(data.securityDesignations);
         setPage(pageNumber);
       } else {
-        console.error("Failed to fetch transactions");
+        console.error('Failed to fetch transactions');
       }
     } catch (error) {
-      console.error("Error fetching transactions:", error);
+      console.error('Error fetching transactions:', error);
     }
   };
 
   const handleTrnNatureChange = (
-    selectedOptions: MultiValue<{ value: number; label: string }>
+    selectedOptions: MultiValue<{ value: number; label: string }>,
   ) => {
     const selectedCodes = selectedOptions
       ? selectedOptions.map((option) => option.value)
@@ -180,24 +180,29 @@ function App() {
 
       const kind = GridCellKind.Text;
       const allowOverlay = false;
-      let data = value ? String(value) : "";
+      let data = value ? String(value) : '';
       let allowWrapping = false;
+
+      /*const getName = (id: number, objs: any[]): string => {
+        const obj = objs.find((obj) => obj.id === id);
+        return obj ? obj.name : '';
+      };*/
 
       const getTrnNatureDescription = (code: number): string => {
         const trnNature = trnNatures.find(
-          (trnNature) => trnNature.code === code
+          (trnNature) => trnNature.code === code,
         );
-        return trnNature ? trnNature.description : "";
+        return trnNature ? trnNature.description : '';
       };
 
       const getTrnFlagName = (id: number): string => {
         const trnFlag = trnFlags.find((trnFlag) => trnFlag.id === id);
-        return trnFlag ? trnFlag.name : "";
+        return trnFlag ? trnFlag.name : '';
       };
 
       const getIssuerName = (issuerId: number): string => {
         const issuer = issuers.find((issuer) => issuer.id === issuerId);
-        return issuer ? issuer.name : "";
+        return issuer ? issuer.name : '';
       };
 
       const getTickerName = (issuerId: number): string => {
@@ -205,68 +210,68 @@ function App() {
         const ticker = issuer
           ? tickers.find((ticker) => ticker.id === issuer.tickerId)
           : null;
-        return ticker ? ticker.name : "";
+        return ticker ? ticker.name : '';
       };
 
       const getInsiderName = (insiderId: number): string => {
         const insider = insiders.find((insider) => insider.id === insiderId);
-        return insider ? insider.name : "";
+        return insider ? insider.name : '';
       };
 
       const getTitles = (insiderId: number): string => {
         const relations = relationsToIssuer.filter(
-          (relation) => relation.insiderId === insiderId
+          (relation) => relation.insiderId === insiderId,
         );
-        return relations.map((relation) => relation.type).join(", ");
+        return relations.map((relation) => relation.type).join(', ');
       };
 
       const getSecurityDesignationName = (securityId: number): string => {
         const security = securityDesignations.find(
-          (sec) => sec.id === securityId
+          (sec) => sec.id === securityId,
         );
-        return security ? security.name : "";
+        return security ? security.name : '';
       };
 
       switch (column.id) {
-        case "trnFlagId":
+        case 'trnFlagId':
           data = getTrnFlagName(transaction.trnFlagId);
           break;
 
-        case "ticker":
+        case 'ticker':
           data = getTickerName(transaction.issuerId);
           break;
 
-        case "issuer":
+        case 'issuer':
           data = getIssuerName(transaction.issuerId);
           allowWrapping = true;
           break;
 
-        case "insider":
+        case 'insider':
           data = getInsiderName(transaction.insiderId);
           allowWrapping = true;
           break;
 
-        case "titles":
+        case 'titles':
           data = getTitles(transaction.insiderId);
           allowWrapping = true;
           break;
 
-        case "securityId":
+        case 'securityId':
           data = getSecurityDesignationName(transaction.securityId);
           allowWrapping = true;
           break;
 
-        case "trnDate":
-        case "filingDate":
+        case 'trnDate':
+        case 'filingDate':
           data = new Date(value as string).toLocaleDateString();
           break;
 
-        case "trnNatureCode":
+        case 'trnNatureCode':
           data = getTrnNatureDescription(value as number);
           allowWrapping = true;
           break;
 
-        case "GeneralRemarks":
+        case 'GeneralRemarks':
           allowWrapping = true;
           break;
 
@@ -292,7 +297,7 @@ function App() {
       insiders,
       relationsToIssuer,
       securityDesignations,
-    ]
+    ],
   );
 
   const onColumnResize = useCallback(
@@ -307,7 +312,7 @@ function App() {
         return newArray;
       });
     },
-    [columns]
+    [columns],
   );
 
   return (
@@ -346,7 +351,7 @@ function App() {
             options={getTrnNaturesSelectOptions()}
             isMulti
             defaultValue={getTrnNaturesSelectOptions().find(
-              (option) => option.value === DEFAULT_TRN_NATURE
+              (option) => option.value === DEFAULT_TRN_NATURE,
             )}
             onChange={handleTrnNatureChange}
           />
