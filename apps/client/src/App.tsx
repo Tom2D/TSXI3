@@ -293,6 +293,13 @@ function App() {
           enableColumnActions={false}
           enableSorting={false}
           enableRowSelection={false}
+          initialState={{
+            showColumnFilters: false,
+            density: 'compact',
+          }}
+          muiTableBodyCellProps={{
+            style: { whiteSpace: 'normal', wordBreak: 'break-word' }, // Enable text wrapping
+          }}
         />
       </div>
       <div className="pagination">
