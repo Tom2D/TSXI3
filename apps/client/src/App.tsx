@@ -76,8 +76,6 @@ function App() {
     new Date('2021-01-22'),
   );
   const [endDate, setEndDate] = useState<Date | null>(new Date('2021-01-22'));
-  const [limit, setLimit] = useState<number>(10);
-  const [page, setPage] = useState<number>(1);
   const [issuers, setIssuers] = useState<issuers[]>([]);
   const [tickers, setTickers] = useState<tickers[]>([]);
   const [insiders, setInsiders] = useState<insiders[]>([]);
@@ -88,6 +86,8 @@ function App() {
     securitydesignations[]
   >([]);
   const [themeMode, setThemeMode] = useState<'light' | 'dark'>('dark');
+  const [pagination, setPagination] = useState({ pageIndex: 0, pageSize: 10 });
+  const [rowCount, setRowCount] = useState(0);
 
   const theme = useMemo(
     () =>
@@ -141,7 +141,7 @@ function App() {
     }));
   }
 
-  const fetchTransactions = async (pageNumber = 1) => {
+  const fetchTransactions = async (pageIndex = 0, pageSize = 10) => {
     if (!startDate || !endDate) {
       alert('Please select both start and end dates.');
       return;
@@ -152,7 +152,9 @@ function App() {
       const endDateStr = FormatDateUTC(endDate);
       const trnNatureCodes = selectedTrnNatures.join(',');
       const response = await fetch(
-        `${SERVER_AUTHORITY}/transactions?beginFilingDate=${startDateStr}&endFilingDate=${endDateStr}&limit=${limit}&page=${pageNumber}&trnNatureCodes=${trnNatureCodes}`,
+        `${SERVER_AUTHORITY}/transactions?beginFilingDate=${startDateStr}&endFilingDate=${endDateStr}&limit=${pageSize}&page=${
+          pageIndex + 1
+        }&trnNatureCodes=${trnNatureCodes}`,
       );
 
       if (response.ok) {
@@ -163,7 +165,7 @@ function App() {
         setInsiders(data.insiders);
         setRelationsToIssuer(data.relationsToIssuer);
         setSecurityDesignations(data.securityDesignations);
-        setPage(pageNumber);
+        setRowCount(data.total); // Set the total row count
       } else {
         console.error('Failed to fetch transactions');
       }
@@ -171,6 +173,10 @@ function App() {
       console.error('Error fetching transactions:', error);
     }
   };
+
+  useEffect(() => {
+    fetchTransactions(pagination.pageIndex, pagination.pageSize);
+  }, [fetchTransactions, pagination.pageIndex, pagination.pageSize]);
 
   const handleTrnNatureChange = (
     selectedOptions: MultiValue<{ value: number; label: string }>,
@@ -281,17 +287,6 @@ function App() {
             />
           </div>
           <div>
-            <label>Results Limit:</label>
-            <select
-              value={limit}
-              onChange={(e) => setLimit(parseInt(e.target.value))}
-            >
-              <option value={10}>10</option>
-              <option value={50}>50</option>
-              <option value={100}>100</option>
-            </select>
-          </div>
-          <div>
             <label>Transaction Natures:</label>
             <Select
               styles={customStyles}
@@ -303,7 +298,7 @@ function App() {
               onChange={handleTrnNatureChange}
             />
           </div>
-          <button onClick={() => fetchTransactions(1)}>
+          <button onClick={() => fetchTransactions(0, pagination.pageSize)}>
             Fetch Transactions
           </button>
         </div>
@@ -316,24 +311,21 @@ function App() {
             enableColumnActions={false}
             enableSorting={false}
             enableRowSelection={false}
+            manualPagination
+            onPaginationChange={setPagination}
+            state={{ pagination }}
+            rowCount={rowCount} // Set the total row count
             initialState={{
               showColumnFilters: false,
               density: 'compact',
             }}
             muiTableBodyCellProps={{
-              style: { whiteSpace: 'normal', wordBreak: 'break-word' }, // Enable text wrapping
+              style: { whiteSpace: 'normal', wordBreak: 'break-word' },
+            }}
+            muiPaginationProps={{
+              rowsPerPageOptions: [10, 25, 100],
             }}
           />
-        </div>
-        <div className="pagination">
-          <button
-            disabled={page === 1}
-            onClick={() => fetchTransactions(page - 1)}
-          >
-            Previous
-          </button>
-          <span>Page {page}</span>
-          <button onClick={() => fetchTransactions(page + 1)}>Next</button>
         </div>
       </div>
     </ThemeProvider>

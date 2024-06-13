@@ -4,9 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f48acd8a-e246-4264-9ac4-41713844a250" name="Changes" comment="Switch to MaterialReactTable v1&#10;This is sick, never looking back!!">
+    <list default="true" id="f48acd8a-e246-4264-9ac4-41713844a250" name="Changes" comment="Using built in pagination!">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/client/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/client/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/server/.prettierrc" beforeDir="false" afterPath="$PROJECT_DIR$/apps/server/.prettierrc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/server/src/transactions/transactions.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/server/src/transactions/transactions.service.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -147,15 +149,7 @@
       <workItem from="1718070602343" duration="1829000" />
       <workItem from="1718073982154" duration="4884000" />
       <workItem from="1718150799891" duration="956000" />
-      <workItem from="1718151765112" duration="16852000" />
-    </task>
-    <task id="LOCAL-00010" summary="added tickersService.findOne">
-      <option name="closed" value="true" />
-      <created>1715906800151</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1715906800151</updated>
+      <workItem from="1718151765112" duration="19926000" />
     </task>
     <task id="LOCAL-00011" summary="Added all basic endpoints">
       <option name="closed" value="true" />
@@ -541,7 +535,15 @@
       <option name="project" value="LOCAL" />
       <updated>1718251683778</updated>
     </task>
-    <option name="localTasksCounter" value="59" />
+    <task id="LOCAL-00059" summary="Button to toggle light and dark mode">
+      <option name="closed" value="true" />
+      <created>1718252117111</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1718252117111</updated>
+    </task>
+    <option name="localTasksCounter" value="60" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -572,8 +574,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="dark theme grid" />
-    <MESSAGE value="- Retrait colonnes superflues&#10;- Permettre de resize les colonnes" />
     <MESSAGE value="Ajustements mineurs" />
     <MESSAGE value="added constants grid file" />
     <MESSAGE value="Trade type name instead of code" />
@@ -597,6 +597,8 @@
     <MESSAGE value="Mise en commun de code de getter" />
     <MESSAGE value="small fix trnFlag getter" />
     <MESSAGE value="Switch to MaterialReactTable v1&#10;This is sick, never looking back!!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Switch to MaterialReactTable v1&#10;This is sick, never looking back!!" />
+    <MESSAGE value="Button to toggle light and dark mode" />
+    <MESSAGE value="Using built in pagination!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Using built in pagination!" />
   </component>
 </project>
