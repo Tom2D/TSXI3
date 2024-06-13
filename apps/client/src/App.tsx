@@ -88,6 +88,7 @@ function App() {
   const [themeMode, setThemeMode] = useState<'light' | 'dark'>('dark');
   const [pagination, setPagination] = useState({ pageIndex: 0, pageSize: 10 });
   const [rowCount, setRowCount] = useState(0);
+  const [isLoading, setIsLoading] = useState(false);
 
   const theme = useMemo(
     () =>
@@ -147,6 +148,7 @@ function App() {
       return;
     }
 
+    setIsLoading(true); // Set loading state to true
     try {
       const startDateStr = FormatDateUTC(startDate);
       const endDateStr = FormatDateUTC(endDate);
@@ -171,12 +173,14 @@ function App() {
       }
     } catch (error) {
       console.error('Error fetching transactions:', error);
+    } finally {
+      setIsLoading(false); // Set loading state to false
     }
   };
 
   useEffect(() => {
     fetchTransactions(pagination.pageIndex, pagination.pageSize);
-  }, [fetchTransactions, pagination.pageIndex, pagination.pageSize]);
+  }, [pagination.pageIndex, pagination.pageSize]);
 
   const handleTrnNatureChange = (
     selectedOptions: MultiValue<{ value: number; label: string }>,
@@ -313,8 +317,8 @@ function App() {
             enableRowSelection={false}
             manualPagination
             onPaginationChange={setPagination}
-            state={{ pagination }}
-            rowCount={rowCount} // Set the total row count
+            state={{ pagination, isLoading }}
+            rowCount={rowCount}
             initialState={{
               showColumnFilters: false,
               density: 'compact',
