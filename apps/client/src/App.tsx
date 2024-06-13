@@ -18,6 +18,7 @@ import Select, { MultiValue, StylesConfig } from 'react-select';
 import { MaterialReactTable, type MRT_ColumnDef } from 'material-react-table';
 import '@mui/material/styles';
 import { initialColumns } from './grid/constants';
+import { createTheme, ThemeProvider, CssBaseline, Button } from '@mui/material';
 
 const DEFAULT_TRN_NATURE = 10;
 
@@ -86,6 +87,21 @@ function App() {
   const [securityDesignations, setSecurityDesignations] = useState<
     securitydesignations[]
   >([]);
+  const [themeMode, setThemeMode] = useState<'light' | 'dark'>('dark');
+
+  const theme = useMemo(
+    () =>
+      createTheme({
+        palette: {
+          mode: themeMode,
+        },
+      }),
+    [themeMode],
+  );
+
+  const handleThemeToggle = () => {
+    setThemeMode((prevMode) => (prevMode === 'light' ? 'dark' : 'light'));
+  };
 
   useEffect(() => {
     fetchTrnNatures();
@@ -242,77 +258,85 @@ function App() {
   ]);
 
   return (
-    <div className="App">
-      <h1>Transactions</h1>
-      <div className="filters">
-        <div>
-          <label>Start Date:</label>
-          <DatePicker
-            selected={startDate}
-            onChange={(date) => setStartDate(date)}
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <div className="App">
+        <h1>Transactions</h1>
+        <Button onClick={handleThemeToggle}>
+          Toggle {themeMode === 'light' ? 'Dark' : 'Light'} Mode
+        </Button>
+        <div className="filters">
+          <div>
+            <label>Start Date:</label>
+            <DatePicker
+              selected={startDate}
+              onChange={(date) => setStartDate(date)}
+            />
+          </div>
+          <div>
+            <label>End Date:</label>
+            <DatePicker
+              selected={endDate}
+              onChange={(date) => setEndDate(date)}
+            />
+          </div>
+          <div>
+            <label>Results Limit:</label>
+            <select
+              value={limit}
+              onChange={(e) => setLimit(parseInt(e.target.value))}
+            >
+              <option value={10}>10</option>
+              <option value={50}>50</option>
+              <option value={100}>100</option>
+            </select>
+          </div>
+          <div>
+            <label>Transaction Natures:</label>
+            <Select
+              styles={customStyles}
+              options={getTrnNaturesSelectOptions()}
+              isMulti
+              defaultValue={getTrnNaturesSelectOptions().find(
+                (option) => option.value === DEFAULT_TRN_NATURE,
+              )}
+              onChange={handleTrnNatureChange}
+            />
+          </div>
+          <button onClick={() => fetchTransactions(1)}>
+            Fetch Transactions
+          </button>
+        </div>
+        <div className="grid-container">
+          <MaterialReactTable
+            columns={columns}
+            data={trns}
+            enableColumnResizing
+            enableColumnOrdering={false}
+            enableColumnActions={false}
+            enableSorting={false}
+            enableRowSelection={false}
+            initialState={{
+              showColumnFilters: false,
+              density: 'compact',
+            }}
+            muiTableBodyCellProps={{
+              style: { whiteSpace: 'normal', wordBreak: 'break-word' }, // Enable text wrapping
+            }}
           />
         </div>
-        <div>
-          <label>End Date:</label>
-          <DatePicker
-            selected={endDate}
-            onChange={(date) => setEndDate(date)}
-          />
-        </div>
-        <div>
-          <label>Results Limit:</label>
-          <select
-            value={limit}
-            onChange={(e) => setLimit(parseInt(e.target.value))}
+        <div className="pagination">
+          <button
+            disabled={page === 1}
+            onClick={() => fetchTransactions(page - 1)}
           >
-            <option value={10}>10</option>
-            <option value={50}>50</option>
-            <option value={100}>100</option>
-          </select>
+            Previous
+          </button>
+          <span>Page {page}</span>
+          <button onClick={() => fetchTransactions(page + 1)}>Next</button>
         </div>
-        <div>
-          <label>Transaction Natures:</label>
-          <Select
-            styles={customStyles}
-            options={getTrnNaturesSelectOptions()}
-            isMulti
-            defaultValue={getTrnNaturesSelectOptions().find(
-              (option) => option.value === DEFAULT_TRN_NATURE,
-            )}
-            onChange={handleTrnNatureChange}
-          />
-        </div>
-        <button onClick={() => fetchTransactions(1)}>Fetch Transactions</button>
       </div>
-      <div className="grid-container">
-        <MaterialReactTable
-          columns={columns}
-          data={trns}
-          enableColumnResizing
-          enableColumnOrdering={false}
-          enableColumnActions={false}
-          enableSorting={false}
-          enableRowSelection={false}
-          initialState={{
-            showColumnFilters: false,
-            density: 'compact',
-          }}
-          muiTableBodyCellProps={{
-            style: { whiteSpace: 'normal', wordBreak: 'break-word' }, // Enable text wrapping
-          }}
-        />
-      </div>
-      <div className="pagination">
-        <button
-          disabled={page === 1}
-          onClick={() => fetchTransactions(page - 1)}
-        >
-          Previous
-        </button>
-        <span>Page {page}</span>
-        <button onClick={() => fetchTransactions(page + 1)}>Next</button>
-      </div>
-    </div>
+    </ThemeProvider>
   );
 }
 
