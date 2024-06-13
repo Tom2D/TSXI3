@@ -154,9 +154,7 @@ function App() {
       const endDateStr = FormatDateUTC(endDate);
       const trnNatureCodes = selectedTrnNatures.join(',');
       const response = await fetch(
-        `${SERVER_AUTHORITY}/transactions?beginFilingDate=${startDateStr}&endFilingDate=${endDateStr}&limit=${pageSize}&page=${
-          pageIndex + 1
-        }&trnNatureCodes=${trnNatureCodes}`,
+        `${SERVER_AUTHORITY}/transactions?beginFilingDate=${startDateStr}&endFilingDate=${endDateStr}&limit=${pageSize}&page=${pageIndex}&trnNatureCodes=${trnNatureCodes}`,
       );
 
       if (response.ok) {

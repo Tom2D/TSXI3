@@ -119,15 +119,17 @@ model transactions {
   underlyingsecurities  underlyingsecurities?               @relation(fields: [underlyingSecurityId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "transactions_ibfk_6")
   currency              currency?                           @relation(fields: [priceCurrencyId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "transactions_ibfk_7")
 
-  @@index([insiderId], map: "insiderId")
-  @@index([issuerId], map: "issuerId")
   @@index([priceCurrencyId], map: "priceCurrencyId")
   @@index([securityId], map: "securityId")
   @@index([id], map: "transactions_index_3")
   @@index([sediId], map: "transactions_index_4")
   @@index([trnFlagId], map: "trnFlagId")
-  @@index([trnNatureCode], map: "trnNatureCode")
   @@index([underlyingSecurityId], map: "underlyingSecurityId")
+  @@index([insiderId], map: "transactions_index_5")
+  @@index([issuerId], map: "transactions_index_6")
+  @@index([trnDate], map: "transactions_index_7")
+  @@index([filingDate], map: "transactions_index_8")
+  @@index([trnNatureCode], map: "transactions_index_9")
 }
 
 model trnflag {

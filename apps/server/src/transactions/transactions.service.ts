@@ -14,7 +14,7 @@ export class TransactionsService {
     page: number,
     trnNatureCodes: number[],
   ): Promise<any> {
-    const offset: number = (page - 1) * limit;
+    const offset: number = page * limit;
 
     const transactions = await this.prisma.transactions.findMany({
       where: {
