@@ -1,4 +1,4 @@
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import './App.css';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
@@ -15,15 +15,9 @@ import {
 } from './prisma-types';
 import { FormatDateUTC } from './util/date';
 import Select, { MultiValue, StylesConfig } from 'react-select';
-import DataEditor, {
-  GridCell,
-  GridCellKind,
-  GridColumn,
-  Item,
-} from '@glideapps/glide-data-grid';
-import '@glideapps/glide-data-grid/dist/index.css';
-import { darkTheme } from './grid/dark-theme';
-import { initialColumns, gridProps } from './grid/constants';
+import { MaterialReactTable, type MRT_ColumnDef } from 'material-react-table';
+import '@mui/material/styles';
+import { initialColumns } from './grid/constants';
 
 const DEFAULT_TRN_NATURE = 10;
 
@@ -31,22 +25,22 @@ const customStyles: StylesConfig<trnnatures> = {
   control: (provided) => ({
     ...provided,
     width: 300,
-    backgroundColor: '#333', // Dark background for the control
-    color: '#fff', // White text
-    border: '1px solid #444', // Border color to match dark theme
+    backgroundColor: '#333',
+    color: '#fff',
+    border: '1px solid #444',
   }),
   menu: (provided) => ({
     ...provided,
-    backgroundColor: '#333', // Dark background for the menu
-    color: '#fff', // White text
+    backgroundColor: '#333',
+    color: '#fff',
   }),
   multiValue: (provided) => ({
     ...provided,
-    backgroundColor: '#555', // Dark background for selected options
+    backgroundColor: '#555',
   }),
   multiValueLabel: (provided) => ({
     ...provided,
-    color: '#fff', // White text for selected options
+    color: '#fff',
   }),
   option: (provided, state) => ({
     ...provided,
@@ -55,18 +49,18 @@ const customStyles: StylesConfig<trnnatures> = {
       : state.isFocused
       ? '#444'
       : '#333',
-    color: '#fff', // White text for options
+    color: '#fff',
     '&:hover': {
-      backgroundColor: '#444', // Background color on hover
+      backgroundColor: '#444',
     },
   }),
   singleValue: (provided) => ({
     ...provided,
-    color: '#fff', // White text for single value
+    color: '#fff',
   }),
   input: (provided) => ({
     ...provided,
-    color: '#fff', // White text for input
+    color: '#fff',
   }),
 };
 
@@ -83,7 +77,6 @@ function App() {
   const [endDate, setEndDate] = useState<Date | null>(new Date('2021-01-22'));
   const [limit, setLimit] = useState<number>(10);
   const [page, setPage] = useState<number>(1);
-  const [columns, setColumns] = useState<GridColumn[]>(initialColumns);
   const [issuers, setIssuers] = useState<issuers[]>([]);
   const [tickers, setTickers] = useState<tickers[]>([]);
   const [insiders, setInsiders] = useState<insiders[]>([]);
@@ -172,123 +165,81 @@ function App() {
     setSelectedTrnNatures(selectedCodes);
   };
 
-  const getData = useCallback(
-    ([col, row]: Item): GridCell => {
-      const transaction = trns[row];
-      const column = columns[col];
-      const value = transaction[column.id as keyof transactions];
+  const columns = useMemo<MRT_ColumnDef<transactions>[]>(() => {
+    const getName = (id: number, objs: any[]): string => {
+      const obj = objs.find((obj) => obj.id === id);
+      return obj ? obj.name : '';
+    };
 
-      const kind = GridCellKind.Text;
-      const allowOverlay = false;
-      let data = value ? String(value) : '';
-      let allowWrapping = false;
+    const getTrnNatureDescription = (code: number): string => {
+      const trnNature = trnNatures.find((trnNature) => trnNature.code === code);
+      return trnNature ? trnNature.description : '';
+    };
 
-      const getName = (id: number, objs: any[]): string => {
-        const obj = objs.find((obj) => obj.id === id);
-        return obj ? obj.name : '';
-      };
+    const getTickerName = (issuerId: number): string => {
+      const issuer = issuers.find((issuer) => issuer.id === issuerId);
+      return getName(issuer.tickerId, tickers);
+    };
 
-      const getTrnNatureDescription = (code: number): string => {
-        const trnNature = trnNatures.find(
-          (trnNature) => trnNature.code === code,
-        );
-        return trnNature ? trnNature.description : '';
-      };
+    const getTitles = (insiderId: number): string => {
+      const relations = relationsToIssuer.filter(
+        (relation) => relation.insiderId === insiderId,
+      );
+      return relations.map((relation) => relation.type).join(', ');
+    };
 
-      const getTickerName = (issuerId: number): string => {
-        const issuer = issuers.find((issuer) => issuer.id === issuerId);
-        return getName(issuer.tickerId, tickers);
-      };
-
-      const getTitles = (insiderId: number): string => {
-        const relations = relationsToIssuer.filter(
-          (relation) => relation.insiderId === insiderId,
-        );
-        return relations.map((relation) => relation.type).join(', ');
-      };
-
-      switch (column.id) {
+    return initialColumns.map((column) => {
+      let accessorFn: ((row: transactions) => string) | undefined;
+      switch (column.accessorKey) {
         case 'trnFlagId':
-          data = getName(transaction.trnFlagId, trnFlags);
+          accessorFn = (row) => getName(row.trnFlagId, trnFlags);
           break;
 
         case 'ticker':
-          data = getTickerName(transaction.issuerId);
+          accessorFn = (row) => getTickerName(row.issuerId);
           break;
 
         case 'issuer':
-          data = getName(transaction.issuerId, issuers);
-          allowWrapping = true;
+          accessorFn = (row) => getName(row.issuerId, issuers);
           break;
 
         case 'insider':
-          data = getName(transaction.insiderId, insiders);
-          allowWrapping = true;
+          accessorFn = (row) => getName(row.insiderId, insiders);
           break;
 
         case 'titles':
-          data = getTitles(transaction.insiderId);
-          allowWrapping = true;
+          accessorFn = (row) => getTitles(row.insiderId);
           break;
 
         case 'securityId':
-          data = getName(transaction.securityId, securityDesignations);
-          allowWrapping = true;
+          accessorFn = (row) => getName(row.securityId, securityDesignations);
           break;
 
         case 'trnDate':
         case 'filingDate':
-          data = new Date(value as string).toLocaleDateString();
+          accessorFn = (row) =>
+            new Date(row[column.accessorKey]).toLocaleDateString();
           break;
 
         case 'trnNatureCode':
-          data = getTrnNatureDescription(value as number);
-          allowWrapping = true;
-          break;
-
-        case 'GeneralRemarks':
-          allowWrapping = true;
+          accessorFn = (row) => getTrnNatureDescription(row.trnNatureCode);
           break;
 
         default:
+          accessorFn = undefined;
           break;
       }
-
-      return {
-        kind: kind,
-        allowOverlay: allowOverlay,
-        displayData: data,
-        data: data,
-        allowWrapping: allowWrapping,
-      };
-    },
-    [
-      trns,
-      trnNatures,
-      trnFlags,
-      columns,
-      issuers,
-      tickers,
-      insiders,
-      relationsToIssuer,
-      securityDesignations,
-    ],
-  );
-
-  const onColumnResize = useCallback(
-    (column: GridColumn, newSize: number) => {
-      setColumns((prevColsMap: GridColumn[]) => {
-        const index = columns.findIndex((ci) => ci.title === column.title);
-        const newArray = [...prevColsMap];
-        newArray.splice(index, 1, {
-          ...prevColsMap[index],
-          width: newSize,
-        });
-        return newArray;
-      });
-    },
-    [columns],
-  );
+      return accessorFn ? { ...column, accessorFn } : column;
+    });
+  }, [
+    issuers,
+    tickers,
+    insiders,
+    relationsToIssuer,
+    securityDesignations,
+    trnFlags,
+    trnNatures,
+  ]);
 
   return (
     <div className="App">
@@ -333,14 +284,15 @@ function App() {
         </div>
         <button onClick={() => fetchTransactions(1)}>Fetch Transactions</button>
       </div>
-      <div className="grid-container dark-theme">
-        <DataEditor
-          theme={darkTheme}
-          {...gridProps}
+      <div className="grid-container">
+        <MaterialReactTable
           columns={columns}
-          rows={trns.length}
-          getCellContent={getData}
-          onColumnResize={onColumnResize}
+          data={trns}
+          enableColumnResizing
+          enableColumnOrdering={false}
+          enableColumnActions={false}
+          enableSorting={false}
+          enableRowSelection={false}
         />
       </div>
       <div className="pagination">
