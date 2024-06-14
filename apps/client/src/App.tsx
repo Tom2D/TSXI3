@@ -300,7 +300,6 @@ function App() {
           </Button>
           <div className="filters">
             <div>
-              <label>Start Date:</label>
               <DatePicker
                 label="Start Date"
                 value={startDate}
@@ -311,7 +310,6 @@ function App() {
               />
             </div>
             <div>
-              <label>End Date:</label>
               <DatePicker
                 label="End Date"
                 value={endDate}
@@ -369,6 +367,11 @@ function App() {
               muiPaginationProps={{
                 rowsPerPageOptions: [10, 25, 100],
               }}
+              muiToolbarAlertBannerProps={
+                isError
+                  ? { color: 'error', children: 'Error loading data' }
+                  : undefined
+              }
             />
           </div>
         </div>

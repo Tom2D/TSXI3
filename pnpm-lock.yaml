@@ -56,9 +56,6 @@ importers:
       '@tsxinsider/shared':
         specifier: workspace:*
         version: link:../../packages/shared
-      '@types/react-datepicker':
-        specifier: ^6.2.0
-        version: 6.2.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       dayjs:
         specifier: ^1.11.11
         version: 1.11.11
@@ -1457,9 +1454,6 @@ packages:
 
   '@types/range-parser@1.2.4':
     resolution: {integrity: sha512-EEhsLsD6UsDM1yFhAvy0Cjr6VwmpMWqFBCb9w07wVugF7w9nfajxLuVmngTIpgS6svCnm6Vaw+MZhoDCKnOfsw==}
-
-  '@types/react-datepicker@6.2.0':
-    resolution: {integrity: sha512-+JtO4Fm97WLkJTH8j8/v3Ldh7JCNRwjMYjRaKh4KHH0M3jJoXtwiD3JBCsdlg3tsFIw9eQSqyAPeVDN2H2oM9Q==}
 
   '@types/react-dom@18.3.0':
     resolution: {integrity: sha512-EhwApuTmMBmXuFOikhQLIBUn6uFg81SwLMOAUgodJF14SOBOCMdU04gDoYi0WOJJHD144TL32z4yDqCW3dnkQg==}
@@ -5746,15 +5740,6 @@ snapshots:
   '@types/qs@6.9.7': {}
 
   '@types/range-parser@1.2.4': {}
-
-  '@types/react-datepicker@6.2.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)':
-    dependencies:
-      '@floating-ui/react': 0.26.15(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      '@types/react': 18.3.2
-      date-fns: 3.6.0
-    transitivePeerDependencies:
-      - react
-      - react-dom
 
   '@types/react-dom@18.3.0':
     dependencies:

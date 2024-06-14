@@ -17,7 +17,6 @@
     "@mui/material": "^5.15.20",
     "@mui/x-date-pickers": "^7.7.0",
     "@tsxinsider/shared": "workspace:*",
-    "@types/react-datepicker": "^6.2.0",
     "dayjs": "^1.11.11",
     "material-react-table": "^2.13.0",
     "react": "^18.2.0",

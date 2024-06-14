@@ -4,12 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f48acd8a-e246-4264-9ac4-41713844a250" name="Changes" comment="Numbers with ',' (using locale)">
+    <list default="true" id="f48acd8a-e246-4264-9ac4-41713844a250" name="Changes" comment="MUI date pickers">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/apps/client/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/client/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/client/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/client/src/util/date.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/client/src/util/date.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pnpm-lock.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pnpm-lock.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -151,14 +148,6 @@
       <workItem from="1718073982154" duration="4884000" />
       <workItem from="1718150799891" duration="956000" />
       <workItem from="1718151765112" duration="20200000" />
-    </task>
-    <task id="LOCAL-00017" summary="Fixed dependency client -&gt; shared&#10;temp: added datepicker to client">
-      <option name="closed" value="true" />
-      <created>1716009992890</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1716009992890</updated>
     </task>
     <task id="LOCAL-00018" summary="misc">
       <option name="closed" value="true" />
@@ -544,7 +533,15 @@
       <option name="project" value="LOCAL" />
       <updated>1718336183949</updated>
     </task>
-    <option name="localTasksCounter" value="66" />
+    <task id="LOCAL-00066" summary="MUI date pickers">
+      <option name="closed" value="true" />
+      <created>1718341164151</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1718341164151</updated>
+    </task>
+    <option name="localTasksCounter" value="67" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -575,7 +572,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Ajustement frontend pour info extra info (issuer, insider, etc.)" />
     <MESSAGE value="Fetch trn flags and show name" />
     <MESSAGE value="minor" />
     <MESSAGE value="null =&gt; &quot;&quot;&#10;+ other minor fixes" />
@@ -600,6 +596,7 @@
     <MESSAGE value="No rerender on date or trn natures changes" />
     <MESSAGE value="- Ownership column invisible by default&#10;- Ajusted some columns witdh" />
     <MESSAGE value="Numbers with ',' (using locale)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Numbers with ',' (using locale)" />
+    <MESSAGE value="MUI date pickers" />
+    <option name="LAST_COMMIT_MESSAGE" value="MUI date pickers" />
   </component>
 </project>
