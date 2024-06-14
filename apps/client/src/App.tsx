@@ -1,4 +1,4 @@
-import { useEffect, useState, useMemo } from 'react';
+import { useEffect, useState, useMemo, useCallback } from 'react';
 import './App.css';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
@@ -142,43 +142,47 @@ function App() {
     }));
   }
 
-  const fetchTransactions = async (pageIndex = 0, pageSize = 10) => {
-    if (!startDate || !endDate) {
-      alert('Please select both start and end dates.');
-      return;
-    }
-
-    setIsLoading(true); // Set loading state to true
-    try {
-      const startDateStr = FormatDateUTC(startDate);
-      const endDateStr = FormatDateUTC(endDate);
-      const trnNatureCodes = selectedTrnNatures.join(',');
-      const response = await fetch(
-        `${SERVER_AUTHORITY}/transactions?beginFilingDate=${startDateStr}&endFilingDate=${endDateStr}&limit=${pageSize}&page=${pageIndex}&trnNatureCodes=${trnNatureCodes}`,
-      );
-
-      if (response.ok) {
-        const data = await response.json();
-        setTransactions(data.transactions);
-        setIssuers(data.issuers);
-        setTickers(data.tickers);
-        setInsiders(data.insiders);
-        setRelationsToIssuer(data.relationsToIssuer);
-        setSecurityDesignations(data.securityDesignations);
-        setRowCount(data.total); // Set the total row count
-      } else {
-        console.error('Failed to fetch transactions');
+  const fetchTransactions = useCallback(
+    async (pageIndex = 0, pageSize = 10) => {
+      if (!startDate || !endDate) {
+        alert('Please select both start and end dates.');
+        return;
       }
-    } catch (error) {
-      console.error('Error fetching transactions:', error);
-    } finally {
-      setIsLoading(false); // Set loading state to false
-    }
-  };
+
+      setIsLoading(true);
+
+      try {
+        const startDateStr = FormatDateUTC(startDate);
+        const endDateStr = FormatDateUTC(endDate);
+        const trnNatureCodes = selectedTrnNatures.join(',');
+        const response = await fetch(
+          `${SERVER_AUTHORITY}/transactions?beginFilingDate=${startDateStr}&endFilingDate=${endDateStr}&limit=${pageSize}&page=${pageIndex}&trnNatureCodes=${trnNatureCodes}`,
+        );
+
+        if (response.ok) {
+          const data = await response.json();
+          setTransactions(data.transactions);
+          setIssuers(data.issuers);
+          setTickers(data.tickers);
+          setInsiders(data.insiders);
+          setRelationsToIssuer(data.relationsToIssuer);
+          setSecurityDesignations(data.securityDesignations);
+          setRowCount(data.total); // Set the total row count
+        } else {
+          console.error('Failed to fetch transactions');
+        }
+      } catch (error) {
+        console.error('Error fetching transactions:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    },
+    [startDate, endDate, selectedTrnNatures],
+  );
 
   useEffect(() => {
     fetchTransactions(pagination.pageIndex, pagination.pageSize);
-  }, [pagination.pageIndex, pagination.pageSize]);
+  }, [fetchTransactions, pagination.pageIndex, pagination.pageSize]);
 
   const handleTrnNatureChange = (
     selectedOptions: MultiValue<{ value: number; label: string }>,
