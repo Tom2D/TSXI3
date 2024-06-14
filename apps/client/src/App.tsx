@@ -89,6 +89,8 @@ function App() {
   const [pagination, setPagination] = useState({ pageIndex: 0, pageSize: 10 });
   const [rowCount, setRowCount] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
+  const [isRefetching, setIsRefetching] = useState(false);
+  const [isError, setIsError] = useState(false);
 
   const theme = useMemo(
     () =>
@@ -118,6 +120,7 @@ function App() {
         console.error('Failed to fetch transaction natures');
       }
     } catch (error) {
+      setIsError(true);
       console.error('Error fetching transaction natures:', error);
     }
   };
@@ -131,6 +134,7 @@ function App() {
         console.error('Failed to fetch transaction flags');
       }
     } catch (error) {
+      setIsError(true);
       console.error('Error fetching transaction flags:', error);
     }
   };
@@ -149,7 +153,11 @@ function App() {
         return;
       }
 
-      setIsLoading(true);
+      if (!trns.length) {
+        setIsLoading(true);
+      } else {
+        setIsRefetching(true);
+      }
 
       try {
         const startDateStr = FormatDateUTC(startDate);
@@ -170,14 +178,19 @@ function App() {
           setRowCount(data.total); // Set the total row count
         } else {
           console.error('Failed to fetch transactions');
+          setIsError(true);
+          return;
         }
       } catch (error) {
         console.error('Error fetching transactions:', error);
-      } finally {
-        setIsLoading(false);
+        setIsError(true);
+        return;
       }
+      setIsLoading(false);
+      setIsRefetching(false);
+      setIsError(false);
     },
-    [startDate, endDate, selectedTrnNatures],
+    [startDate, endDate, selectedTrnNatures, trns],
   );
 
   useEffect(() => {
@@ -319,7 +332,12 @@ function App() {
             enableRowSelection={false}
             manualPagination
             onPaginationChange={setPagination}
-            state={{ pagination, isLoading }}
+            state={{
+              pagination,
+              isLoading,
+              showProgressBars: isRefetching,
+              showAlertBanner: isError,
+            }}
             rowCount={rowCount}
             initialState={{
               showColumnFilters: false,

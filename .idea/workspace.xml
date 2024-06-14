@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f48acd8a-e246-4264-9ac4-41713844a250" name="Changes" comment="Using built in pagination!">
+    <list default="true" id="f48acd8a-e246-4264-9ac4-41713844a250" name="Changes" comment="setIsRefetching &amp; setIsError">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/client/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/client/src/App.tsx" afterDir="false" />
     </list>
@@ -148,14 +148,6 @@
       <workItem from="1718073982154" duration="4884000" />
       <workItem from="1718150799891" duration="956000" />
       <workItem from="1718151765112" duration="20200000" />
-    </task>
-    <task id="LOCAL-00012" summary="Prettier Max line len = 150">
-      <option name="closed" value="true" />
-      <created>1715913583118</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1715913583118</updated>
     </task>
     <task id="LOCAL-00013" summary="ParseIntPipe">
       <option name="closed" value="true" />
@@ -541,7 +533,15 @@
       <option name="project" value="LOCAL" />
       <updated>1718255290323</updated>
     </task>
-    <option name="localTasksCounter" value="61" />
+    <task id="LOCAL-00061" summary="Fix error dependency fetchTransactions">
+      <option name="closed" value="true" />
+      <created>1718325087422</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1718325087422</updated>
+    </task>
+    <option name="localTasksCounter" value="62" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -572,8 +572,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Ajustements mineurs" />
-    <MESSAGE value="added constants grid file" />
     <MESSAGE value="Trade type name instead of code" />
     <MESSAGE value="Simplified trn natures front end" />
     <MESSAGE value="cleanup generation cellules dans getData()" />
@@ -597,6 +595,8 @@
     <MESSAGE value="Switch to MaterialReactTable v1&#10;This is sick, never looking back!!" />
     <MESSAGE value="Button to toggle light and dark mode" />
     <MESSAGE value="Using built in pagination!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Using built in pagination!" />
+    <MESSAGE value="Fix error dependency fetchTransactions" />
+    <MESSAGE value="setIsRefetching &amp; setIsError" />
+    <option name="LAST_COMMIT_MESSAGE" value="setIsRefetching &amp; setIsError" />
   </component>
 </project>
