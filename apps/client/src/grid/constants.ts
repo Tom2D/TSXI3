@@ -12,7 +12,7 @@ export const initialColumns: MRT_ColumnDef<transactions>[] = [
   { accessorKey: 'trnNatureCode', header: 'Trade Type', size: 200 },
   { accessorKey: 'price', header: 'Price', size: 60 },
   { accessorKey: 'nb', header: 'Quantity', size: 80 },
-  { accessorKey: 'securityId', header: 'Security Type', size: 100 },
+  { accessorKey: 'securityId', header: 'Security Type', size: 120 },
   { accessorKey: 'closingBalance', header: 'New Balance', size: 80 },
   { accessorKey: 'ownershipType', header: 'Ownership', size: 80 },
   {

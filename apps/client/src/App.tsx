@@ -1,4 +1,4 @@
-import { useEffect, useState, useMemo, useCallback } from 'react';
+import { useEffect, useState, useMemo, useCallback, useRef } from 'react';
 import './App.css';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
@@ -146,23 +146,24 @@ function App() {
     }));
   }
 
+  // Pour éviter de render si ces infos sont modififiées
+  const endDateRef = useRef(endDate);
+  const selectedTrnNaturesRef = useRef(selectedTrnNatures);
+  const startDateRef = useRef(startDate);
+  const hasData = useRef(Boolean(trns.length));
+
   const fetchTransactions = useCallback(
     async (pageIndex = 0, pageSize = 10) => {
-      if (!startDate || !endDate) {
-        alert('Please select both start and end dates.');
-        return;
-      }
-
-      if (!trns.length) {
+      if (!hasData) {
         setIsLoading(true);
       } else {
         setIsRefetching(true);
       }
 
       try {
-        const startDateStr = FormatDateUTC(startDate);
-        const endDateStr = FormatDateUTC(endDate);
-        const trnNatureCodes = selectedTrnNatures.join(',');
+        const startDateStr = FormatDateUTC(startDateRef.current);
+        const endDateStr = FormatDateUTC(endDateRef.current);
+        const trnNatureCodes = selectedTrnNaturesRef.current.join(',');
         const response = await fetch(
           `${SERVER_AUTHORITY}/transactions?beginFilingDate=${startDateStr}&endFilingDate=${endDateStr}&limit=${pageSize}&page=${pageIndex}&trnNatureCodes=${trnNatureCodes}`,
         );
@@ -190,8 +191,15 @@ function App() {
       setIsRefetching(false);
       setIsError(false);
     },
-    [startDate, endDate, selectedTrnNatures, trns],
+    [],
   );
+
+  useEffect(() => {
+    endDateRef.current = endDate;
+    selectedTrnNaturesRef.current = selectedTrnNatures;
+    startDateRef.current = startDate;
+    hasData.current = Boolean(trns.length);
+  }, [startDate, endDate, selectedTrnNatures, trns]);
 
   useEffect(() => {
     fetchTransactions(pagination.pageIndex, pagination.pageSize);
