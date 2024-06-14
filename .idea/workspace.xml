@@ -4,9 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f48acd8a-e246-4264-9ac4-41713844a250" name="Changes" comment="- Ownership column invisible by default&#10;- Ajusted some columns witdh">
+    <list default="true" id="f48acd8a-e246-4264-9ac4-41713844a250" name="Changes" comment="Numbers with ',' (using locale)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/client/src/grid/constants.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/client/src/grid/constants.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/apps/client/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/client/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/client/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/client/src/util/date.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/client/src/util/date.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pnpm-lock.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pnpm-lock.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,34 +67,34 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;JavaScript Debug.client JavaScript.executor&quot;: &quot;Debug&quot;,
-    &quot;JavaScript Debug.client.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;MRT-grid&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;E:/Thomas/Prog/TSXI3&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_interpreter_path&quot;: &quot;node&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;C:\\Users\\TomDD\\AppData\\Roaming\\npm\\pnpm.cmd&quot;,
-    &quot;npm.client.executor&quot;: &quot;Run&quot;,
-    &quot;npm.server debug.executor&quot;: &quot;Run&quot;,
-    &quot;npm.server run.executor&quot;: &quot;Run&quot;,
-    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;E:\\Thomas\\Prog\\TSXInsiderJS2\\node_modules\\prettier&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;E:\\Thomas\\Prog\\TSXI3\\apps\\client\\node_modules\\typescript\\lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "JavaScript Debug.client JavaScript.executor": "Debug",
+    "JavaScript Debug.client.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "MRT-grid",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "E:/Thomas/Prog/TSXI3",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.standard": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.standard": "",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_interpreter_path": "node",
+    "nodejs_package_manager_path": "C:\\Users\\TomDD\\AppData\\Roaming\\npm\\pnpm.cmd",
+    "npm.client.executor": "Debug",
+    "npm.server debug.executor": "Run",
+    "npm.server run.executor": "Run",
+    "prettierjs.PrettierConfiguration.Package": "E:\\Thomas\\Prog\\TSXInsiderJS2\\node_modules\\prettier",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "preferences.sourceCode",
+    "ts.external.directory.path": "E:\\Thomas\\Prog\\TSXI3\\apps\\client\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="E:\Thomas\Prog\TSXI3" />
@@ -148,14 +151,6 @@
       <workItem from="1718073982154" duration="4884000" />
       <workItem from="1718150799891" duration="956000" />
       <workItem from="1718151765112" duration="20200000" />
-    </task>
-    <task id="LOCAL-00016" summary="transactions Optional limit">
-      <option name="closed" value="true" />
-      <created>1716005246855</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1716005246855</updated>
     </task>
     <task id="LOCAL-00017" summary="Fixed dependency client -&gt; shared&#10;temp: added datepicker to client">
       <option name="closed" value="true" />
@@ -541,7 +536,15 @@
       <option name="project" value="LOCAL" />
       <updated>1718328702962</updated>
     </task>
-    <option name="localTasksCounter" value="65" />
+    <task id="LOCAL-00065" summary="Numbers with ',' (using locale)">
+      <option name="closed" value="true" />
+      <created>1718336183949</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1718336183949</updated>
+    </task>
+    <option name="localTasksCounter" value="66" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -572,7 +575,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Fixed duplication in trn extra info (issuer, insider, etc.)" />
     <MESSAGE value="Ajustement frontend pour info extra info (issuer, insider, etc.)" />
     <MESSAGE value="Fetch trn flags and show name" />
     <MESSAGE value="minor" />
@@ -597,6 +599,7 @@
     <MESSAGE value="No rerender on date or trn natures changes" />
     <MESSAGE value="No rerender on date or trn natures changes" />
     <MESSAGE value="- Ownership column invisible by default&#10;- Ajusted some columns witdh" />
-    <option name="LAST_COMMIT_MESSAGE" value="- Ownership column invisible by default&#10;- Ajusted some columns witdh" />
+    <MESSAGE value="Numbers with ',' (using locale)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Numbers with ',' (using locale)" />
   </component>
 </project>

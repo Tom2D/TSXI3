@@ -1,7 +1,5 @@
 import { useEffect, useState, useMemo, useCallback, useRef } from 'react';
 import './App.css';
-import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
 import { SERVER_AUTHORITY } from '@tsxinsider/shared';
 import {
   transactions,
@@ -19,6 +17,9 @@ import { MaterialReactTable, type MRT_ColumnDef } from 'material-react-table';
 import '@mui/material/styles';
 import { initialColumns } from './grid/constants';
 import { createTheme, ThemeProvider, CssBaseline, Button } from '@mui/material';
+import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import dayjs, { Dayjs } from 'dayjs';
 
 const DEFAULT_TRN_NATURE = 10;
 
@@ -72,10 +73,8 @@ function App() {
   const [selectedTrnNatures, setSelectedTrnNatures] = useState<number[]>([
     DEFAULT_TRN_NATURE,
   ]);
-  const [startDate, setStartDate] = useState<Date | null>(
-    new Date('2021-01-22'),
-  );
-  const [endDate, setEndDate] = useState<Date | null>(new Date('2021-01-22'));
+  const [startDate, setStartDate] = useState<Dayjs | null>(dayjs('2021-01-22'));
+  const [endDate, setEndDate] = useState<Dayjs | null>(dayjs('2021-01-22'));
   const [issuers, setIssuers] = useState<issuers[]>([]);
   const [tickers, setTickers] = useState<tickers[]>([]);
   const [insiders, setInsiders] = useState<insiders[]>([]);
@@ -293,77 +292,87 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <div className="App">
-        <h1>Transactions</h1>
-        <Button onClick={handleThemeToggle}>
-          Toggle {themeMode === 'light' ? 'Dark' : 'Light'} Mode
-        </Button>
-        <div className="filters">
-          <div>
-            <label>Start Date:</label>
-            <DatePicker
-              selected={startDate}
-              onChange={(date) => setStartDate(date)}
+      <LocalizationProvider dateAdapter={AdapterDayjs}>
+        <div className="App">
+          <h1>Transactions</h1>
+          <Button onClick={handleThemeToggle}>
+            Toggle {themeMode === 'light' ? 'Dark' : 'Light'} Mode
+          </Button>
+          <div className="filters">
+            <div>
+              <label>Start Date:</label>
+              <DatePicker
+                label="Start Date"
+                value={startDate}
+                onChange={(newDate) => setStartDate(newDate)}
+                slotProps={{
+                  field: { clearable: true },
+                }}
+              />
+            </div>
+            <div>
+              <label>End Date:</label>
+              <DatePicker
+                label="End Date"
+                value={endDate}
+                onChange={(newDate) => setEndDate(newDate)}
+                slotProps={{
+                  field: { clearable: true },
+                }}
+              />
+            </div>
+            <div>
+              <label>Transaction Natures:</label>
+              <Select
+                styles={customStyles}
+                options={getTrnNaturesSelectOptions()}
+                isMulti
+                defaultValue={getTrnNaturesSelectOptions().find(
+                  (option) => option.value === DEFAULT_TRN_NATURE,
+                )}
+                onChange={handleTrnNatureChange}
+              />
+            </div>
+            <button onClick={() => fetchTransactions(0, pagination.pageSize)}>
+              Fetch Transactions
+            </button>
+          </div>
+          <div className="grid-container">
+            <MaterialReactTable
+              columns={columns}
+              data={trns}
+              enableColumnResizing
+              enableColumnOrdering={false}
+              enableColumnActions={false}
+              enableSorting={false}
+              enableRowSelection={false}
+              enableDensityToggle={false}
+              manualPagination
+              onPaginationChange={setPagination}
+              rowCount={rowCount}
+              state={{
+                pagination,
+                isLoading,
+                showProgressBars: isRefetching,
+                showAlertBanner: isError,
+              }}
+              initialState={{
+                showColumnFilters: false,
+                density: 'compact',
+                columnVisibility: {
+                  ownershipType: false,
+                },
+              }}
+              muiTableBodyCellProps={{
+                style: { whiteSpace: 'normal', wordBreak: 'break-word' },
+              }}
+              muiPaginationProps={{
+                rowsPerPageOptions: [10, 25, 100],
+              }}
             />
           </div>
-          <div>
-            <label>End Date:</label>
-            <DatePicker
-              selected={endDate}
-              onChange={(date) => setEndDate(date)}
-            />
-          </div>
-          <div>
-            <label>Transaction Natures:</label>
-            <Select
-              styles={customStyles}
-              options={getTrnNaturesSelectOptions()}
-              isMulti
-              defaultValue={getTrnNaturesSelectOptions().find(
-                (option) => option.value === DEFAULT_TRN_NATURE,
-              )}
-              onChange={handleTrnNatureChange}
-            />
-          </div>
-          <button onClick={() => fetchTransactions(0, pagination.pageSize)}>
-            Fetch Transactions
-          </button>
         </div>
-        <div className="grid-container">
-          <MaterialReactTable
-            columns={columns}
-            data={trns}
-            enableColumnResizing
-            enableColumnOrdering={false}
-            enableColumnActions={false}
-            enableSorting={false}
-            enableRowSelection={false}
-            enableDensityToggle={false}
-            manualPagination
-            onPaginationChange={setPagination}
-            rowCount={rowCount}
-            state={{
-              pagination,
-              isLoading,
-              showProgressBars: isRefetching,
-              showAlertBanner: isError,
-            }}
-            initialState={{
-              showColumnFilters: false,
-              density: 'compact',
-              columnVisibility: {
-                ownershipType: false,
-              },
-            }}
-            muiTableBodyCellProps={{
-              style: { whiteSpace: 'normal', wordBreak: 'break-word' },
-            }}
-            muiPaginationProps={{
-              rowsPerPageOptions: [10, 25, 100],
-            }}
-          />
-        </div>
-      </div>
+      </LocalizationProvider>
     </ThemeProvider>
   );
 }
