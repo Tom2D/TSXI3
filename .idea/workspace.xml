@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f48acd8a-e246-4264-9ac4-41713844a250" name="Changes" comment="No rerender on date or trn natures changes">
+    <list default="true" id="f48acd8a-e246-4264-9ac4-41713844a250" name="Changes" comment="- Ownership column invisible by default&#10;- Ajusted some columns witdh">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/client/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/client/src/App.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/client/src/grid/constants.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/client/src/grid/constants.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -149,14 +148,6 @@
       <workItem from="1718073982154" duration="4884000" />
       <workItem from="1718150799891" duration="956000" />
       <workItem from="1718151765112" duration="20200000" />
-    </task>
-    <task id="LOCAL-00015" summary="Fetch trn date range + ParseDatePipe">
-      <option name="closed" value="true" />
-      <created>1716004116800</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1716004116800</updated>
     </task>
     <task id="LOCAL-00016" summary="transactions Optional limit">
       <option name="closed" value="true" />
@@ -542,7 +533,15 @@
       <option name="project" value="LOCAL" />
       <updated>1718328093339</updated>
     </task>
-    <option name="localTasksCounter" value="64" />
+    <task id="LOCAL-00064" summary="- Ownership column invisible by default&#10;- Ajusted some columns witdh">
+      <option name="closed" value="true" />
+      <created>1718328702962</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1718328702962</updated>
+    </task>
+    <option name="localTasksCounter" value="65" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -573,7 +572,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="trn endpoint return extra info (issuer, insider, etc.)" />
     <MESSAGE value="Fixed duplication in trn extra info (issuer, insider, etc.)" />
     <MESSAGE value="Ajustement frontend pour info extra info (issuer, insider, etc.)" />
     <MESSAGE value="Fetch trn flags and show name" />
@@ -598,6 +596,7 @@
     <MESSAGE value="No render on date/trn nature/etc. changes" />
     <MESSAGE value="No rerender on date or trn natures changes" />
     <MESSAGE value="No rerender on date or trn natures changes" />
-    <option name="LAST_COMMIT_MESSAGE" value="No rerender on date or trn natures changes" />
+    <MESSAGE value="- Ownership column invisible by default&#10;- Ajusted some columns witdh" />
+    <option name="LAST_COMMIT_MESSAGE" value="- Ownership column invisible by default&#10;- Ajusted some columns witdh" />
   </component>
 </project>
