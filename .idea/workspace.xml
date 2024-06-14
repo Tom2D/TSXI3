@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f48acd8a-e246-4264-9ac4-41713844a250" name="Changes" comment="MUI date pickers">
+    <list default="true" id="f48acd8a-e246-4264-9ac4-41713844a250" name="Changes" comment="cleanup">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/apps/client/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/client/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/client/src/App.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -88,7 +89,7 @@
     "prettierjs.PrettierConfiguration.Package": "E:\\Thomas\\Prog\\TSXInsiderJS2\\node_modules\\prettier",
     "run.code.analysis.last.selected.profile": "pProject Default",
     "settings.editor.selected.configurable": "preferences.sourceCode",
-    "ts.external.directory.path": "E:\\Thomas\\Prog\\TSXI3\\apps\\client\\node_modules\\typescript\\lib",
+    "ts.external.directory.path": "E:\\Thomas\\Prog\\TSXI3\\apps\\server\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -148,14 +149,6 @@
       <workItem from="1718073982154" duration="4884000" />
       <workItem from="1718150799891" duration="956000" />
       <workItem from="1718151765112" duration="20200000" />
-    </task>
-    <task id="LOCAL-00018" summary="misc">
-      <option name="closed" value="true" />
-      <created>1716010010420</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1716010010420</updated>
     </task>
     <task id="LOCAL-00019" summary="- Ajout frontend basic généré par gpt pour afficher les trn (pas testé yet)&#10;- FIX sharing client -&gt; shared&#10;** IL FALLAIT ADAPTER vite.config.ts POUR AJOUTER plugin tsconfigPaths() **">
       <option name="closed" value="true" />
@@ -541,7 +534,15 @@
       <option name="project" value="LOCAL" />
       <updated>1718341164151</updated>
     </task>
-    <option name="localTasksCounter" value="67" />
+    <task id="LOCAL-00067" summary="cleanup">
+      <option name="closed" value="true" />
+      <created>1718341622860</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1718341622860</updated>
+    </task>
+    <option name="localTasksCounter" value="68" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -572,7 +573,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Fetch trn flags and show name" />
     <MESSAGE value="minor" />
     <MESSAGE value="null =&gt; &quot;&quot;&#10;+ other minor fixes" />
     <MESSAGE value="Security Type == name instead of id" />
@@ -597,6 +597,7 @@
     <MESSAGE value="- Ownership column invisible by default&#10;- Ajusted some columns witdh" />
     <MESSAGE value="Numbers with ',' (using locale)" />
     <MESSAGE value="MUI date pickers" />
-    <option name="LAST_COMMIT_MESSAGE" value="MUI date pickers" />
+    <MESSAGE value="cleanup" />
+    <option name="LAST_COMMIT_MESSAGE" value="cleanup" />
   </component>
 </project>
