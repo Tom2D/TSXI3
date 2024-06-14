@@ -338,18 +338,22 @@ function App() {
             enableColumnActions={false}
             enableSorting={false}
             enableRowSelection={false}
+            enableDensityToggle={false}
             manualPagination
             onPaginationChange={setPagination}
+            rowCount={rowCount}
             state={{
               pagination,
               isLoading,
               showProgressBars: isRefetching,
               showAlertBanner: isError,
             }}
-            rowCount={rowCount}
             initialState={{
               showColumnFilters: false,
               density: 'compact',
+              columnVisibility: {
+                ownershipType: false,
+              },
             }}
             muiTableBodyCellProps={{
               style: { whiteSpace: 'normal', wordBreak: 'break-word' },

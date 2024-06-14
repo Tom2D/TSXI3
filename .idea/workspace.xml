@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f48acd8a-e246-4264-9ac4-41713844a250" name="Changes" comment="No render on date/trn nature/etc. changes">
+    <list default="true" id="f48acd8a-e246-4264-9ac4-41713844a250" name="Changes" comment="No rerender on date or trn natures changes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/client/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/client/src/App.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/client/src/grid/constants.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/client/src/grid/constants.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/client/src/util/date.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/client/src/util/date.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -150,14 +149,6 @@
       <workItem from="1718073982154" duration="4884000" />
       <workItem from="1718150799891" duration="956000" />
       <workItem from="1718151765112" duration="20200000" />
-    </task>
-    <task id="LOCAL-00014" summary="fix error bad option exlcude">
-      <option name="closed" value="true" />
-      <created>1716001566298</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1716001566298</updated>
     </task>
     <task id="LOCAL-00015" summary="Fetch trn date range + ParseDatePipe">
       <option name="closed" value="true" />
@@ -543,7 +534,15 @@
       <option name="project" value="LOCAL" />
       <updated>1718325904085</updated>
     </task>
-    <option name="localTasksCounter" value="63" />
+    <task id="LOCAL-00063" summary="Fixed">
+      <option name="closed" value="true" />
+      <created>1718328093339</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1718328093339</updated>
+    </task>
+    <option name="localTasksCounter" value="64" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -574,8 +573,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Simplified trn natures front end" />
-    <MESSAGE value="cleanup generation cellules dans getData()" />
     <MESSAGE value="trn endpoint return extra info (issuer, insider, etc.)" />
     <MESSAGE value="Fixed duplication in trn extra info (issuer, insider, etc.)" />
     <MESSAGE value="Ajustement frontend pour info extra info (issuer, insider, etc.)" />
@@ -599,6 +596,8 @@
     <MESSAGE value="Fix error dependency fetchTransactions" />
     <MESSAGE value="setIsRefetching &amp; setIsError" />
     <MESSAGE value="No render on date/trn nature/etc. changes" />
-    <option name="LAST_COMMIT_MESSAGE" value="No render on date/trn nature/etc. changes" />
+    <MESSAGE value="No rerender on date or trn natures changes" />
+    <MESSAGE value="No rerender on date or trn natures changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="No rerender on date or trn natures changes" />
   </component>
 </project>
