@@ -19,10 +19,12 @@ import {
   createTheme,
   ThemeProvider,
   CssBaseline,
-  Button,
   TextField,
   Autocomplete,
+  IconButton,
 } from '@mui/material';
+import Brightness4Icon from '@mui/icons-material/Brightness4';
+import Brightness7Icon from '@mui/icons-material/Brightness7';
 import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import dayjs, { Dayjs } from 'dayjs';
@@ -264,9 +266,17 @@ function App() {
       <LocalizationProvider dateAdapter={AdapterDayjs}>
         <div className="App">
           <h1>Transactions</h1>
-          <Button onClick={handleThemeToggle}>
-            Toggle {themeMode === 'light' ? 'Dark' : 'Light'} Mode
-          </Button>
+          <IconButton
+            sx={{ ml: 1 }}
+            onClick={handleThemeToggle}
+            color="inherit"
+          >
+            {theme.palette.mode === 'dark' ? (
+              <Brightness7Icon />
+            ) : (
+              <Brightness4Icon />
+            )}
+          </IconButton>
           <div className="filters">
             <div>
               <DatePicker
