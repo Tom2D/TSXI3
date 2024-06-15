@@ -33,9 +33,9 @@ function App() {
   const [trns, setTransactions] = useState<transactions[]>([]);
   const [trnNatures, setTrnNatures] = useState<trnnatures[]>([]);
   const [trnFlags, setTrnFlags] = useState<trnflag[]>([]);
-  const [selectedTrnNatures, setSelectedTrnNatures] = useState<number[]>([
-    DEFAULT_TRN_NATURE,
-  ]);
+  const [selectedTrnNatures, setSelectedTrnNatures] = useState<trnnatures[]>(
+    [],
+  );
   const [startDate, setStartDate] = useState<Dayjs | null>(dayjs('2021-01-22'));
   const [endDate, setEndDate] = useState<Dayjs | null>(dayjs('2021-01-22'));
   const [issuers, setIssuers] = useState<issuers[]>([]);
@@ -68,43 +68,56 @@ function App() {
     setThemeMode((prevMode) => (prevMode === 'light' ? 'dark' : 'light'));
   };
 
-  useEffect(() => {
-    fetchTrnNatures();
-    fetchTrnFlags();
-  }, []);
-
-  const fetchTrnNatures = async () => {
-    try {
-      const response = await fetch(`${SERVER_AUTHORITY}/trn-natures`);
-      if (response.ok) {
-        setTrnNatures(await response.json());
-      } else {
-        console.error('Failed to fetch transaction natures');
-      }
-    } catch (error) {
-      setIsError(true);
-      console.error('Error fetching transaction natures:', error);
-    }
-  };
-
-  const fetchTrnFlags = async () => {
-    try {
-      const response = await fetch(`${SERVER_AUTHORITY}/trn-flags`);
-      if (response.ok) {
-        setTrnFlags(await response.json());
-      } else {
-        console.error('Failed to fetch transaction flags');
-      }
-    } catch (error) {
-      setIsError(true);
-      console.error('Error fetching transaction flags:', error);
-    }
-  };
-
   const endDateRef = useRef(endDate);
   const selectedTrnNaturesRef = useRef(selectedTrnNatures);
   const startDateRef = useRef(startDate);
   const hasData = useRef(Boolean(trns.length));
+  useEffect(() => {
+    endDateRef.current = endDate;
+    selectedTrnNaturesRef.current = selectedTrnNatures;
+    startDateRef.current = startDate;
+    hasData.current = Boolean(trns.length);
+  }, [startDate, endDate, selectedTrnNatures, trns]);
+
+  useEffect(() => {
+    const fetchTrnNatures = async () => {
+      try {
+        const response = await fetch(`${SERVER_AUTHORITY}/trn-natures`);
+        if (response.ok) {
+          const trnNatures = await response.json();
+          setTrnNatures(trnNatures);
+          const defaultTrnNature = trnNatures.filter(
+            (option: trnnatures) => option.code === DEFAULT_TRN_NATURE,
+          );
+          setSelectedTrnNatures(defaultTrnNature);
+          selectedTrnNaturesRef.current = defaultTrnNature; // Pour que fetchTransactions le considère
+        } else {
+          console.error('Failed to fetch transaction natures');
+        }
+      } catch (error) {
+        setIsError(true);
+        console.error('Error fetching transaction natures:', error);
+      }
+    };
+
+    const fetchTrnFlags = async () => {
+      try {
+        const response = await fetch(`${SERVER_AUTHORITY}/trn-flags`);
+        if (response.ok) {
+          setTrnFlags(await response.json());
+        } else {
+          console.error('Failed to fetch transaction flags');
+        }
+      } catch (error) {
+        setIsError(true);
+        console.error('Error fetching transaction flags:', error);
+      }
+    };
+
+    fetchTrnNatures();
+    fetchTrnFlags();
+    fetchTransactions();
+  }, []);
 
   const fetchTransactions = useCallback(
     async (pageIndex = 0, pageSize = 10) => {
@@ -117,7 +130,9 @@ function App() {
       try {
         const startDateStr = FormatDateUTC(startDateRef.current);
         const endDateStr = FormatDateUTC(endDateRef.current);
-        const trnNatureCodes = selectedTrnNaturesRef.current.join(',');
+        const trnNatureCodes = selectedTrnNaturesRef.current
+          .map((option) => option.code)
+          .join(',');
         const response = await fetch(
           `${SERVER_AUTHORITY}/transactions?beginFilingDate=${startDateStr}&endFilingDate=${endDateStr}&limit=${pageSize}&page=${pageIndex}&trnNatureCodes=${trnNatureCodes}`,
         );
@@ -148,22 +163,18 @@ function App() {
     [],
   );
 
+  const isFirstRender = useRef(true);
   useEffect(() => {
-    endDateRef.current = endDate;
-    selectedTrnNaturesRef.current = selectedTrnNatures;
-    startDateRef.current = startDate;
-    hasData.current = Boolean(trns.length);
-  }, [startDate, endDate, selectedTrnNatures, trns]);
-
-  useEffect(() => {
+    // Refetch data on page change only. Does not do inial fetch (trnNatures not fetched yet).
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    }
     fetchTransactions(pagination.pageIndex, pagination.pageSize);
   }, [fetchTransactions, pagination.pageIndex, pagination.pageSize]);
 
   const handleTrnNatureChange = (_event: any, values: trnnatures[]) => {
-    const selectedCodes = values
-      ? values.map((trnNature) => trnNature.code)
-      : [];
-    setSelectedTrnNatures(selectedCodes);
+    setSelectedTrnNatures(values);
   };
 
   const columns = useMemo<MRT_ColumnDef<transactions>[]>(() => {
@@ -278,9 +289,7 @@ function App() {
                 limitTags={1}
                 options={trnNatures}
                 getOptionLabel={(option) => option.description}
-                defaultValue={trnNatures.find(
-                  (option) => option.code === DEFAULT_TRN_NATURE,
-                )}
+                value={selectedTrnNatures}
                 onChange={handleTrnNatureChange}
                 renderInput={(params) => (
                   <TextField {...params} label="Trade Types" />

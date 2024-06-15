@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f48acd8a-e246-4264-9ac4-41713844a250" name="Changes" comment="using MUI multi-selector">
+    <list default="true" id="f48acd8a-e246-4264-9ac4-41713844a250" name="Changes" comment="fixed package.json + formatting">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/apps/client/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/client/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/client/src/App.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -149,15 +148,7 @@
       <workItem from="1718073982154" duration="4884000" />
       <workItem from="1718150799891" duration="956000" />
       <workItem from="1718151765112" duration="20200000" />
-      <workItem from="1718418741390" duration="2247000" />
-    </task>
-    <task id="LOCAL-00020" summary="V0.0.0.0.0.0.0.0.0.1 ACTUALLY WORKING!!!!">
-      <option name="closed" value="true" />
-      <created>1716014721418</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1716014721418</updated>
+      <workItem from="1718418741390" duration="7971000" />
     </task>
     <task id="LOCAL-00021" summary="Sharing prisma types to the client&#10;(copy to client on prisma generate)">
       <option name="closed" value="true" />
@@ -543,7 +534,15 @@
       <option name="project" value="LOCAL" />
       <updated>1718343595441</updated>
     </task>
-    <option name="localTasksCounter" value="69" />
+    <task id="LOCAL-00069" summary="fixed package.json + formatting">
+      <option name="closed" value="true" />
+      <created>1718421046390</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1718421046391</updated>
+    </task>
+    <option name="localTasksCounter" value="70" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -574,7 +573,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="null =&gt; &quot;&quot;&#10;+ other minor fixes" />
     <MESSAGE value="Security Type == name instead of id" />
     <MESSAGE value="Better prisma readme" />
     <MESSAGE value="ESLint / endofline changes" />
@@ -599,6 +597,7 @@
     <MESSAGE value="MUI date pickers" />
     <MESSAGE value="cleanup" />
     <MESSAGE value="using MUI multi-selector" />
-    <option name="LAST_COMMIT_MESSAGE" value="using MUI multi-selector" />
+    <MESSAGE value="fixed package.json + formatting" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed package.json + formatting" />
   </component>
 </project>
