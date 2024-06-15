@@ -4,7 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f48acd8a-e246-4264-9ac4-41713844a250" name="Changes" comment="Actually fixed default value trn natures">
+    <list default="true" id="f48acd8a-e246-4264-9ac4-41713844a250" name="Changes" comment="Update light/dark icon">
+      <change afterPath="$PROJECT_DIR$/apps/client/src/theme.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/client/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/client/src/App.tsx" afterDir="false" />
     </list>
@@ -148,15 +149,7 @@
       <workItem from="1718073982154" duration="4884000" />
       <workItem from="1718150799891" duration="956000" />
       <workItem from="1718151765112" duration="20200000" />
-      <workItem from="1718418741390" duration="10623000" />
-    </task>
-    <task id="LOCAL-00023" summary="Requete avec date seulement, pas de time&#10;Ajout util/date - FormatDate()">
-      <option name="closed" value="true" />
-      <created>1716186779015</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1716186779015</updated>
+      <workItem from="1718418741390" duration="11809000" />
     </task>
     <task id="LOCAL-00024" summary="Ajout de pagination rudimentaire&#10;Fix timezone date (UTC internal)">
       <option name="closed" value="true" />
@@ -542,7 +535,15 @@
       <option name="project" value="LOCAL" />
       <updated>1718427863415</updated>
     </task>
-    <option name="localTasksCounter" value="72" />
+    <task id="LOCAL-00072" summary="Update light/dark icon">
+      <option name="closed" value="true" />
+      <created>1718429436175</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1718429436175</updated>
+    </task>
+    <option name="localTasksCounter" value="73" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -573,7 +574,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="ESLint / endofline changes" />
     <MESSAGE value="Updated server readme" />
     <MESSAGE value="robot.txt" />
     <MESSAGE value="minor fix" />
@@ -598,6 +598,7 @@
     <MESSAGE value="fixed package.json + formatting" />
     <MESSAGE value="Fixed default value trn natures" />
     <MESSAGE value="Actually fixed default value trn natures" />
-    <option name="LAST_COMMIT_MESSAGE" value="Actually fixed default value trn natures" />
+    <MESSAGE value="Update light/dark icon" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update light/dark icon" />
   </component>
 </project>

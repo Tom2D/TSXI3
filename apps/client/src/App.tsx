@@ -28,6 +28,7 @@ import Brightness7Icon from '@mui/icons-material/Brightness7';
 import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import dayjs, { Dayjs } from 'dayjs';
+import { getDesignTokens } from './theme.tsx';
 
 const DEFAULT_TRN_NATURE = 10;
 
@@ -57,12 +58,7 @@ function App() {
   const [isError, setIsError] = useState(false);
 
   const theme = useMemo(
-    () =>
-      createTheme({
-        palette: {
-          mode: themeMode,
-        },
-      }),
+    () => createTheme(getDesignTokens(themeMode)),
     [themeMode],
   );
 
