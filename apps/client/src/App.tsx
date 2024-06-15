@@ -79,46 +79,6 @@ function App() {
     hasData.current = Boolean(trns.length);
   }, [startDate, endDate, selectedTrnNatures, trns]);
 
-  useEffect(() => {
-    const fetchTrnNatures = async () => {
-      try {
-        const response = await fetch(`${SERVER_AUTHORITY}/trn-natures`);
-        if (response.ok) {
-          const trnNatures = await response.json();
-          setTrnNatures(trnNatures);
-          const defaultTrnNature = trnNatures.filter(
-            (option: trnnatures) => option.code === DEFAULT_TRN_NATURE,
-          );
-          setSelectedTrnNatures(defaultTrnNature);
-          selectedTrnNaturesRef.current = defaultTrnNature; // Pour que fetchTransactions le considère
-        } else {
-          console.error('Failed to fetch transaction natures');
-        }
-      } catch (error) {
-        setIsError(true);
-        console.error('Error fetching transaction natures:', error);
-      }
-    };
-
-    const fetchTrnFlags = async () => {
-      try {
-        const response = await fetch(`${SERVER_AUTHORITY}/trn-flags`);
-        if (response.ok) {
-          setTrnFlags(await response.json());
-        } else {
-          console.error('Failed to fetch transaction flags');
-        }
-      } catch (error) {
-        setIsError(true);
-        console.error('Error fetching transaction flags:', error);
-      }
-    };
-
-    fetchTrnNatures();
-    fetchTrnFlags();
-    fetchTransactions();
-  }, []);
-
   const fetchTransactions = useCallback(
     async (pageIndex = 0, pageSize = 10) => {
       if (!hasData) {
@@ -163,11 +123,56 @@ function App() {
     [],
   );
 
-  const isFirstRender = useRef(true);
+  const isInitialFetch = useRef(true);
+
   useEffect(() => {
-    // Refetch data on page change only. Does not do inial fetch (trnNatures not fetched yet).
-    if (isFirstRender.current) {
-      isFirstRender.current = false;
+    const fetchTrnNatures = async () => {
+      try {
+        const response = await fetch(`${SERVER_AUTHORITY}/trn-natures`);
+        if (response.ok) {
+          const trnNatures = await response.json();
+          setTrnNatures(trnNatures);
+          const defaultTrnNature = trnNatures.filter(
+            (option: trnnatures) => option.code === DEFAULT_TRN_NATURE,
+          );
+          setSelectedTrnNatures(defaultTrnNature);
+          selectedTrnNaturesRef.current = defaultTrnNature; // Pour que fetchTransactions le considère
+        } else {
+          console.error('Failed to fetch transaction natures');
+        }
+      } catch (error) {
+        setIsError(true);
+        console.error('Error fetching transaction natures:', error);
+      }
+    };
+
+    const initialFetchTransactions = async () => {
+      await fetchTrnNatures();
+      fetchTransactions();
+      isInitialFetch.current = false;
+    };
+
+    const fetchTrnFlags = async () => {
+      try {
+        const response = await fetch(`${SERVER_AUTHORITY}/trn-flags`);
+        if (response.ok) {
+          setTrnFlags(await response.json());
+        } else {
+          console.error('Failed to fetch transaction flags');
+        }
+      } catch (error) {
+        setIsError(true);
+        console.error('Error fetching transaction flags:', error);
+      }
+    };
+
+    initialFetchTransactions();
+    fetchTrnFlags();
+  }, [fetchTransactions]);
+
+  useEffect(() => {
+    if (isInitialFetch.current) {
+      // Refetch data on page change only. Does not do initial fetch.
       return;
     }
     fetchTransactions(pagination.pageIndex, pagination.pageSize);
