@@ -1,18 +1,6 @@
 // App.tsx
-import { useEffect, useState, useMemo, useCallback, useRef } from 'react';
+import { useEffect, useState, useMemo, useRef } from 'react';
 import './App.css';
-import { SERVER_AUTHORITY } from '@tsxinsider/shared';
-import {
-  transactions,
-  trnnatures,
-  issuers,
-  insiders,
-  tickers,
-  relationstoissuer,
-  trnflag,
-  securitydesignations,
-} from './prisma-types';
-import { FormatDateUTC } from './util/date';
 import {
   createTheme,
   ThemeProvider,
@@ -20,14 +8,29 @@ import {
   Autocomplete,
   TextField,
 } from '@mui/material';
-import dayjs, { Dayjs } from 'dayjs';
+import { LocalizationProvider } from '@mui/x-date-pickers';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { getDesignTokens } from './theme.tsx';
 import ThemeToggleButton from './components/ThemeToggleButton';
 import DatePickers from './components/DatePickers';
 import TransactionTable from './components/TransactionTable';
-import { LocalizationProvider } from '@mui/x-date-pickers';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import {
+  fetchTransactions,
+  fetchTrnNatures,
+  fetchTrnFlags,
+} from './grid/fetching';
+import {
+  issuers,
+  tickers,
+  insiders,
+  relationstoissuer,
+  securitydesignations,
+  transactions,
+  trnflag,
+  trnnatures,
+} from './prisma-types';
 import { getColumns } from './grid/get-columns.ts';
+import dayjs, { Dayjs } from 'dayjs';
 
 const DEFAULT_TRN_NATURE = 10;
 
@@ -76,104 +79,67 @@ function App() {
     hasData.current = Boolean(trns.length);
   }, [startDate, endDate, selectedTrnNatures, trns]);
 
-  const fetchTransactions = useCallback(
-    async (pageIndex = 0, pageSize = 10) => {
-      if (!hasData) {
-        setIsLoading(true);
-      } else {
-        setIsRefetching(true);
-      }
-
-      try {
-        const startDateStr = FormatDateUTC(startDateRef.current);
-        const endDateStr = FormatDateUTC(endDateRef.current);
-        const trnNatureCodes = selectedTrnNaturesRef.current
-          .map((option) => option.code)
-          .join(',');
-        const response = await fetch(
-          `${SERVER_AUTHORITY}/transactions?beginFilingDate=${startDateStr}&endFilingDate=${endDateStr}&limit=${pageSize}&page=${pageIndex}&trnNatureCodes=${trnNatureCodes}`,
-        );
-
-        if (response.ok) {
-          const data = await response.json();
-          setTransactions(data.transactions);
-          setIssuers(data.issuers);
-          setTickers(data.tickers);
-          setInsiders(data.insiders);
-          setRelationsToIssuer(data.relationsToIssuer);
-          setSecurityDesignations(data.securityDesignations);
-          setRowCount(data.total); // Set the total row count
-        } else {
-          console.error('Failed to fetch transactions');
-          setIsError(true);
-          return;
-        }
-      } catch (error) {
-        console.error('Error fetching transactions:', error);
-        setIsError(true);
-        return;
-      }
-      setIsLoading(false);
-      setIsRefetching(false);
-      setIsError(false);
-    },
-    [],
-  );
-
   const isInitialFetch = useRef(true);
+  const initialPagination = useRef(pagination);
 
   useEffect(() => {
-    const fetchTrnNatures = async () => {
-      try {
-        const response = await fetch(`${SERVER_AUTHORITY}/trn-natures`);
-        if (response.ok) {
-          const trnNatures = await response.json();
-          setTrnNatures(trnNatures);
-          const defaultTrnNature = trnNatures.filter(
-            (option: trnnatures) => option.code === DEFAULT_TRN_NATURE,
-          );
-          setSelectedTrnNatures(defaultTrnNature);
-          selectedTrnNaturesRef.current = defaultTrnNature; // Pour que fetchTransactions le considère
-        } else {
-          console.error('Failed to fetch transaction natures');
-        }
-      } catch (error) {
-        setIsError(true);
-        console.error('Error fetching transaction natures:', error);
-      }
-    };
-
     const initialFetchTransactions = async () => {
-      await fetchTrnNatures();
-      fetchTransactions();
+      await fetchTrnNatures(
+        setTrnNatures,
+        setSelectedTrnNatures,
+        selectedTrnNaturesRef,
+        DEFAULT_TRN_NATURE,
+        setIsError,
+      );
+      fetchTransactions(
+        initialPagination.current.pageIndex,
+        initialPagination.current.pageSize,
+        startDateRef,
+        endDateRef,
+        selectedTrnNaturesRef,
+        setTransactions,
+        setIssuers,
+        setTickers,
+        setInsiders,
+        setRelationsToIssuer,
+        setSecurityDesignations,
+        setRowCount,
+        setIsLoading,
+        setIsRefetching,
+        setIsError,
+        hasData,
+      );
       isInitialFetch.current = false;
     };
 
-    const fetchTrnFlags = async () => {
-      try {
-        const response = await fetch(`${SERVER_AUTHORITY}/trn-flags`);
-        if (response.ok) {
-          setTrnFlags(await response.json());
-        } else {
-          console.error('Failed to fetch transaction flags');
-        }
-      } catch (error) {
-        setIsError(true);
-        console.error('Error fetching transaction flags:', error);
-      }
-    };
-
     initialFetchTransactions();
-    fetchTrnFlags();
-  }, [fetchTransactions]);
+    fetchTrnFlags(setTrnFlags, setIsError);
+  }, []);
 
   useEffect(() => {
     if (isInitialFetch.current) {
       // Refetch data on page change only. Does not do initial fetch.
       return;
     }
-    fetchTransactions(pagination.pageIndex, pagination.pageSize);
-  }, [fetchTransactions, pagination.pageIndex, pagination.pageSize]);
+    fetchTransactions(
+      pagination.pageIndex,
+      pagination.pageSize,
+      startDateRef,
+      endDateRef,
+      selectedTrnNaturesRef,
+      setTransactions,
+      setIssuers,
+      setTickers,
+      setInsiders,
+      setRelationsToIssuer,
+      setSecurityDesignations,
+      setRowCount,
+      setIsLoading,
+      setIsRefetching,
+      setIsError,
+      hasData,
+    );
+  }, [pagination.pageIndex, pagination.pageSize]);
 
   const handleTrnNatureChange = (_event: any, values: trnnatures[]) => {
     setSelectedTrnNatures(values);
@@ -231,7 +197,28 @@ function App() {
                 )}
               />
             </div>
-            <button onClick={() => fetchTransactions(0, pagination.pageSize)}>
+            <button
+              onClick={() =>
+                fetchTransactions(
+                  pagination.pageIndex,
+                  pagination.pageSize,
+                  startDateRef,
+                  endDateRef,
+                  selectedTrnNaturesRef,
+                  setTransactions,
+                  setIssuers,
+                  setTickers,
+                  setInsiders,
+                  setRelationsToIssuer,
+                  setSecurityDesignations,
+                  setRowCount,
+                  setIsLoading,
+                  setIsRefetching,
+                  setIsError,
+                  hasData,
+                )
+              }
+            >
               Fetch Transactions
             </button>
           </div>
