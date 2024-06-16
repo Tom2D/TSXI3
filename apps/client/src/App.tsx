@@ -1,3 +1,4 @@
+// App.tsx
 import { useEffect, useState, useMemo, useCallback, useRef } from 'react';
 import './App.css';
 import { SERVER_AUTHORITY } from '@tsxinsider/shared';
@@ -12,23 +13,22 @@ import {
   securitydesignations,
 } from './prisma-types';
 import { FormatDateUTC } from './util/date';
-import { MaterialReactTable, type MRT_ColumnDef } from 'material-react-table';
-import '@mui/material/styles';
 import { initialColumns } from './grid/constants';
 import {
   createTheme,
   ThemeProvider,
   CssBaseline,
-  TextField,
   Autocomplete,
-  IconButton,
+  TextField,
 } from '@mui/material';
-import Brightness4Icon from '@mui/icons-material/Brightness4';
-import Brightness7Icon from '@mui/icons-material/Brightness7';
-import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import dayjs, { Dayjs } from 'dayjs';
 import { getDesignTokens } from './theme.tsx';
+import ThemeToggleButton from './components/ThemeToggleButton';
+import DatePickers from './components/DatePickers';
+import TransactionTable from './components/TransactionTable';
+import { MRT_ColumnDef } from 'material-react-table';
+import { LocalizationProvider } from '@mui/x-date-pickers';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 
 const DEFAULT_TRN_NATURE = 10;
 
@@ -262,44 +262,23 @@ function App() {
       <LocalizationProvider dateAdapter={AdapterDayjs}>
         <div className="App">
           <h1>Transactions</h1>
-          <IconButton
-            sx={{ ml: 1 }}
-            onClick={handleThemeToggle}
-            color="inherit"
-          >
-            {theme.palette.mode === 'dark' ? (
-              <Brightness7Icon />
-            ) : (
-              <Brightness4Icon />
-            )}
-          </IconButton>
+          <ThemeToggleButton onToggle={handleThemeToggle} />
           <div className="filters">
-            <div>
-              <DatePicker
-                label="Start Date"
-                value={startDate}
-                onChange={(newDate) => setStartDate(newDate)}
-                slotProps={{
-                  field: { clearable: true },
-                }}
-              />
-            </div>
-            <div>
-              <DatePicker
-                label="End Date"
-                value={endDate}
-                onChange={(newDate) => setEndDate(newDate)}
-                slotProps={{
-                  field: { clearable: true },
-                }}
-              />
-            </div>
+            <DatePickers
+              startDate={startDate}
+              endDate={endDate}
+              setStartDate={setStartDate}
+              setEndDate={setEndDate}
+            />
             <div>
               <Autocomplete
                 multiple
                 limitTags={1}
                 options={trnNatures}
                 getOptionLabel={(option) => option.description}
+                isOptionEqualToValue={(option, value) =>
+                  option.code === value.code || option.code === value
+                }
                 value={selectedTrnNatures}
                 onChange={handleTrnNatureChange}
                 renderInput={(params) => (
@@ -311,45 +290,16 @@ function App() {
               Fetch Transactions
             </button>
           </div>
-          <div className="grid-container">
-            <MaterialReactTable
-              columns={columns}
-              data={trns}
-              enableColumnResizing
-              enableColumnOrdering={false}
-              enableColumnActions={false}
-              enableSorting={false}
-              enableRowSelection={false}
-              enableDensityToggle={false}
-              manualPagination
-              onPaginationChange={setPagination}
-              rowCount={rowCount}
-              state={{
-                pagination,
-                isLoading,
-                showProgressBars: isRefetching,
-                showAlertBanner: isError,
-              }}
-              initialState={{
-                showColumnFilters: false,
-                density: 'compact',
-                columnVisibility: {
-                  ownershipType: false,
-                },
-              }}
-              muiTableBodyCellProps={{
-                style: { whiteSpace: 'normal', wordBreak: 'break-word' },
-              }}
-              muiPaginationProps={{
-                rowsPerPageOptions: [10, 25, 100],
-              }}
-              muiToolbarAlertBannerProps={
-                isError
-                  ? { color: 'error', children: 'Error loading data' }
-                  : undefined
-              }
-            />
-          </div>
+          <TransactionTable
+            columns={columns}
+            data={trns}
+            pagination={pagination}
+            rowCount={rowCount}
+            isLoading={isLoading}
+            isRefetching={isRefetching}
+            isError={isError}
+            setPagination={setPagination}
+          />
         </div>
       </LocalizationProvider>
     </ThemeProvider>

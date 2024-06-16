@@ -4,8 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f48acd8a-e246-4264-9ac4-41713844a250" name="Changes" comment="Update light/dark icon">
-      <change afterPath="$PROJECT_DIR$/apps/client/src/theme.tsx" afterDir="false" />
+    <list default="true" id="f48acd8a-e246-4264-9ac4-41713844a250" name="Changes" comment="setup pour custom theme eventuel">
+      <change afterPath="$PROJECT_DIR$/apps/client/src/components/DatePickers.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/client/src/components/ThemeToggleButton.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/client/src/components/TransactionTable.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/client/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/client/src/App.tsx" afterDir="false" />
     </list>
@@ -17,8 +19,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="TypeScript JSX File" />
         <option value="TypeScript File" />
+        <option value="TypeScript JSX File" />
       </list>
     </option>
   </component>
@@ -149,15 +151,7 @@
       <workItem from="1718073982154" duration="4884000" />
       <workItem from="1718150799891" duration="956000" />
       <workItem from="1718151765112" duration="20200000" />
-      <workItem from="1718418741390" duration="11809000" />
-    </task>
-    <task id="LOCAL-00024" summary="Ajout de pagination rudimentaire&#10;Fix timezone date (UTC internal)">
-      <option name="closed" value="true" />
-      <created>1716189034918</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1716189034918</updated>
+      <workItem from="1718418741390" duration="17055000" />
     </task>
     <task id="LOCAL-00025" summary="Checkboxes trnNatures">
       <option name="closed" value="true" />
@@ -543,7 +537,15 @@
       <option name="project" value="LOCAL" />
       <updated>1718429436175</updated>
     </task>
-    <option name="localTasksCounter" value="73" />
+    <task id="LOCAL-00073" summary="setup pour custom theme eventuel">
+      <option name="closed" value="true" />
+      <created>1718430594898</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1718430594898</updated>
+    </task>
+    <option name="localTasksCounter" value="74" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -574,7 +576,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Updated server readme" />
     <MESSAGE value="robot.txt" />
     <MESSAGE value="minor fix" />
     <MESSAGE value="'@typescript-eslint/no-explicit-any': 'off'," />
@@ -599,6 +600,7 @@
     <MESSAGE value="Fixed default value trn natures" />
     <MESSAGE value="Actually fixed default value trn natures" />
     <MESSAGE value="Update light/dark icon" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update light/dark icon" />
+    <MESSAGE value="setup pour custom theme eventuel" />
+    <option name="LAST_COMMIT_MESSAGE" value="setup pour custom theme eventuel" />
   </component>
 </project>
