@@ -4,12 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f48acd8a-e246-4264-9ac4-41713844a250" name="Changes" comment="setup pour custom theme eventuel">
-      <change afterPath="$PROJECT_DIR$/apps/client/src/components/DatePickers.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/client/src/components/ThemeToggleButton.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/client/src/components/TransactionTable.tsx" afterDir="false" />
+    <list default="true" id="f48acd8a-e246-4264-9ac4-41713844a250" name="Changes" comment="Split App.tsx in multiple files">
+      <change afterPath="$PROJECT_DIR$/apps/client/src/grid/get-columns.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/client/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/client/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/client/src/components/TransactionTable.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/client/src/components/TransactionTable.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,8 +18,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="TypeScript File" />
         <option value="TypeScript JSX File" />
+        <option value="TypeScript File" />
       </list>
     </option>
   </component>
@@ -151,15 +150,7 @@
       <workItem from="1718073982154" duration="4884000" />
       <workItem from="1718150799891" duration="956000" />
       <workItem from="1718151765112" duration="20200000" />
-      <workItem from="1718418741390" duration="17055000" />
-    </task>
-    <task id="LOCAL-00025" summary="Checkboxes trnNatures">
-      <option name="closed" value="true" />
-      <created>1716193361064</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1716193361064</updated>
+      <workItem from="1718418741390" duration="18335000" />
     </task>
     <task id="LOCAL-00026" summary="Combo checkbox">
       <option name="closed" value="true" />
@@ -545,7 +536,15 @@
       <option name="project" value="LOCAL" />
       <updated>1718430594898</updated>
     </task>
-    <option name="localTasksCounter" value="74" />
+    <task id="LOCAL-00074" summary="Split App.tsx in multiple files">
+      <option name="closed" value="true" />
+      <created>1718512868164</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1718512868164</updated>
+    </task>
+    <option name="localTasksCounter" value="75" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -576,7 +575,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="robot.txt" />
     <MESSAGE value="minor fix" />
     <MESSAGE value="'@typescript-eslint/no-explicit-any': 'off'," />
     <MESSAGE value="Fixed newlines: now CRLF (windows default)" />
@@ -601,6 +599,7 @@
     <MESSAGE value="Actually fixed default value trn natures" />
     <MESSAGE value="Update light/dark icon" />
     <MESSAGE value="setup pour custom theme eventuel" />
-    <option name="LAST_COMMIT_MESSAGE" value="setup pour custom theme eventuel" />
+    <MESSAGE value="Split App.tsx in multiple files" />
+    <option name="LAST_COMMIT_MESSAGE" value="Split App.tsx in multiple files" />
   </component>
 </project>

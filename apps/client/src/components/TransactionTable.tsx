@@ -1,4 +1,9 @@
-import { MaterialReactTable, MRT_ColumnDef } from 'material-react-table';
+import {
+  MaterialReactTable,
+  MRT_ColumnDef,
+  MRT_PaginationState,
+  MRT_Updater,
+} from 'material-react-table';
 import { transactions } from '../prisma-types';
 
 interface Props {
@@ -9,7 +14,7 @@ interface Props {
   isLoading: boolean;
   isRefetching: boolean;
   isError: boolean;
-  setPagination: (pagination: { pageIndex: number; pageSize: number }) => void;
+  setPagination: (pagination: MRT_Updater<MRT_PaginationState>) => void;
 }
 
 const TransactionTable: React.FC<Props> = ({
