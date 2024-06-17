@@ -1,9 +1,13 @@
 import { MRT_Cell, MRT_ColumnDef } from 'material-react-table';
 import { transactions } from '../prisma-types';
 
-const toLocaleNumber = (cell: MRT_Cell<any>): string | null => {
-  const value = cell.getValue<number>();
-  return value !== null ? value.toLocaleString() : null;
+const toLocaleNumber = (cellOrValue: MRT_Cell<any> | number): string | null => {
+  const value =
+    typeof cellOrValue == 'number'
+      ? cellOrValue
+      : cellOrValue.getValue<number>();
+
+  return value !== null && value !== undefined ? value.toLocaleString() : null;
 };
 
 const noWrap = {
@@ -34,6 +38,17 @@ export const initialColumns: MRT_ColumnDef<transactions>[] = [
     size: 80,
     ...noWrap,
     Cell: ({ cell }) => toLocaleNumber(cell),
+  },
+  {
+    accessorKey: 'value',
+    header: 'Value',
+    size: 85,
+    ...noWrap,
+    Cell: ({ row }) => {
+      const price = row.original.price;
+      const nb = row.original.nb;
+      return toLocaleNumber(price * nb);
+    },
   },
   {
     accessorKey: 'closingBalance',
