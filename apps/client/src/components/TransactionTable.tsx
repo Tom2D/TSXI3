@@ -27,41 +27,43 @@ const TransactionTable: React.FC<Props> = ({
   isError,
   setPagination,
 }) => (
-  <MaterialReactTable
-    columns={columns}
-    data={data}
-    enableColumnResizing
-    enableColumnOrdering={false}
-    enableColumnActions={false}
-    enableSorting={false}
-    enableRowSelection={false}
-    enableDensityToggle={false}
-    manualPagination
-    onPaginationChange={setPagination}
-    rowCount={rowCount}
-    state={{
-      pagination,
-      isLoading,
-      showProgressBars: isRefetching,
-      showAlertBanner: isError,
-    }}
-    initialState={{
-      showColumnFilters: false,
-      density: 'compact',
-      columnVisibility: {
-        ownershipType: false,
-      },
-    }}
-    muiTableBodyCellProps={{
-      style: { whiteSpace: 'normal', wordBreak: 'break-word' },
-    }}
-    muiPaginationProps={{
-      rowsPerPageOptions: [10, 25, 100],
-    }}
-    muiToolbarAlertBannerProps={
-      isError ? { color: 'error', children: 'Error loading data' } : undefined
-    }
-  />
+  <div className="table-container">
+    <MaterialReactTable
+      columns={columns}
+      data={data}
+      enableColumnResizing
+      enableColumnOrdering={false}
+      enableColumnActions={false}
+      enableSorting={false}
+      enableRowSelection={false}
+      enableDensityToggle={false}
+      manualPagination
+      onPaginationChange={setPagination}
+      rowCount={rowCount}
+      state={{
+        pagination,
+        isLoading,
+        showProgressBars: isRefetching,
+        showAlertBanner: isError,
+      }}
+      initialState={{
+        showColumnFilters: false,
+        density: 'compact',
+        columnVisibility: {
+          ownershipType: false,
+        },
+      }}
+      muiTableBodyCellProps={{
+        style: { whiteSpace: 'normal', wordBreak: 'break-word' },
+      }}
+      muiPaginationProps={{
+        rowsPerPageOptions: [10, 25, 100],
+      }}
+      muiToolbarAlertBannerProps={
+        isError ? { color: 'error', children: 'Error loading data' } : undefined
+      }
+    />
+  </div>
 );
 
 export default TransactionTable;

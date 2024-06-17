@@ -4,10 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f48acd8a-e246-4264-9ac4-41713844a250" name="Changes" comment="Meilleur gestion d'erreur.&#10;Les trnNatures se font fetcher correctement meme si premier call a échoué">
+    <list default="true" id="f48acd8a-e246-4264-9ac4-41713844a250" name="Changes" comment="Fixed isLoading: only on initialFetch">
+      <change afterPath="$PROJECT_DIR$/apps/client/src/grid/grid.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/client/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/apps/client/src/App.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/client/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/client/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/client/src/grid/fetching.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/client/src/grid/fetching.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/client/src/components/TransactionTable.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/client/src/components/TransactionTable.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,6 +21,7 @@
       <list>
         <option value="TypeScript JSX File" />
         <option value="TypeScript File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -65,34 +68,35 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;JavaScript Debug.client JavaScript.executor&quot;: &quot;Debug&quot;,
-    &quot;JavaScript Debug.client.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;MRT-grid&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;E:/Thomas/Prog/TSXI3&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_interpreter_path&quot;: &quot;node&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;C:\\Users\\TomDD\\AppData\\Roaming\\npm\\pnpm.cmd&quot;,
-    &quot;npm.client.executor&quot;: &quot;Run&quot;,
-    &quot;npm.server debug.executor&quot;: &quot;Run&quot;,
-    &quot;npm.server run.executor&quot;: &quot;Run&quot;,
-    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;E:\\Thomas\\Prog\\TSXInsiderJS2\\node_modules\\prettier&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;E:\\Thomas\\Prog\\TSXI3\\apps\\client\\node_modules\\typescript\\lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "JavaScript Debug.client JavaScript.executor": "Debug",
+    "JavaScript Debug.client.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "MRT-grid",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "E:/Thomas/Prog/TSXI3",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.standard": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.standard": "",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_interpreter_path": "node",
+    "nodejs_package_manager_path": "C:\\Users\\TomDD\\AppData\\Roaming\\npm\\pnpm.cmd",
+    "npm.client.executor": "Run",
+    "npm.server debug.executor": "Run",
+    "npm.server run.executor": "Run",
+    "prettierjs.PrettierConfiguration.Package": "E:\\Thomas\\Prog\\TSXInsiderJS2\\node_modules\\prettier",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "preferences.sourceCode",
+    "ts.external.directory.path": "E:\\Thomas\\Prog\\TSXI3\\apps\\client\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="E:\Thomas\Prog\TSXI3" />
@@ -151,15 +155,8 @@
       <workItem from="1718151765112" duration="20200000" />
       <workItem from="1718418741390" duration="18335000" />
       <workItem from="1718585666406" duration="77000" />
-      <workItem from="1718585776796" duration="3304000" />
-    </task>
-    <task id="LOCAL-00029" summary="Remove example logo &amp; css">
-      <option name="closed" value="true" />
-      <created>1717807938017</created>
-      <option name="number" value="00029" />
-      <option name="presentableId" value="LOCAL-00029" />
-      <option name="project" value="LOCAL" />
-      <updated>1717807938017</updated>
+      <workItem from="1718585776796" duration="7818000" />
+      <workItem from="1718597726223" duration="368000" />
     </task>
     <task id="LOCAL-00030" summary="Begin glide data grid (not working)">
       <option name="closed" value="true" />
@@ -545,7 +542,15 @@
       <option name="project" value="LOCAL" />
       <updated>1718587761125</updated>
     </task>
-    <option name="localTasksCounter" value="78" />
+    <task id="LOCAL-00078" summary="Fixed isLoading: only on initialFetch">
+      <option name="closed" value="true" />
+      <created>1718592659088</created>
+      <option name="number" value="00078" />
+      <option name="presentableId" value="LOCAL-00078" />
+      <option name="project" value="LOCAL" />
+      <updated>1718592659088</updated>
+    </task>
+    <option name="localTasksCounter" value="79" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -576,7 +581,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Fixed newlines: now CRLF (windows default)" />
     <MESSAGE value="Mise en commun eslint/prettier" />
     <MESSAGE value="Mise en commun de code de getter" />
     <MESSAGE value="small fix trnFlag getter" />
@@ -601,6 +605,7 @@
     <MESSAGE value="Split App.tsx in multiple files" />
     <MESSAGE value="Extracted fetchTransactions logic into a callback" />
     <MESSAGE value="Meilleur gestion d'erreur.&#10;Les trnNatures se font fetcher correctement meme si premier call a échoué" />
-    <option name="LAST_COMMIT_MESSAGE" value="Meilleur gestion d'erreur.&#10;Les trnNatures se font fetcher correctement meme si premier call a échoué" />
+    <MESSAGE value="Fixed isLoading: only on initialFetch" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed isLoading: only on initialFetch" />
   </component>
 </project>
