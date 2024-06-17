@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f48acd8a-e246-4264-9ac4-41713844a250" name="Changes" comment="Allow columns to grow when the is space">
+    <list default="true" id="f48acd8a-e246-4264-9ac4-41713844a250" name="Changes" comment="Minor">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/client/src/components/TransactionTable.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/client/src/components/TransactionTable.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/client/src/grid/constants.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/client/src/grid/constants.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -153,15 +154,7 @@
       <workItem from="1718418741390" duration="18335000" />
       <workItem from="1718585666406" duration="77000" />
       <workItem from="1718585776796" duration="7818000" />
-      <workItem from="1718597726223" duration="3736000" />
-    </task>
-    <task id="LOCAL-00033" summary="dark theme grid">
-      <option name="closed" value="true" />
-      <created>1717819219831</created>
-      <option name="number" value="00033" />
-      <option name="presentableId" value="LOCAL-00033" />
-      <option name="project" value="LOCAL" />
-      <updated>1717819219831</updated>
+      <workItem from="1718597726223" duration="4123000" />
     </task>
     <task id="LOCAL-00034" summary="- Retrait colonnes superflues&#10;- Permettre de resize les colonnes">
       <option name="closed" value="true" />
@@ -547,7 +540,15 @@
       <option name="project" value="LOCAL" />
       <updated>1718638153725</updated>
     </task>
-    <option name="localTasksCounter" value="82" />
+    <task id="LOCAL-00082" summary="Minor">
+      <option name="closed" value="true" />
+      <created>1718638296506</created>
+      <option name="number" value="00082" />
+      <option name="presentableId" value="LOCAL-00082" />
+      <option name="project" value="LOCAL" />
+      <updated>1718638296506</updated>
+    </task>
+    <option name="localTasksCounter" value="83" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -578,7 +579,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Button to toggle light and dark mode" />
     <MESSAGE value="Using built in pagination!" />
     <MESSAGE value="Fix error dependency fetchTransactions" />
     <MESSAGE value="setIsRefetching &amp; setIsError" />
@@ -603,6 +603,7 @@
     <MESSAGE value="columns grow not working" />
     <MESSAGE value="grid width: min==max==90%" />
     <MESSAGE value="Allow columns to grow when the is space" />
-    <option name="LAST_COMMIT_MESSAGE" value="Allow columns to grow when the is space" />
+    <MESSAGE value="Minor" />
+    <option name="LAST_COMMIT_MESSAGE" value="Minor" />
   </component>
 </project>

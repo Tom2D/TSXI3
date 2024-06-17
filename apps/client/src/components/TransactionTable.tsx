@@ -52,6 +52,7 @@ const TransactionTable: React.FC<Props> = ({
         density: 'compact',
         columnVisibility: {
           ownershipType: false,
+          securityId: false,
         },
       }}
       muiTableBodyCellProps={{

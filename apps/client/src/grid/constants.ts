@@ -13,7 +13,7 @@ export const initialColumns: MRT_ColumnDef<transactions>[] = [
   { accessorKey: 'ticker', header: 'Ticker', size: 60 },
   { accessorKey: 'issuer', header: 'Issuer', size: 200 },
   { accessorKey: 'insider', header: 'Insider', size: 125 },
-  { accessorKey: 'titles', header: 'Titles', size: 120 },
+  { accessorKey: 'titles', header: 'Titles', size: 125 },
   { accessorKey: 'trnNatureCode', header: 'Trade Type', size: 200 },
   {
     accessorKey: 'price',
