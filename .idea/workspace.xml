@@ -4,12 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f48acd8a-e246-4264-9ac4-41713844a250" name="Changes" comment="Fixed isLoading: only on initialFetch">
-      <change afterPath="$PROJECT_DIR$/apps/client/src/grid/grid.css" afterDir="false" />
+    <list default="true" id="f48acd8a-e246-4264-9ac4-41713844a250" name="Changes" comment="Added grid.css&#10;Set min grid witdh (when removing many columns)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/client/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/apps/client/src/App.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/client/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/client/src/App.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/client/src/components/TransactionTable.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/client/src/components/TransactionTable.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/client/src/grid/grid.css" beforeDir="false" afterPath="$PROJECT_DIR$/apps/client/src/grid/grid.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -111,7 +109,7 @@
       <recent name="E:\Thomas\Prog\TSXInsiderJS2\packages\shared\src" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.server run">
+  <component name="RunManager" selected="npm.client">
     <configuration name="client JavaScript" type="JavascriptDebugType" uri="http://localhost:5173">
       <method v="2" />
     </configuration>
@@ -156,15 +154,7 @@
       <workItem from="1718418741390" duration="18335000" />
       <workItem from="1718585666406" duration="77000" />
       <workItem from="1718585776796" duration="7818000" />
-      <workItem from="1718597726223" duration="368000" />
-    </task>
-    <task id="LOCAL-00030" summary="Begin glide data grid (not working)">
-      <option name="closed" value="true" />
-      <created>1717810761405</created>
-      <option name="number" value="00030" />
-      <option name="presentableId" value="LOCAL-00030" />
-      <option name="project" value="LOCAL" />
-      <updated>1717810761405</updated>
+      <workItem from="1718597726223" duration="3450000" />
     </task>
     <task id="LOCAL-00031" summary="Begin glide data grid working">
       <option name="closed" value="true" />
@@ -550,7 +540,15 @@
       <option name="project" value="LOCAL" />
       <updated>1718592659088</updated>
     </task>
-    <option name="localTasksCounter" value="79" />
+    <task id="LOCAL-00079" summary="Added grid.css&#10;Set min grid witdh (when removing many columns)">
+      <option name="closed" value="true" />
+      <created>1718598122095</created>
+      <option name="number" value="00079" />
+      <option name="presentableId" value="LOCAL-00079" />
+      <option name="project" value="LOCAL" />
+      <updated>1718598122095</updated>
+    </task>
+    <option name="localTasksCounter" value="80" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -581,8 +579,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Mise en commun eslint/prettier" />
-    <MESSAGE value="Mise en commun de code de getter" />
     <MESSAGE value="small fix trnFlag getter" />
     <MESSAGE value="Switch to MaterialReactTable v1&#10;This is sick, never looking back!!" />
     <MESSAGE value="Button to toggle light and dark mode" />
@@ -606,6 +602,8 @@
     <MESSAGE value="Extracted fetchTransactions logic into a callback" />
     <MESSAGE value="Meilleur gestion d'erreur.&#10;Les trnNatures se font fetcher correctement meme si premier call a échoué" />
     <MESSAGE value="Fixed isLoading: only on initialFetch" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed isLoading: only on initialFetch" />
+    <MESSAGE value="Added grid.css&#10;Set min grid witdh (when removing many columns)" />
+    <MESSAGE value="columns grow not working" />
+    <option name="LAST_COMMIT_MESSAGE" value="columns grow not working" />
   </component>
 </project>

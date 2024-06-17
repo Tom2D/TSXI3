@@ -32,6 +32,7 @@ const TransactionTable: React.FC<Props> = ({
       columns={columns}
       data={data}
       enableColumnResizing
+      layoutMode={'grid'}
       enableColumnOrdering={false}
       enableColumnActions={false}
       enableSorting={false}
