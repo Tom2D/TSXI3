@@ -6,10 +6,16 @@ const toLocaleNumber = (cell: MRT_Cell<any>): string | null => {
   return value !== null ? value.toLocaleString() : null;
 };
 
+const noWrap = {
+  muiTableBodyCellProps: {
+    style: { whiteSpace: 'nowrap' }, // Disable text wrapping
+  },
+};
+
 export const initialColumns: MRT_ColumnDef<transactions>[] = [
-  { accessorKey: 'trnFlagId', header: 'Flag', size: 50 },
-  { accessorKey: 'filingDate', header: 'Filing Date', size: 90 },
-  { accessorKey: 'trnDate', header: 'Trade Date', size: 90 },
+  { accessorKey: 'trnFlagId', header: 'Flag', size: 50, ...noWrap },
+  { accessorKey: 'filingDate', header: 'Filing Date', size: 90, ...noWrap },
+  { accessorKey: 'trnDate', header: 'Trade Date', size: 90, ...noWrap },
   { accessorKey: 'ticker', header: 'Ticker', size: 60 },
   { accessorKey: 'issuer', header: 'Issuer', size: 200 },
   { accessorKey: 'insider', header: 'Insider', size: 125 },
@@ -19,12 +25,14 @@ export const initialColumns: MRT_ColumnDef<transactions>[] = [
     accessorKey: 'price',
     header: 'Price',
     size: 60,
+    ...noWrap,
     Cell: ({ cell }) => toLocaleNumber(cell),
   },
   {
     accessorKey: 'nb',
     header: 'Quantity',
     size: 80,
+    ...noWrap,
     Cell: ({ cell }) => toLocaleNumber(cell),
   },
   { accessorKey: 'securityId', header: 'Security Type', size: 150 },
@@ -33,9 +41,7 @@ export const initialColumns: MRT_ColumnDef<transactions>[] = [
     header: 'Balance',
     size: 85,
     Cell: ({ cell }) => toLocaleNumber(cell),
-    muiTableBodyCellProps: {
-      style: { whiteSpace: 'nowrap' }, // Disable text wrapping
-    },
+    ...noWrap,
   },
   { accessorKey: 'ownershipType', header: 'Ownership', size: 90 },
   {

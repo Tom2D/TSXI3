@@ -29,7 +29,7 @@ import {
   trnflag,
   trnnatures,
 } from './prisma-types';
-import { getColumns } from './grid/get-columns.ts';
+import { columnsGet } from './grid/columns-get.ts';
 import dayjs, { Dayjs } from 'dayjs';
 import { MRT_PaginationState } from 'material-react-table';
 
@@ -152,7 +152,7 @@ function App() {
 
   // prettier-ignore
   const columns = useMemo(() =>
-            getColumns(issuers, tickers, insiders, relationsToIssuer, securityDesignations, trnFlags, trnNatures,),
+            columnsGet(issuers, tickers, insiders, relationsToIssuer, securityDesignations, trnFlags, trnNatures,),
         [issuers, tickers, insiders, relationsToIssuer, securityDesignations, trnFlags, trnNatures,],
     );
 

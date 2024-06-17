@@ -1,4 +1,4 @@
-// getColumns.ts
+// columnsGet.ts
 import { MRT_ColumnDef } from 'material-react-table';
 import {
   transactions,
@@ -10,9 +10,9 @@ import {
   trnflag,
   securitydesignations,
 } from '../prisma-types';
-import { initialColumns } from './constants';
+import { initialColumns } from './columns-def.ts';
 
-export const getColumns = (
+export const columnsGet = (
   issuers: issuers[],
   tickers: tickers[],
   insiders: insiders[],
