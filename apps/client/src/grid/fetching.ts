@@ -49,18 +49,19 @@ export const fetchTransactions = async (
       setSecurityDesignations(data.securityDesignations);
       setRowCount(data.total); // Set the total row count
     } else {
-      console.error('Failed to fetch transactions');
+      console.error('Invalid fetch transactions response:', response);
       setIsError(true);
-      return;
+      return false;
     }
   } catch (error) {
     console.error('Error fetching transactions:', error);
     setIsError(true);
-    return;
+    return false;
   }
   setIsLoading(false);
   setIsRefetching(false);
   setIsError(false);
+  return true;
 };
 
 export const fetchTrnNatures = async (
@@ -81,12 +82,15 @@ export const fetchTrnNatures = async (
       setSelectedTrnNatures(defaultTrnNature);
       selectedTrnNaturesRef.current = defaultTrnNature; // So fetchTransactions considers it
     } else {
-      console.error('Failed to fetch transaction natures');
+      console.error('Invalid fetch transactions natures response:', response);
+      return false;
     }
   } catch (error) {
     setIsError(true);
     console.error('Error fetching transaction natures:', error);
+    return false;
   }
+  return true;
 };
 
 export const fetchTrnFlags = async (
@@ -98,10 +102,13 @@ export const fetchTrnFlags = async (
     if (response.ok) {
       setTrnFlags(await response.json());
     } else {
-      console.error('Failed to fetch transaction flags');
+      console.error('Invalid fetch transactions flags response:', response);
+      return false;
     }
   } catch (error) {
     setIsError(true);
     console.error('Error fetching transaction flags:', error);
+    return false;
   }
+  return true;
 };

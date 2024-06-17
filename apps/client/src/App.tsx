@@ -84,44 +84,59 @@ function App() {
 
   // Callback for fetchTransactions() to avoid repeating all arguments
   const fetchTransactionsCallback = useCallback(
-    (pagination: MRT_PaginationState) => {
-      fetchTransactions(
-        pagination.pageIndex,
-        pagination.pageSize,
-        startDateRef,
-        endDateRef,
-        selectedTrnNaturesRef,
-        setTransactions,
-        setIssuers,
-        setTickers,
-        setInsiders,
-        setRelationsToIssuer,
-        setSecurityDesignations,
-        setRowCount,
-        setIsLoading,
-        setIsRefetching,
-        setIsError,
-        hasData,
-      );
+    async (pagination: MRT_PaginationState) => {
+      try {
+        if (isInitialFetch.current) {
+          if (
+            !(await fetchTrnNatures(
+              setTrnNatures,
+              setSelectedTrnNatures,
+              selectedTrnNaturesRef,
+              DEFAULT_TRN_NATURE,
+              setIsError,
+            ))
+          ) {
+            return; // Error during fetch
+          }
+          if (!(await fetchTrnFlags(setTrnFlags, setIsError))) {
+            return; // Error during fetch
+          }
+        }
+
+        if (
+          !fetchTransactions(
+            pagination.pageIndex,
+            pagination.pageSize,
+            startDateRef,
+            endDateRef,
+            selectedTrnNaturesRef,
+            setTransactions,
+            setIssuers,
+            setTickers,
+            setInsiders,
+            setRelationsToIssuer,
+            setSecurityDesignations,
+            setRowCount,
+            setIsLoading,
+            setIsRefetching,
+            setIsError,
+            hasData,
+          )
+        ) {
+          return; // Error during fetch
+        }
+      } catch (error) {
+        console.error('Failed to fetch transactions:', error);
+        setIsError(true);
+        return;
+      }
+      isInitialFetch.current = false;
     },
     [],
   );
 
   useEffect(() => {
-    const initialFetchTransactions = async () => {
-      await fetchTrnNatures(
-        setTrnNatures,
-        setSelectedTrnNatures,
-        selectedTrnNaturesRef,
-        DEFAULT_TRN_NATURE,
-        setIsError,
-      );
-      fetchTransactionsCallback(initialPagination.current);
-      isInitialFetch.current = false;
-    };
-
-    initialFetchTransactions();
-    fetchTrnFlags(setTrnFlags, setIsError);
+    fetchTransactionsCallback(initialPagination.current);
   }, [fetchTransactionsCallback]);
 
   useEffect(() => {

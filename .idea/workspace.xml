@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f48acd8a-e246-4264-9ac4-41713844a250" name="Changes" comment="minor">
+    <list default="true" id="f48acd8a-e246-4264-9ac4-41713844a250" name="Changes" comment="Extracted fetchTransactions logic into a callback">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/client/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/client/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/client/src/grid/fetching.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/client/src/grid/fetching.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -150,15 +151,7 @@
       <workItem from="1718151765112" duration="20200000" />
       <workItem from="1718418741390" duration="18335000" />
       <workItem from="1718585666406" duration="77000" />
-      <workItem from="1718585776796" duration="450000" />
-    </task>
-    <task id="LOCAL-00027" summary="Dark themed combo checkbox">
-      <option name="closed" value="true" />
-      <created>1716194492379</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1716194492379</updated>
+      <workItem from="1718585776796" duration="1831000" />
     </task>
     <task id="LOCAL-00028" summary="Run configurations">
       <option name="closed" value="true" />
@@ -544,7 +537,15 @@
       <option name="project" value="LOCAL" />
       <updated>1718517011574</updated>
     </task>
-    <option name="localTasksCounter" value="76" />
+    <task id="LOCAL-00076" summary="Extracted fetchTransactions logic into a callback">
+      <option name="closed" value="true" />
+      <created>1718586248859</created>
+      <option name="number" value="00076" />
+      <option name="presentableId" value="LOCAL-00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1718586248860</updated>
+    </task>
+    <option name="localTasksCounter" value="77" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -575,7 +576,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="minor fix" />
     <MESSAGE value="'@typescript-eslint/no-explicit-any': 'off'," />
     <MESSAGE value="Fixed newlines: now CRLF (windows default)" />
     <MESSAGE value="Mise en commun eslint/prettier" />
@@ -600,6 +600,7 @@
     <MESSAGE value="Update light/dark icon" />
     <MESSAGE value="setup pour custom theme eventuel" />
     <MESSAGE value="Split App.tsx in multiple files" />
-    <option name="LAST_COMMIT_MESSAGE" value="Split App.tsx in multiple files" />
+    <MESSAGE value="Extracted fetchTransactions logic into a callback" />
+    <option name="LAST_COMMIT_MESSAGE" value="Extracted fetchTransactions logic into a callback" />
   </component>
 </project>
