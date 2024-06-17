@@ -71,12 +71,10 @@ function App() {
   const endDateRef = useRef(endDate);
   const selectedTrnNaturesRef = useRef(selectedTrnNatures);
   const startDateRef = useRef(startDate);
-  const hasData = useRef(Boolean(trns.length));
   useEffect(() => {
     endDateRef.current = endDate;
     selectedTrnNaturesRef.current = selectedTrnNatures;
     startDateRef.current = startDate;
-    hasData.current = Boolean(trns.length);
   }, [startDate, endDate, selectedTrnNatures, trns]);
 
   const isInitialFetch = useRef(true);
@@ -87,6 +85,7 @@ function App() {
     async (pagination: MRT_PaginationState) => {
       try {
         if (isInitialFetch.current) {
+          setIsLoading(true);
           if (
             !(await fetchTrnNatures(
               setTrnNatures,
@@ -120,7 +119,6 @@ function App() {
             setIsLoading,
             setIsRefetching,
             setIsError,
-            hasData,
           )
         ) {
           return; // Error during fetch

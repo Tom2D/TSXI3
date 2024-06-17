@@ -21,13 +21,8 @@ export const fetchTransactions = async (
   setIsLoading: Dispatch<SetStateAction<boolean>>,
   setIsRefetching: Dispatch<SetStateAction<boolean>>,
   setIsError: Dispatch<SetStateAction<boolean>>,
-  hasData: MutableRefObject<boolean>,
 ) => {
-  if (!hasData.current) {
-    setIsLoading(true);
-  } else {
-    setIsRefetching(true);
-  }
+  setIsRefetching(true);
 
   try {
     const startDateStr = FormatDateUTC(startDateRef.current);

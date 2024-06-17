@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f48acd8a-e246-4264-9ac4-41713844a250" name="Changes" comment="Extracted fetchTransactions logic into a callback">
+    <list default="true" id="f48acd8a-e246-4264-9ac4-41713844a250" name="Changes" comment="Meilleur gestion d'erreur.&#10;Les trnNatures se font fetcher correctement meme si premier call a échoué">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/client/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/client/src/App.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/client/src/grid/fetching.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/client/src/grid/fetching.ts" afterDir="false" />
@@ -151,15 +151,7 @@
       <workItem from="1718151765112" duration="20200000" />
       <workItem from="1718418741390" duration="18335000" />
       <workItem from="1718585666406" duration="77000" />
-      <workItem from="1718585776796" duration="1831000" />
-    </task>
-    <task id="LOCAL-00028" summary="Run configurations">
-      <option name="closed" value="true" />
-      <created>1716482419966</created>
-      <option name="number" value="00028" />
-      <option name="presentableId" value="LOCAL-00028" />
-      <option name="project" value="LOCAL" />
-      <updated>1716482419966</updated>
+      <workItem from="1718585776796" duration="3304000" />
     </task>
     <task id="LOCAL-00029" summary="Remove example logo &amp; css">
       <option name="closed" value="true" />
@@ -545,7 +537,15 @@
       <option name="project" value="LOCAL" />
       <updated>1718586248860</updated>
     </task>
-    <option name="localTasksCounter" value="77" />
+    <task id="LOCAL-00077" summary="Meilleur gestion d'erreur.&#10;Les trnNatures se font fetcher correctement meme si premier call a échoué">
+      <option name="closed" value="true" />
+      <created>1718587761125</created>
+      <option name="number" value="00077" />
+      <option name="presentableId" value="LOCAL-00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1718587761125</updated>
+    </task>
+    <option name="localTasksCounter" value="78" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -576,7 +576,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="'@typescript-eslint/no-explicit-any': 'off'," />
     <MESSAGE value="Fixed newlines: now CRLF (windows default)" />
     <MESSAGE value="Mise en commun eslint/prettier" />
     <MESSAGE value="Mise en commun de code de getter" />
@@ -601,6 +600,7 @@
     <MESSAGE value="setup pour custom theme eventuel" />
     <MESSAGE value="Split App.tsx in multiple files" />
     <MESSAGE value="Extracted fetchTransactions logic into a callback" />
-    <option name="LAST_COMMIT_MESSAGE" value="Extracted fetchTransactions logic into a callback" />
+    <MESSAGE value="Meilleur gestion d'erreur.&#10;Les trnNatures se font fetcher correctement meme si premier call a échoué" />
+    <option name="LAST_COMMIT_MESSAGE" value="Meilleur gestion d'erreur.&#10;Les trnNatures se font fetcher correctement meme si premier call a échoué" />
   </component>
 </project>
