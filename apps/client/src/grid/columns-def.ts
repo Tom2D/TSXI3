@@ -35,7 +35,6 @@ export const initialColumns: MRT_ColumnDef<transactions>[] = [
     ...noWrap,
     Cell: ({ cell }) => toLocaleNumber(cell),
   },
-  { accessorKey: 'securityId', header: 'Security Type', size: 150 },
   {
     accessorKey: 'closingBalance',
     header: 'Balance',
@@ -43,6 +42,7 @@ export const initialColumns: MRT_ColumnDef<transactions>[] = [
     Cell: ({ cell }) => toLocaleNumber(cell),
     ...noWrap,
   },
+  { accessorKey: 'securityId', header: 'Security Type', size: 150 },
   { accessorKey: 'ownershipType', header: 'Ownership', size: 90 },
   {
     accessorKey: 'GeneralRemarks',

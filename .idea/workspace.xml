@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f48acd8a-e246-4264-9ac4-41713844a250" name="Changes" comment="Hide column &quot;Security Type&quot; by default">
+    <list default="true" id="f48acd8a-e246-4264-9ac4-41713844a250" name="Changes" comment="Renamed columns file&#10;...NoWrap on specific columns">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/client/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/client/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/client/src/grid/constants.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/client/src/grid/columns-def.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/client/src/grid/get-columns.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/client/src/grid/columns-get.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/client/src/grid/columns-def.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/client/src/grid/columns-def.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -155,15 +153,7 @@
       <workItem from="1718418741390" duration="18335000" />
       <workItem from="1718585666406" duration="77000" />
       <workItem from="1718585776796" duration="7818000" />
-      <workItem from="1718597726223" duration="6232000" />
-    </task>
-    <task id="LOCAL-00035" summary="Ajustements mineurs">
-      <option name="closed" value="true" />
-      <created>1717884374282</created>
-      <option name="number" value="00035" />
-      <option name="presentableId" value="LOCAL-00035" />
-      <option name="project" value="LOCAL" />
-      <updated>1717884374282</updated>
+      <workItem from="1718597726223" duration="6298000" />
     </task>
     <task id="LOCAL-00036" summary="added constants grid file">
       <option name="closed" value="true" />
@@ -549,7 +539,15 @@
       <option name="project" value="LOCAL" />
       <updated>1718638741053</updated>
     </task>
-    <option name="localTasksCounter" value="84" />
+    <task id="LOCAL-00084" summary="Renamed columns file&#10;...NoWrap on specific columns">
+      <option name="closed" value="true" />
+      <created>1718640820705</created>
+      <option name="number" value="00084" />
+      <option name="presentableId" value="LOCAL-00084" />
+      <option name="project" value="LOCAL" />
+      <updated>1718640820705</updated>
+    </task>
+    <option name="localTasksCounter" value="85" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -580,7 +578,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Fix error dependency fetchTransactions" />
     <MESSAGE value="setIsRefetching &amp; setIsError" />
     <MESSAGE value="No render on date/trn nature/etc. changes" />
     <MESSAGE value="No rerender on date or trn natures changes" />
@@ -605,6 +602,7 @@
     <MESSAGE value="Allow columns to grow when the is space" />
     <MESSAGE value="Minor" />
     <MESSAGE value="Hide column &quot;Security Type&quot; by default" />
-    <option name="LAST_COMMIT_MESSAGE" value="Hide column &quot;Security Type&quot; by default" />
+    <MESSAGE value="Renamed columns file&#10;...NoWrap on specific columns" />
+    <option name="LAST_COMMIT_MESSAGE" value="Renamed columns file&#10;...NoWrap on specific columns" />
   </component>
 </project>
