@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f48acd8a-e246-4264-9ac4-41713844a250" name="Changes" comment="Added grid.css&#10;Set min grid witdh (when removing many columns)">
+    <list default="true" id="f48acd8a-e246-4264-9ac4-41713844a250" name="Changes" comment="Allow columns to grow when the is space">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/client/src/components/TransactionTable.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/client/src/components/TransactionTable.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/client/src/grid/grid.css" beforeDir="false" afterPath="$PROJECT_DIR$/apps/client/src/grid/grid.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/client/src/grid/constants.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/client/src/grid/constants.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -154,23 +153,7 @@
       <workItem from="1718418741390" duration="18335000" />
       <workItem from="1718585666406" duration="77000" />
       <workItem from="1718585776796" duration="7818000" />
-      <workItem from="1718597726223" duration="3450000" />
-    </task>
-    <task id="LOCAL-00031" summary="Begin glide data grid working">
-      <option name="closed" value="true" />
-      <created>1717813417455</created>
-      <option name="number" value="00031" />
-      <option name="presentableId" value="LOCAL-00031" />
-      <option name="project" value="LOCAL" />
-      <updated>1717813417455</updated>
-    </task>
-    <task id="LOCAL-00032" summary="glide data grid css width fix">
-      <option name="closed" value="true" />
-      <created>1717817277694</created>
-      <option name="number" value="00032" />
-      <option name="presentableId" value="LOCAL-00032" />
-      <option name="project" value="LOCAL" />
-      <updated>1717817277694</updated>
+      <workItem from="1718597726223" duration="3736000" />
     </task>
     <task id="LOCAL-00033" summary="dark theme grid">
       <option name="closed" value="true" />
@@ -548,7 +531,23 @@
       <option name="project" value="LOCAL" />
       <updated>1718598122095</updated>
     </task>
-    <option name="localTasksCounter" value="80" />
+    <task id="LOCAL-00080" summary="grid width: min==max==90%">
+      <option name="closed" value="true" />
+      <created>1718638133705</created>
+      <option name="number" value="00080" />
+      <option name="presentableId" value="LOCAL-00080" />
+      <option name="project" value="LOCAL" />
+      <updated>1718638133705</updated>
+    </task>
+    <task id="LOCAL-00081" summary="Allow columns to grow when the is space">
+      <option name="closed" value="true" />
+      <created>1718638153725</created>
+      <option name="number" value="00081" />
+      <option name="presentableId" value="LOCAL-00081" />
+      <option name="project" value="LOCAL" />
+      <updated>1718638153725</updated>
+    </task>
+    <option name="localTasksCounter" value="82" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -579,8 +578,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="small fix trnFlag getter" />
-    <MESSAGE value="Switch to MaterialReactTable v1&#10;This is sick, never looking back!!" />
     <MESSAGE value="Button to toggle light and dark mode" />
     <MESSAGE value="Using built in pagination!" />
     <MESSAGE value="Fix error dependency fetchTransactions" />
@@ -604,6 +601,8 @@
     <MESSAGE value="Fixed isLoading: only on initialFetch" />
     <MESSAGE value="Added grid.css&#10;Set min grid witdh (when removing many columns)" />
     <MESSAGE value="columns grow not working" />
-    <option name="LAST_COMMIT_MESSAGE" value="columns grow not working" />
+    <MESSAGE value="grid width: min==max==90%" />
+    <MESSAGE value="Allow columns to grow when the is space" />
+    <option name="LAST_COMMIT_MESSAGE" value="Allow columns to grow when the is space" />
   </component>
 </project>
