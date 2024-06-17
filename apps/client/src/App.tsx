@@ -1,4 +1,4 @@
-import { useEffect, useState, useMemo, useRef } from 'react';
+import { useEffect, useState, useMemo, useRef, useCallback } from 'react';
 import './App.css';
 import {
   createTheme,
@@ -30,6 +30,7 @@ import {
 } from './prisma-types';
 import { getColumns } from './grid/get-columns.ts';
 import dayjs, { Dayjs } from 'dayjs';
+import { MRT_PaginationState } from 'material-react-table';
 
 const DEFAULT_TRN_NATURE = 10;
 
@@ -81,18 +82,12 @@ function App() {
   const isInitialFetch = useRef(true);
   const initialPagination = useRef(pagination);
 
-  useEffect(() => {
-    const initialFetchTransactions = async () => {
-      await fetchTrnNatures(
-        setTrnNatures,
-        setSelectedTrnNatures,
-        selectedTrnNaturesRef,
-        DEFAULT_TRN_NATURE,
-        setIsError,
-      );
+  // Callback for fetchTransactions() to avoid repeating all arguments
+  const fetchTransactionsCallback = useCallback(
+    (pagination: MRT_PaginationState) => {
       fetchTransactions(
-        initialPagination.current.pageIndex,
-        initialPagination.current.pageSize,
+        pagination.pageIndex,
+        pagination.pageSize,
         startDateRef,
         endDateRef,
         selectedTrnNaturesRef,
@@ -108,37 +103,34 @@ function App() {
         setIsError,
         hasData,
       );
+    },
+    [],
+  );
+
+  useEffect(() => {
+    const initialFetchTransactions = async () => {
+      await fetchTrnNatures(
+        setTrnNatures,
+        setSelectedTrnNatures,
+        selectedTrnNaturesRef,
+        DEFAULT_TRN_NATURE,
+        setIsError,
+      );
+      fetchTransactionsCallback(initialPagination.current);
       isInitialFetch.current = false;
     };
 
     initialFetchTransactions();
     fetchTrnFlags(setTrnFlags, setIsError);
-  }, []);
+  }, [fetchTransactionsCallback]);
 
   useEffect(() => {
     if (isInitialFetch.current) {
       // Refetch data on page change only. Does not do initial fetch.
       return;
     }
-    fetchTransactions(
-      pagination.pageIndex,
-      pagination.pageSize,
-      startDateRef,
-      endDateRef,
-      selectedTrnNaturesRef,
-      setTransactions,
-      setIssuers,
-      setTickers,
-      setInsiders,
-      setRelationsToIssuer,
-      setSecurityDesignations,
-      setRowCount,
-      setIsLoading,
-      setIsRefetching,
-      setIsError,
-      hasData,
-    );
-  }, [pagination.pageIndex, pagination.pageSize]);
+    fetchTransactionsCallback(pagination);
+  }, [fetchTransactionsCallback, pagination]);
 
   const handleTrnNatureChange = (_event: any, values: trnnatures[]) => {
     setSelectedTrnNatures(values);
@@ -147,7 +139,7 @@ function App() {
   // prettier-ignore
   const columns = useMemo(() =>
             getColumns(issuers, tickers, insiders, relationsToIssuer, securityDesignations, trnFlags, trnNatures,),
-      [issuers, tickers, insiders, relationsToIssuer, securityDesignations, trnFlags, trnNatures,],
+        [issuers, tickers, insiders, relationsToIssuer, securityDesignations, trnFlags, trnNatures,],
     );
 
   return (
@@ -180,28 +172,7 @@ function App() {
                 )}
               />
             </div>
-            <button
-              onClick={() =>
-                fetchTransactions(
-                  pagination.pageIndex,
-                  pagination.pageSize,
-                  startDateRef,
-                  endDateRef,
-                  selectedTrnNaturesRef,
-                  setTransactions,
-                  setIssuers,
-                  setTickers,
-                  setInsiders,
-                  setRelationsToIssuer,
-                  setSecurityDesignations,
-                  setRowCount,
-                  setIsLoading,
-                  setIsRefetching,
-                  setIsError,
-                  hasData,
-                )
-              }
-            >
+            <button onClick={() => fetchTransactionsCallback(pagination)}>
               Fetch Transactions
             </button>
           </div>

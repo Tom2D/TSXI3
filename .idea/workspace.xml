@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f48acd8a-e246-4264-9ac4-41713844a250" name="Changes" comment="Split App.tsx in multiple files">
+    <list default="true" id="f48acd8a-e246-4264-9ac4-41713844a250" name="Changes" comment="minor">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/client/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/client/src/App.tsx" afterDir="false" />
     </list>
@@ -106,7 +106,7 @@
       <recent name="E:\Thomas\Prog\TSXInsiderJS2\packages\shared\src" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.client">
+  <component name="RunManager" selected="npm.server run">
     <configuration name="client JavaScript" type="JavascriptDebugType" uri="http://localhost:5173">
       <method v="2" />
     </configuration>
@@ -149,6 +149,8 @@
       <workItem from="1718150799891" duration="956000" />
       <workItem from="1718151765112" duration="20200000" />
       <workItem from="1718418741390" duration="18335000" />
+      <workItem from="1718585666406" duration="77000" />
+      <workItem from="1718585776796" duration="450000" />
     </task>
     <task id="LOCAL-00027" summary="Dark themed combo checkbox">
       <option name="closed" value="true" />
