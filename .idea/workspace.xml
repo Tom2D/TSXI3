@@ -5,7 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f48acd8a-e246-4264-9ac4-41713844a250" name="Changes" comment="Split App.tsx in multiple files">
-      <change afterPath="$PROJECT_DIR$/apps/client/src/grid/fetching.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/client/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/client/src/App.tsx" afterDir="false" />
     </list>
@@ -150,14 +149,6 @@
       <workItem from="1718150799891" duration="956000" />
       <workItem from="1718151765112" duration="20200000" />
       <workItem from="1718418741390" duration="18335000" />
-    </task>
-    <task id="LOCAL-00026" summary="Combo checkbox">
-      <option name="closed" value="true" />
-      <created>1716194405969</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
-      <option name="project" value="LOCAL" />
-      <updated>1716194405969</updated>
     </task>
     <task id="LOCAL-00027" summary="Dark themed combo checkbox">
       <option name="closed" value="true" />
@@ -543,7 +534,15 @@
       <option name="project" value="LOCAL" />
       <updated>1718512868164</updated>
     </task>
-    <option name="localTasksCounter" value="75" />
+    <task id="LOCAL-00075" summary="Split App.tsx in multiple files">
+      <option name="closed" value="true" />
+      <created>1718517011574</created>
+      <option name="number" value="00075" />
+      <option name="presentableId" value="LOCAL-00075" />
+      <option name="project" value="LOCAL" />
+      <updated>1718517011574</updated>
+    </task>
+    <option name="localTasksCounter" value="76" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

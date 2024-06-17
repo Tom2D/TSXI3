@@ -1,4 +1,3 @@
-// App.tsx
 import { useEffect, useState, useMemo, useRef } from 'react';
 import './App.css';
 import {
@@ -145,27 +144,11 @@ function App() {
     setSelectedTrnNatures(values);
   };
 
-  const columns = useMemo(
-    () =>
-      getColumns(
-        issuers,
-        tickers,
-        insiders,
-        relationsToIssuer,
-        securityDesignations,
-        trnFlags,
-        trnNatures,
-      ),
-    [
-      issuers,
-      tickers,
-      insiders,
-      relationsToIssuer,
-      securityDesignations,
-      trnFlags,
-      trnNatures,
-    ],
-  );
+  // prettier-ignore
+  const columns = useMemo(() =>
+            getColumns(issuers, tickers, insiders, relationsToIssuer, securityDesignations, trnFlags, trnNatures,),
+      [issuers, tickers, insiders, relationsToIssuer, securityDesignations, trnFlags, trnNatures,],
+    );
 
   return (
     <ThemeProvider theme={theme}>
