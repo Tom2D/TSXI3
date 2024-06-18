@@ -26,7 +26,7 @@ const getTrnValue = (row: MRT_Row<any>) => {
 const getTrnValueColor = (row: MRT_Row<any>) => {
   const theme = useTheme();
   const isDark = theme.palette.mode === 'dark';
-  const green = isDark ? '#001a00' : '#bbe4bc'; // Darker green for dark mode
+  const green = isDark ? 'rgb(2,58,2)' : '#bbe4bc'; // Darker green for dark mode
   const red = isDark ? 'rgb(96,13,13)' : '#ffc0c6'; // Darker red for dark mode
 
   const value = getTrnValue(row);

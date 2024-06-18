@@ -167,14 +167,6 @@
       <workItem from="1718686706976" duration="377000" />
       <workItem from="1718687098946" duration="614000" />
     </task>
-    <task id="LOCAL-00042" summary="trn endpoint return extra info (issuer, insider, etc.)">
-      <option name="closed" value="true" />
-      <created>1717964662388</created>
-      <option name="number" value="00042" />
-      <option name="presentableId" value="LOCAL-00042" />
-      <option name="project" value="LOCAL" />
-      <updated>1717964662388</updated>
-    </task>
     <task id="LOCAL-00043" summary="Fixed duplication in trn extra info (issuer, insider, etc.)">
       <option name="closed" value="true" />
       <created>1717985121362</created>
@@ -559,7 +551,15 @@
       <option name="project" value="LOCAL" />
       <updated>1718675650210</updated>
     </task>
-    <option name="localTasksCounter" value="91" />
+    <task id="LOCAL-00091" summary="tweaked colors">
+      <option name="closed" value="true" />
+      <created>1718692262481</created>
+      <option name="number" value="00091" />
+      <option name="presentableId" value="LOCAL-00091" />
+      <option name="project" value="LOCAL" />
+      <updated>1718692262481</updated>
+    </task>
+    <option name="localTasksCounter" value="92" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -590,7 +590,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="using MUI multi-selector" />
     <MESSAGE value="fixed package.json + formatting" />
     <MESSAGE value="Fixed default value trn natures" />
     <MESSAGE value="Actually fixed default value trn natures" />
@@ -615,6 +614,7 @@
     <MESSAGE value="Always use prettier, on CTRL+L and on save" />
     <MESSAGE value="On utilise maintenant juste une config prettier...&#10;J'étais tanné de me battre avec cette cochonerie là pour tenter d'avoir une config par projet" />
     <MESSAGE value="Red/Green value (if + or -)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Red/Green value (if + or -)" />
+    <MESSAGE value="tweaked colors" />
+    <option name="LAST_COMMIT_MESSAGE" value="tweaked colors" />
   </component>
 </project>
