@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="f48acd8a-e246-4264-9ac4-41713844a250" name="Changes" comment="On utilise maintenant juste une config prettier...&#10;J'étais tanné de me battre avec cette cochonerie là pour tenter d'avoir une config par projet">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/client/src/components/TransactionTable.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/client/src/components/TransactionTable.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/client/src/grid/columns-def.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/client/src/grid/columns-def.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -32,7 +31,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="MRT-grid" />
+        <entry key="$PROJECT_DIR$" value="48c669946341741d96ff3a5fe7a99e3733193f88" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
