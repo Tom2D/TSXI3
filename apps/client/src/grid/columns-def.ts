@@ -19,16 +19,6 @@ const noWrap = {
   },
 };
 
-const useRedGreenBackground = {
-  muiTableBodyCellProps: ({ row }) => {
-    return {
-      style: {
-        backgroundColor: getTrnValueColor(row),
-      },
-    };
-  },
-};
-
 const getTrnValue = (row: MRT_Row<any>) => {
   return row.original.price * row.original.nb;
 };
@@ -49,21 +39,20 @@ const getTrnValueColor = (row: MRT_Row<any>) => {
 };
 
 export const initialColumns: MRT_ColumnDef<transactions>[] = [
-  { accessorKey: 'trnFlagId', header: 'Flag', size: 50, ...noWrap, ...useRedGreenBackground },
-  { accessorKey: 'filingDate', header: 'Filing Date', size: 90, ...noWrap, ...useRedGreenBackground },
-  { accessorKey: 'trnDate', header: 'Trade Date', size: 90, ...noWrap, ...useRedGreenBackground },
-  { accessorKey: 'ticker', header: 'Ticker', size: 60, ...noWrap, ...useRedGreenBackground },
-  { accessorKey: 'issuer', header: 'Issuer', size: 200, ...useRedGreenBackground },
-  { accessorKey: 'insider', header: 'Insider', size: 120, ...useRedGreenBackground },
-  { accessorKey: 'titles', header: 'Titles', size: 125, ...useRedGreenBackground },
-  { accessorKey: 'trnNatureCode', header: 'Trade Type', size: 180, ...useRedGreenBackground },
+  { accessorKey: 'trnFlagId', header: 'Flag', size: 50, ...noWrap },
+  { accessorKey: 'filingDate', header: 'Filing Date', size: 90, ...noWrap },
+  { accessorKey: 'trnDate', header: 'Trade Date', size: 90, ...noWrap },
+  { accessorKey: 'ticker', header: 'Ticker', size: 60, ...noWrap },
+  { accessorKey: 'issuer', header: 'Issuer', size: 200 },
+  { accessorKey: 'insider', header: 'Insider', size: 120 },
+  { accessorKey: 'titles', header: 'Titles', size: 125 },
+  { accessorKey: 'trnNatureCode', header: 'Trade Type', size: 180 },
   {
     accessorKey: 'price',
     header: 'Price',
     size: 60,
     ...noWrap,
     Cell: ({ cell }) => toLocaleNumber(cell),
-    ...useRedGreenBackground,
   },
   {
     accessorKey: 'nb',
@@ -71,7 +60,6 @@ export const initialColumns: MRT_ColumnDef<transactions>[] = [
     size: 80,
     ...noWrap,
     Cell: ({ cell }) => toLocaleNumber(cell),
-    ...useRedGreenBackground,
   },
   {
     accessorKey: 'value',
@@ -81,7 +69,6 @@ export const initialColumns: MRT_ColumnDef<transactions>[] = [
     Cell: ({ row }) => {
       return toLocaleNumber(getTrnValue(row), true);
     },
-    ...useRedGreenBackground,
     muiTableBodyCellProps: ({ row }) => {
       return {
         style: {
@@ -96,7 +83,6 @@ export const initialColumns: MRT_ColumnDef<transactions>[] = [
     size: 85,
     Cell: ({ cell }) => toLocaleNumber(cell),
     ...noWrap,
-    ...useRedGreenBackground,
   },
   { accessorKey: 'securityId', header: 'Security Type', size: 150 },
   { accessorKey: 'ownershipType', header: 'Ownership', size: 90 },
@@ -104,7 +90,6 @@ export const initialColumns: MRT_ColumnDef<transactions>[] = [
     accessorKey: 'GeneralRemarks',
     header: 'General Remarks',
     size: 200,
-    ...useRedGreenBackground,
-    //muiTableBodyCellProps: { sx: { whiteSpace: 'normal' } },
+    muiTableBodyCellProps: { sx: { whiteSpace: 'normal' } },
   },
 ];
