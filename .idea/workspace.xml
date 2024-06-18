@@ -5,15 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f48acd8a-e246-4264-9ac4-41713844a250" name="Changes" comment="On utilise maintenant juste une config prettier...&#10;J'étais tanné de me battre avec cette cochonerie là pour tenter d'avoir une config par projet">
-      <change afterPath="$PROJECT_DIR$/.prettierrc" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.prettierrc.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/client/.eslintrc.cjs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/client/.prettierrc.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/client/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/client/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/client/src/main.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/client/src/main.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/server/.prettierrc.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/shared/.prettierrc.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/client/src/grid/columns-def.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/client/src/grid/columns-def.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/client/src/grid/columns-get.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/client/src/grid/columns-get.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -123,7 +117,7 @@
       <recent name="E:\Thomas\Prog\TSXInsiderJS2\packages\shared\src" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.server run">
+  <component name="RunManager" selected="npm.client">
     <configuration name="client JavaScript" type="JavascriptDebugType" uri="http://localhost:5173">
       <method v="2" />
     </configuration>
@@ -172,15 +166,7 @@
       <workItem from="1718673551615" duration="778000" />
       <workItem from="1718674341773" duration="3076000" />
       <workItem from="1718686706976" duration="377000" />
-      <workItem from="1718687098946" duration="614000" />
-    </task>
-    <task id="LOCAL-00042" summary="trn endpoint return extra info (issuer, insider, etc.)">
-      <option name="closed" value="true" />
-      <created>1717964662388</created>
-      <option name="number" value="00042" />
-      <option name="presentableId" value="LOCAL-00042" />
-      <option name="project" value="LOCAL" />
-      <updated>1717964662388</updated>
+      <workItem from="1718687098946" duration="1340000" />
     </task>
     <task id="LOCAL-00043" summary="Fixed duplication in trn extra info (issuer, insider, etc.)">
       <option name="closed" value="true" />
@@ -566,7 +552,15 @@
       <option name="project" value="LOCAL" />
       <updated>1718675650210</updated>
     </task>
-    <option name="localTasksCounter" value="91" />
+    <task id="LOCAL-00091" summary="On utilise maintenant juste une config prettier...&#10;J'étais tanné de me battre avec cette cochonerie là pour tenter d'avoir une config par projet">
+      <option name="closed" value="true" />
+      <created>1718687738820</created>
+      <option name="number" value="00091" />
+      <option name="presentableId" value="LOCAL-00091" />
+      <option name="project" value="LOCAL" />
+      <updated>1718687738820</updated>
+    </task>
+    <option name="localTasksCounter" value="92" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
