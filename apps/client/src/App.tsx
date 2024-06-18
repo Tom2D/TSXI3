@@ -1,24 +1,14 @@
 import { useEffect, useState, useMemo, useRef, useCallback } from 'react';
 import './App.css';
 import './grid/grid.css';
-import {
-  createTheme,
-  ThemeProvider,
-  CssBaseline,
-  Autocomplete,
-  TextField,
-} from '@mui/material';
+import { createTheme, ThemeProvider, CssBaseline, Autocomplete, TextField } from '@mui/material';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { getDesignTokens } from './theme.tsx';
 import ThemeToggleButton from './components/ThemeToggleButton';
 import DatePickers from './components/DatePickers';
 import TransactionTable from './components/TransactionTable';
-import {
-  fetchTransactions,
-  fetchTrnNatures,
-  fetchTrnFlags,
-} from './grid/fetching';
+import { fetchTransactions, fetchTrnNatures, fetchTrnFlags } from './grid/fetching';
 import {
   issuers,
   tickers,
@@ -39,20 +29,14 @@ function App() {
   const [trns, setTransactions] = useState<transactions[]>([]);
   const [trnNatures, setTrnNatures] = useState<trnnatures[]>([]);
   const [trnFlags, setTrnFlags] = useState<trnflag[]>([]);
-  const [selectedTrnNatures, setSelectedTrnNatures] = useState<trnnatures[]>(
-    [],
-  );
+  const [selectedTrnNatures, setSelectedTrnNatures] = useState<trnnatures[]>([]);
   const [startDate, setStartDate] = useState<Dayjs | null>(dayjs('2021-01-22'));
   const [endDate, setEndDate] = useState<Dayjs | null>(dayjs('2021-01-22'));
   const [issuers, setIssuers] = useState<issuers[]>([]);
   const [tickers, setTickers] = useState<tickers[]>([]);
   const [insiders, setInsiders] = useState<insiders[]>([]);
-  const [relationsToIssuer, setRelationsToIssuer] = useState<
-    relationstoissuer[]
-  >([]);
-  const [securityDesignations, setSecurityDesignations] = useState<
-    securitydesignations[]
-  >([]);
+  const [relationsToIssuer, setRelationsToIssuer] = useState<relationstoissuer[]>([]);
+  const [securityDesignations, setSecurityDesignations] = useState<securitydesignations[]>([]);
   const [themeMode, setThemeMode] = useState<'light' | 'dark'>('dark');
   const [pagination, setPagination] = useState({ pageIndex: 0, pageSize: 10 });
   const [rowCount, setRowCount] = useState(0);
@@ -60,10 +44,7 @@ function App() {
   const [isRefetching, setIsRefetching] = useState(false);
   const [isError, setIsError] = useState(false);
 
-  const theme = useMemo(
-    () => createTheme(getDesignTokens(themeMode)),
-    [themeMode],
-  );
+  const theme = useMemo(() => createTheme(getDesignTokens(themeMode)), [themeMode]);
 
   const handleThemeToggle = () => {
     setThemeMode((prevMode) => (prevMode === 'light' ? 'dark' : 'light'));
@@ -82,57 +63,54 @@ function App() {
   const initialPagination = useRef(pagination);
 
   // Callback for fetchTransactions() to avoid repeating all arguments
-  const fetchTransactionsCallback = useCallback(
-    async (pagination: MRT_PaginationState) => {
-      try {
-        if (isInitialFetch.current) {
-          setIsLoading(true);
-          if (
-            !(await fetchTrnNatures(
-              setTrnNatures,
-              setSelectedTrnNatures,
-              selectedTrnNaturesRef,
-              DEFAULT_TRN_NATURE,
-              setIsError,
-            ))
-          ) {
-            return; // Error during fetch
-          }
-          if (!(await fetchTrnFlags(setTrnFlags, setIsError))) {
-            return; // Error during fetch
-          }
-        }
-
+  const fetchTransactionsCallback = useCallback(async (pagination: MRT_PaginationState) => {
+    try {
+      if (isInitialFetch.current) {
+        setIsLoading(true);
         if (
-          !fetchTransactions(
-            pagination.pageIndex,
-            pagination.pageSize,
-            startDateRef,
-            endDateRef,
+          !(await fetchTrnNatures(
+            setTrnNatures,
+            setSelectedTrnNatures,
             selectedTrnNaturesRef,
-            setTransactions,
-            setIssuers,
-            setTickers,
-            setInsiders,
-            setRelationsToIssuer,
-            setSecurityDesignations,
-            setRowCount,
-            setIsLoading,
-            setIsRefetching,
+            DEFAULT_TRN_NATURE,
             setIsError,
-          )
+          ))
         ) {
           return; // Error during fetch
         }
-      } catch (error) {
-        console.error('Failed to fetch transactions:', error);
-        setIsError(true);
-        return;
+        if (!(await fetchTrnFlags(setTrnFlags, setIsError))) {
+          return; // Error during fetch
+        }
       }
-      isInitialFetch.current = false;
-    },
-    [],
-  );
+
+      if (
+        !fetchTransactions(
+          pagination.pageIndex,
+          pagination.pageSize,
+          startDateRef,
+          endDateRef,
+          selectedTrnNaturesRef,
+          setTransactions,
+          setIssuers,
+          setTickers,
+          setInsiders,
+          setRelationsToIssuer,
+          setSecurityDesignations,
+          setRowCount,
+          setIsLoading,
+          setIsRefetching,
+          setIsError,
+        )
+      ) {
+        return; // Error during fetch
+      }
+    } catch (error) {
+      console.error('Failed to fetch transactions:', error);
+      setIsError(true);
+      return;
+    }
+    isInitialFetch.current = false;
+  }, []);
 
   useEffect(() => {
     fetchTransactionsCallback(initialPagination.current);
@@ -152,9 +130,9 @@ function App() {
 
   // prettier-ignore
   const columns = useMemo(() =>
-            columnsGet(issuers, tickers, insiders, relationsToIssuer, securityDesignations, trnFlags, trnNatures,),
-        [issuers, tickers, insiders, relationsToIssuer, securityDesignations, trnFlags, trnNatures,],
-    );
+      columnsGet(issuers, tickers, insiders, relationsToIssuer, securityDesignations, trnFlags, trnNatures,),
+    [issuers, tickers, insiders, relationsToIssuer, securityDesignations, trnFlags, trnNatures,],
+  );
 
   return (
     <ThemeProvider theme={theme}>
@@ -164,31 +142,20 @@ function App() {
           <h1>Transactions</h1>
           <ThemeToggleButton onToggle={handleThemeToggle} />
           <div className="filters">
-            <DatePickers
-              startDate={startDate}
-              endDate={endDate}
-              setStartDate={setStartDate}
-              setEndDate={setEndDate}
-            />
+            <DatePickers startDate={startDate} endDate={endDate} setStartDate={setStartDate} setEndDate={setEndDate} />
             <div>
               <Autocomplete
                 multiple
                 limitTags={1}
                 options={trnNatures}
                 getOptionLabel={(option) => option.description}
-                isOptionEqualToValue={(option, value) =>
-                  option.code === value.code || option.code === value
-                }
+                isOptionEqualToValue={(option, value) => option.code === value.code || option.code === value}
                 value={selectedTrnNatures}
                 onChange={handleTrnNatureChange}
-                renderInput={(params) => (
-                  <TextField {...params} label="Trade Types" />
-                )}
+                renderInput={(params) => <TextField {...params} label="Trade Types" />}
               />
             </div>
-            <button onClick={() => fetchTransactionsCallback(pagination)}>
-              Fetch Transactions
-            </button>
+            <button onClick={() => fetchTransactionsCallback(pagination)}>Fetch Transactions</button>
           </div>
           <TransactionTable
             columns={columns}
