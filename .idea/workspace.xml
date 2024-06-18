@@ -5,15 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f48acd8a-e246-4264-9ac4-41713844a250" name="Changes" comment="On utilise maintenant juste une config prettier...&#10;J'étais tanné de me battre avec cette cochonerie là pour tenter d'avoir une config par projet">
-      <change afterPath="$PROJECT_DIR$/.prettierrc" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.prettierrc.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/client/.eslintrc.cjs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/client/.prettierrc.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/client/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/client/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/client/src/main.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/client/src/main.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/server/.prettierrc.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/shared/.prettierrc.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/client/src/components/TransactionTable.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/client/src/components/TransactionTable.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/client/src/grid/columns-def.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/client/src/grid/columns-def.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -597,7 +591,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="cleanup" />
     <MESSAGE value="using MUI multi-selector" />
     <MESSAGE value="fixed package.json + formatting" />
     <MESSAGE value="Fixed default value trn natures" />
@@ -622,6 +615,7 @@
     <MESSAGE value="Fixed shared prettier config" />
     <MESSAGE value="Always use prettier, on CTRL+L and on save" />
     <MESSAGE value="On utilise maintenant juste une config prettier...&#10;J'étais tanné de me battre avec cette cochonerie là pour tenter d'avoir une config par projet" />
-    <option name="LAST_COMMIT_MESSAGE" value="On utilise maintenant juste une config prettier...&#10;J'étais tanné de me battre avec cette cochonerie là pour tenter d'avoir une config par projet" />
+    <MESSAGE value="Red/Green value (if + or -)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Red/Green value (if + or -)" />
   </component>
 </project>

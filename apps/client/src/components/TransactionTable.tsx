@@ -1,9 +1,4 @@
-import {
-  MaterialReactTable,
-  MRT_ColumnDef,
-  MRT_PaginationState,
-  MRT_Updater,
-} from 'material-react-table';
+import { MaterialReactTable, MRT_ColumnDef, MRT_PaginationState, MRT_Updater } from 'material-react-table';
 import { transactions } from '../prisma-types';
 
 interface Props {
@@ -61,9 +56,7 @@ const TransactionTable: React.FC<Props> = ({
       muiPaginationProps={{
         rowsPerPageOptions: [10, 25, 100],
       }}
-      muiToolbarAlertBannerProps={
-        isError ? { color: 'error', children: 'Error loading data' } : undefined
-      }
+      muiToolbarAlertBannerProps={isError ? { color: 'error', children: 'Error loading data' } : undefined}
     />
   </div>
 );
