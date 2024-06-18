@@ -4,9 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f48acd8a-e246-4264-9ac4-41713844a250" name="Changes" comment="added value column">
+    <list default="true" id="f48acd8a-e246-4264-9ac4-41713844a250" name="Changes" comment="Fixed shared prettier config">
+      <change afterPath="$PROJECT_DIR$/.prettierrc.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/client/.prettierrc.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/server/.prettierrc.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/shared/.prettierrc.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/client/src/grid/columns-def.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/client/src/grid/columns-def.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.prettierrc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/client/.prettierrc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/client/src/main.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/client/src/main.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/server/.prettierrc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/shared/.prettierrc" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,8 +25,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="TypeScript JSX File" />
-        <option value="TypeScript File" />
         <option value="CSS File" />
+        <option value="TypeScript File" />
       </list>
     </option>
   </component>
@@ -74,7 +82,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "MRT-grid",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "E:/Thomas/Prog/TSXI3",
+    "last_opened_file_path": "E:/Thomas/Prog/TSXI3/apps/client",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.standard": "true",
@@ -96,11 +104,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\Thomas\Prog\TSXI3" />
       <recent name="E:\Thomas\Prog\TSXI3\apps\client" />
+      <recent name="E:\Thomas\Prog\TSXI3\apps\server" />
+      <recent name="E:\Thomas\Prog\TSXI3" />
       <recent name="E:\Thomas\Prog\TSXI3\packages" />
       <recent name="E:\Thomas\Prog\TSXI3\packages\shared" />
-      <recent name="E:\Thomas\Prog\TSXInsiderJS2\apps\client\src" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\Thomas\Prog\TSXI3\packages\shared" />
@@ -153,23 +161,9 @@
       <workItem from="1718418741390" duration="18335000" />
       <workItem from="1718585666406" duration="77000" />
       <workItem from="1718585776796" duration="7818000" />
-      <workItem from="1718597726223" duration="7348000" />
-    </task>
-    <task id="LOCAL-00038" summary="Trade type name instead of code">
-      <option name="closed" value="true" />
-      <created>1717915650068</created>
-      <option name="number" value="00038" />
-      <option name="presentableId" value="LOCAL-00038" />
-      <option name="project" value="LOCAL" />
-      <updated>1717915650068</updated>
-    </task>
-    <task id="LOCAL-00039" summary="Simplified trn natures front end">
-      <option name="closed" value="true" />
-      <created>1717917787567</created>
-      <option name="number" value="00039" />
-      <option name="presentableId" value="LOCAL-00039" />
-      <option name="project" value="LOCAL" />
-      <updated>1717917787567</updated>
+      <workItem from="1718597726223" duration="12659000" />
+      <workItem from="1718673551615" duration="778000" />
+      <workItem from="1718674341773" duration="189000" />
     </task>
     <task id="LOCAL-00040" summary="Simplified trn natures front end">
       <option name="closed" value="true" />
@@ -547,7 +541,23 @@
       <option name="project" value="LOCAL" />
       <updated>1718641472088</updated>
     </task>
-    <option name="localTasksCounter" value="87" />
+    <task id="LOCAL-00087" summary="Value column:&#10;- no decimals&#10;- 0 == empty">
+      <option name="closed" value="true" />
+      <created>1718641958169</created>
+      <option name="number" value="00087" />
+      <option name="presentableId" value="LOCAL-00087" />
+      <option name="project" value="LOCAL" />
+      <updated>1718641958169</updated>
+    </task>
+    <task id="LOCAL-00088" summary="Fixed columns length for not horizontal scroll by default">
+      <option name="closed" value="true" />
+      <created>1718673919106</created>
+      <option name="number" value="00088" />
+      <option name="presentableId" value="LOCAL-00088" />
+      <option name="project" value="LOCAL" />
+      <updated>1718673919107</updated>
+    </task>
+    <option name="localTasksCounter" value="89" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -578,9 +588,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="No rerender on date or trn natures changes" />
-    <MESSAGE value="No rerender on date or trn natures changes" />
-    <MESSAGE value="- Ownership column invisible by default&#10;- Ajusted some columns witdh" />
     <MESSAGE value="Numbers with ',' (using locale)" />
     <MESSAGE value="MUI date pickers" />
     <MESSAGE value="cleanup" />
@@ -603,6 +610,9 @@
     <MESSAGE value="Renamed columns file&#10;...NoWrap on specific columns" />
     <MESSAGE value="SecurityId column moved" />
     <MESSAGE value="added value column" />
-    <option name="LAST_COMMIT_MESSAGE" value="added value column" />
+    <MESSAGE value="Value column:&#10;- no decimals&#10;- 0 == empty" />
+    <MESSAGE value="Fixed columns length for not horizontal scroll by default" />
+    <MESSAGE value="Fixed shared prettier config" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed shared prettier config" />
   </component>
 </project>
