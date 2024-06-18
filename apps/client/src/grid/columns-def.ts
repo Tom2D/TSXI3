@@ -1,15 +1,23 @@
 import { MRT_Cell, MRT_ColumnDef } from 'material-react-table';
 import { transactions } from '../prisma-types';
 
-const toLocaleNumber = (cellOrValue: MRT_Cell<any> | number, removeDecimals = false): string | null => {
-  const value = typeof cellOrValue == 'number' ? cellOrValue : cellOrValue.getValue<number>();
+const toLocaleNumber = (
+  cellOrValue: MRT_Cell<any> | number,
+  removeDecimals = false,
+): string | null => {
+  const value =
+    typeof cellOrValue == 'number'
+      ? cellOrValue
+      : cellOrValue.getValue<number>();
 
   if (value == 0) {
     return null;
   }
 
   const options = removeDecimals ? { maximumFractionDigits: 0 } : {};
-  return value !== null && value !== undefined ? value.toLocaleString(undefined, options) : null;
+  return value !== null && value !== undefined
+    ? value.toLocaleString(undefined, options)
+    : null;
 };
 
 const noWrap = {
@@ -49,9 +57,7 @@ export const initialColumns: MRT_ColumnDef<transactions>[] = [
     Cell: ({ row }) => {
       const price = row.original.price;
       const nb = row.original.nb;
-      const value = price * nb;
-      const formattedValue = toLocaleNumber(value, true);
-      return <span style={{ color: value > 0 ? 'green' : value < 0 ? 'red' : 'black' }}>{formattedValue}</span>;
+      return toLocaleNumber(price * nb, true);
     },
   },
   {
