@@ -15,9 +15,22 @@ export class TransactionsController {
     @Query('limit', new DefaultValuePipe(MAX_TRANSACTIONS_PER_REQUEST), ParseIntPipe) limit: number,
     @Query('page', new DefaultValuePipe(1), ParseIntPipe) page: number,
     @Query('trnNatureCodes') trnNatureCodes: string,
+    @Query('issuerName', new DefaultValuePipe('')) issuerName: string,
+    @Query('insiderName', new DefaultValuePipe('')) insiderName: string,
+    @Query('insiderTitles') insiderTitles: string,
   ): Promise<any> {
     const codes = trnNatureCodes ? trnNatureCodes.split(',').map(Number) : [];
-    return this.transactionsService.findAll(beginFilingDate, endFilingDate, limit, page, codes);
+    const titles = insiderTitles ? insiderTitles.split(',').map(Number) : [];
+    return this.transactionsService.findAll(
+      beginFilingDate,
+      endFilingDate,
+      limit,
+      page,
+      codes,
+      issuerName,
+      insiderName,
+      titles,
+    );
   }
 
   @Get(':id')

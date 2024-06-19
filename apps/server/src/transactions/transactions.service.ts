@@ -13,33 +13,45 @@ export class TransactionsService {
     limit: number,
     page: number,
     trnNatureCodes: number[],
+    issuerName: string,
+    insiderName: string,
+    insiderTitles: number[],
   ): Promise<any> {
     const offset: number = page * limit;
 
-    const transactions = await this.prisma.transactions.findMany({
-      where: {
-        filingDate: {
-          gte: beginFilingDate,
-          lte: endFilingDate,
-        },
-        trnNatureCode: {
-          in: trnNatureCodes.length > 0 ? trnNatureCodes : undefined,
-        },
+    const whereClause = {
+      filingDate: {
+        gte: beginFilingDate,
+        lte: endFilingDate,
       },
+      trnNatureCode: {
+        in: trnNatureCodes.length > 0 ? trnNatureCodes : undefined,
+      },
+      issuers: issuerName
+        ? {
+            name: {
+              contains: issuerName,
+            },
+          }
+        : {},
+      insiders: {
+        name: insiderName
+          ? {
+              contains: insiderName,
+            }
+          : {},
+        // TO COMPLETE ****
+      },
+    };
+
+    const transactions = await this.prisma.transactions.findMany({
+      where: whereClause,
       take: Math.min(limit, MAX_TRANSACTIONS_PER_REQUEST),
       skip: offset,
     });
 
     const total = await this.prisma.transactions.count({
-      where: {
-        filingDate: {
-          gte: beginFilingDate,
-          lte: endFilingDate,
-        },
-        trnNatureCode: {
-          in: trnNatureCodes.length > 0 ? trnNatureCodes : undefined,
-        },
-      },
+      where: whereClause,
     });
 
     const issuerIds = transactions.map((trn) => trn.issuerId).filter((id) => id !== null) as number[];
