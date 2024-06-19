@@ -23,17 +23,15 @@ const getTrnValue = (row: MRT_Row<any>) => {
   return row.original.price * row.original.nb;
 };
 
+//TDD_TODO Use css tags? (to reuse red background elsewhere maybe)
 const getTrnValueColor = (row: MRT_Row<any>) => {
   const theme = useTheme();
-  const isDark = theme.palette.mode === 'dark';
-  const green = isDark ? 'rgb(2,58,2)' : '#bbe4bc'; // Darker green for dark mode
-  const red = isDark ? 'rgb(96,13,13)' : '#ffc0c6'; // Darker red for dark mode
 
   const value = getTrnValue(row);
   if (value > 0) {
-    return green;
+    return theme.palette.positive.main;
   } else if (value < 0) {
-    return red;
+    return theme.palette.negative.main;
   }
   return 'inherit'; // Default background, no color
 };

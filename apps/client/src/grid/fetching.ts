@@ -27,9 +27,7 @@ export const fetchTransactions = async (
   try {
     const startDateStr = FormatDateUTC(startDateRef.current);
     const endDateStr = FormatDateUTC(endDateRef.current);
-    const trnNatureCodes = selectedTrnNaturesRef.current
-      .map((option) => option.code)
-      .join(',');
+    const trnNatureCodes = selectedTrnNaturesRef.current.map((option) => option.code).join(',');
     const response = await fetch(
       `${SERVER_AUTHORITY}/transactions?beginFilingDate=${startDateStr}&endFilingDate=${endDateStr}&limit=${pageSize}&page=${pageIndex}&trnNatureCodes=${trnNatureCodes}`,
     );
@@ -45,11 +43,13 @@ export const fetchTransactions = async (
       setRowCount(data.total); // Set the total row count
     } else {
       console.error('Invalid fetch transactions response:', response);
+      setIsRefetching(false);
       setIsError(true);
       return false;
     }
   } catch (error) {
     console.error('Error fetching transactions:', error);
+    setIsRefetching(false);
     setIsError(true);
     return false;
   }
@@ -71,9 +71,7 @@ export const fetchTrnNatures = async (
     if (response.ok) {
       const trnNatures = await response.json();
       setTrnNatures(trnNatures);
-      const defaultTrnNature = trnNatures.filter(
-        (option: trnnatures) => option.code === DEFAULT_TRN_NATURE,
-      );
+      const defaultTrnNature = trnNatures.filter((option: trnnatures) => option.code === DEFAULT_TRN_NATURE);
       setSelectedTrnNatures(defaultTrnNature);
       selectedTrnNaturesRef.current = defaultTrnNature; // So fetchTransactions considers it
     } else {

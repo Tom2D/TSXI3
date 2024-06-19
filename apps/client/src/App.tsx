@@ -1,10 +1,9 @@
 import { useEffect, useState, useMemo, useRef, useCallback } from 'react';
 import './App.css';
 import './grid/grid.css';
-import { createTheme, ThemeProvider, CssBaseline, Autocomplete, TextField } from '@mui/material';
+import { ThemeProvider, CssBaseline, Autocomplete, TextField, Button } from '@mui/material';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { getDesignTokens } from './theme.tsx';
 import ThemeToggleButton from './components/ThemeToggleButton';
 import DatePickers from './components/DatePickers';
 import TransactionTable from './components/TransactionTable';
@@ -22,7 +21,10 @@ import {
 import { columnsGet } from './grid/columns-get.ts';
 import dayjs, { Dayjs } from 'dayjs';
 import { MRT_PaginationState } from 'material-react-table';
+import { appTheme2 } from './theme/theme2.ts';
+//import { appTheme1 } from './theme/theme.tsx';
 
+const APP_THEME = appTheme2;
 const DEFAULT_TRN_NATURE = 10;
 
 function App() {
@@ -44,7 +46,7 @@ function App() {
   const [isRefetching, setIsRefetching] = useState(false);
   const [isError, setIsError] = useState(false);
 
-  const theme = useMemo(() => createTheme(getDesignTokens(themeMode)), [themeMode]);
+  const theme = useMemo(() => APP_THEME(themeMode), [themeMode]);
 
   const handleThemeToggle = () => {
     setThemeMode((prevMode) => (prevMode === 'light' ? 'dark' : 'light'));
@@ -106,9 +108,11 @@ function App() {
       }
     } catch (error) {
       console.error('Failed to fetch transactions:', error);
+      setIsRefetching(false);
       setIsError(true);
       return;
     }
+    setIsRefetching(false);
     isInitialFetch.current = false;
   }, []);
 
@@ -155,7 +159,9 @@ function App() {
                 renderInput={(params) => <TextField {...params} label="Trade Types" />}
               />
             </div>
-            <button onClick={() => fetchTransactionsCallback(pagination)}>Fetch Transactions</button>
+            <Button variant="contained" color="primary" onClick={() => fetchTransactionsCallback(pagination)}>
+              Fetch Transactions
+            </Button>
           </div>
           <TransactionTable
             columns={columns}

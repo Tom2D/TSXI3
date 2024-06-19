@@ -5,8 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f48acd8a-e246-4264-9ac4-41713844a250" name="Changes" comment="On utilise maintenant juste une config prettier...&#10;J'étais tanné de me battre avec cette cochonerie là pour tenter d'avoir une config par projet">
+      <change afterPath="$PROJECT_DIR$/apps/client/src/theme/shadows.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/client/src/theme/theme.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/client/src/theme/theme2.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/client/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/client/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/client/src/components/ThemeToggleButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/client/src/components/ThemeToggleButton.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/client/src/grid/columns-def.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/client/src/grid/columns-def.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/client/src/grid/dark-theme.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/client/src/grid/fetching.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/client/src/grid/fetching.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/client/src/theme.tsx" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,7 +39,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="48c669946341741d96ff3a5fe7a99e3733193f88" />
+        <entry key="$PROJECT_DIR$" value="3c8d327733ec7409572985dfc5cce44d46a9dfc3" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -71,37 +79,37 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;JavaScript Debug.client JavaScript.executor&quot;: &quot;Debug&quot;,
-    &quot;JavaScript Debug.client.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;MRT-grid&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;E:/Thomas/Prog/TSXI3/apps/client&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.stylelint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
-    &quot;node.js.selected.package.stylelint&quot;: &quot;&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_interpreter_path&quot;: &quot;node&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;C:\\Users\\TomDD\\AppData\\Roaming\\npm\\pnpm.cmd&quot;,
-    &quot;npm.client.executor&quot;: &quot;Run&quot;,
-    &quot;npm.server debug.executor&quot;: &quot;Run&quot;,
-    &quot;npm.server run.executor&quot;: &quot;Run&quot;,
-    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;E:\\Thomas\\Prog\\TSXInsiderJS2\\node_modules\\prettier&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;actions.on.save&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;E:\\Thomas\\Prog\\TSXI3\\apps\\client\\node_modules\\typescript\\lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "JavaScript Debug.client JavaScript.executor": "Debug",
+    "JavaScript Debug.client.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "MRT-grid",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "E:/Thomas/Prog/TSXI3/apps/client",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.standard": "true",
+    "node.js.detected.package.stylelint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.standard": "",
+    "node.js.selected.package.stylelint": "",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_interpreter_path": "node",
+    "nodejs_package_manager_path": "C:\\Users\\TomDD\\AppData\\Roaming\\npm\\pnpm.cmd",
+    "npm.client.executor": "Run",
+    "npm.server debug.executor": "Run",
+    "npm.server run.executor": "Run",
+    "prettierjs.PrettierConfiguration.Package": "E:\\Thomas\\Prog\\TSXInsiderJS2\\node_modules\\prettier",
+    "run.code.analysis.last.selected.profile": "pProject Default",
+    "settings.editor.selected.configurable": "preferences.sourceCode.TypeScript",
+    "ts.external.directory.path": "E:\\Thomas\\Prog\\TSXI3\\apps\\client\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="E:\Thomas\Prog\TSXI3\apps\client" />
@@ -111,12 +119,13 @@
       <recent name="E:\Thomas\Prog\TSXI3\packages\shared" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\Thomas\Prog\TSXI3\apps\client\src\theme" />
       <recent name="E:\Thomas\Prog\TSXI3\packages\shared" />
       <recent name="E:\Thomas\Prog\TSXInsiderJS2\apps\client" />
       <recent name="E:\Thomas\Prog\TSXInsiderJS2\packages\shared\src" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.server run">
+  <component name="RunManager" selected="npm.client">
     <configuration name="client JavaScript" type="JavascriptDebugType" uri="http://localhost:5173">
       <method v="2" />
     </configuration>
