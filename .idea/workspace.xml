@@ -4,17 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f48acd8a-e246-4264-9ac4-41713844a250" name="Changes" comment="On utilise maintenant juste une config prettier...&#10;J'étais tanné de me battre avec cette cochonerie là pour tenter d'avoir une config par projet">
-      <change afterPath="$PROJECT_DIR$/apps/client/src/theme/shadows.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/client/src/theme/theme.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/client/src/theme/theme2.ts" afterDir="false" />
+    <list default="true" id="f48acd8a-e246-4264-9ac4-41713844a250" name="Changes" comment="Added new them from example on web&#10;Multiple theme changes (WIP!!)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/client/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/client/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/client/src/components/ThemeToggleButton.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/client/src/components/ThemeToggleButton.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/client/src/grid/columns-def.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/client/src/grid/columns-def.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/client/src/grid/dark-theme.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/client/src/grid/fetching.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/client/src/grid/fetching.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/client/src/theme.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/server/src/transactions/transactions.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/server/src/transactions/transactions.controller.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/server/src/transactions/transactions.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/server/src/transactions/transactions.service.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,7 +95,7 @@
     "nodejs_package_manager_path": "C:\\Users\\TomDD\\AppData\\Roaming\\npm\\pnpm.cmd",
     "npm.client.executor": "Run",
     "npm.server debug.executor": "Run",
-    "npm.server run.executor": "Run",
+    "npm.server run.executor": "Debug",
     "prettierjs.PrettierConfiguration.Package": "E:\\Thomas\\Prog\\TSXInsiderJS2\\node_modules\\prettier",
     "run.code.analysis.last.selected.profile": "pProject Default",
     "settings.editor.selected.configurable": "preferences.sourceCode.TypeScript",
@@ -125,7 +118,7 @@
       <recent name="E:\Thomas\Prog\TSXInsiderJS2\packages\shared\src" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.client">
+  <component name="RunManager" selected="npm.server run">
     <configuration name="client JavaScript" type="JavascriptDebugType" uri="http://localhost:5173">
       <method v="2" />
     </configuration>
@@ -175,14 +168,6 @@
       <workItem from="1718674341773" duration="3076000" />
       <workItem from="1718686706976" duration="377000" />
       <workItem from="1718687098946" duration="614000" />
-    </task>
-    <task id="LOCAL-00043" summary="Fixed duplication in trn extra info (issuer, insider, etc.)">
-      <option name="closed" value="true" />
-      <created>1717985121362</created>
-      <option name="number" value="00043" />
-      <option name="presentableId" value="LOCAL-00043" />
-      <option name="project" value="LOCAL" />
-      <updated>1717985121362</updated>
     </task>
     <task id="LOCAL-00044" summary="Ajustement frontend pour info extra info (issuer, insider, etc.)">
       <option name="closed" value="true" />
@@ -568,7 +553,15 @@
       <option name="project" value="LOCAL" />
       <updated>1718692262481</updated>
     </task>
-    <option name="localTasksCounter" value="92" />
+    <task id="LOCAL-00092" summary="Added new them from example on web&#10;Multiple theme changes (WIP!!)">
+      <option name="closed" value="true" />
+      <created>1718772330670</created>
+      <option name="number" value="00092" />
+      <option name="presentableId" value="LOCAL-00092" />
+      <option name="project" value="LOCAL" />
+      <updated>1718772330670</updated>
+    </task>
+    <option name="localTasksCounter" value="93" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -599,7 +592,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="fixed package.json + formatting" />
     <MESSAGE value="Fixed default value trn natures" />
     <MESSAGE value="Actually fixed default value trn natures" />
     <MESSAGE value="Update light/dark icon" />
@@ -624,6 +616,14 @@
     <MESSAGE value="On utilise maintenant juste une config prettier...&#10;J'étais tanné de me battre avec cette cochonerie là pour tenter d'avoir une config par projet" />
     <MESSAGE value="Red/Green value (if + or -)" />
     <MESSAGE value="tweaked colors" />
-    <option name="LAST_COMMIT_MESSAGE" value="tweaked colors" />
+    <MESSAGE value="Added new them from example on web&#10;Multiple theme changes (WIP!!)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added new them from example on web&#10;Multiple theme changes (WIP!!)" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <default-breakpoints>
+        <breakpoint enabled="true" type="javascript-exception" />
+      </default-breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
