@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f48acd8a-e246-4264-9ac4-41713844a250" name="Changes" comment="Added insider&amp;issuer fileter server side (WIP)">
+    <list default="true" id="f48acd8a-e246-4264-9ac4-41713844a250" name="Changes" comment="Added new them from example on web&#10;Multiple theme changes (WIP!!)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/server/src/transactions/transactions.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/server/src/transactions/transactions.controller.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/server/src/transactions/transactions.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/server/src/transactions/transactions.service.ts" afterDir="false" />
@@ -168,6 +168,14 @@
       <workItem from="1718674341773" duration="3076000" />
       <workItem from="1718686706976" duration="377000" />
       <workItem from="1718687098946" duration="614000" />
+    </task>
+    <task id="LOCAL-00044" summary="Ajustement frontend pour info extra info (issuer, insider, etc.)">
+      <option name="closed" value="true" />
+      <created>1717986658694</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1717986658694</updated>
     </task>
     <task id="LOCAL-00045" summary="Fetch trn flags and show name">
       <option name="closed" value="true" />
@@ -553,15 +561,7 @@
       <option name="project" value="LOCAL" />
       <updated>1718772330670</updated>
     </task>
-    <task id="LOCAL-00093" summary="Added insider&amp;issuer fileter server side (WIP)">
-      <option name="closed" value="true" />
-      <created>1718809451018</created>
-      <option name="number" value="00093" />
-      <option name="presentableId" value="LOCAL-00093" />
-      <option name="project" value="LOCAL" />
-      <updated>1718809451018</updated>
-    </task>
-    <option name="localTasksCounter" value="94" />
+    <option name="localTasksCounter" value="93" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -592,6 +592,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="Fixed default value trn natures" />
     <MESSAGE value="Actually fixed default value trn natures" />
     <MESSAGE value="Update light/dark icon" />
     <MESSAGE value="setup pour custom theme eventuel" />
@@ -616,8 +617,7 @@
     <MESSAGE value="Red/Green value (if + or -)" />
     <MESSAGE value="tweaked colors" />
     <MESSAGE value="Added new them from example on web&#10;Multiple theme changes (WIP!!)" />
-    <MESSAGE value="Added insider&amp;issuer fileter server side (WIP)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added insider&amp;issuer fileter server side (WIP)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added new them from example on web&#10;Multiple theme changes (WIP!!)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
