@@ -15,9 +15,9 @@ export class TransactionsController {
     @Query('limit', new DefaultValuePipe(MAX_TRANSACTIONS_PER_REQUEST), ParseIntPipe) limit: number,
     @Query('page', new DefaultValuePipe(1), ParseIntPipe) page: number,
     @Query('trnNatureCodes') trnNatureCodes: string,
-    @Query('issuerName') issuerName?: string,
-    @Query('insiderName') insiderName?: string,
-    @Query('insiderTitles') insiderTitles?: string,
+    @Query('issuerName', new DefaultValuePipe('')) issuerName: string,
+    @Query('insiderName', new DefaultValuePipe('')) insiderName: string,
+    @Query('insiderTitles', new DefaultValuePipe(1), ParseIntPipe) insiderTitles: string,
   ): Promise<any> {
     const codes = trnNatureCodes ? trnNatureCodes.split(',').map(Number) : [];
     const titles = insiderTitles ? insiderTitles.split(',') : [];
