@@ -19,10 +19,16 @@ export function relationsToIssuerFromInt<T>(value: number): T[keyof T] | undefin
   return undefined;
 }
 
+// Convert an enum param string ex "1,2,3" to an enum array
 export function convertToEnumArray<T>(
   conversionFunction: (value: number) => T[keyof T] | undefined,
-  input: string | number[],
+  paramString: string,
 ): T[keyof T][] {
-  const values = typeof input === 'string' ? input.split(',').map(Number) : input;
-  return values.map(conversionFunction).filter((value): value is T[keyof T] => value !== undefined);
+  if (!paramString) {
+    return [];
+  }
+  return paramString
+    .split(',')
+    .map((title) => conversionFunction(Number(title)))
+    .filter((title): title is T[keyof T] => title !== undefined);
 }
