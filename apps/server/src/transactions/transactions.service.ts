@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
-import { transactions } from '@prisma/client';
+import { relationstoissuer_type, transactions } from '@prisma/client';
 import { MAX_TRANSACTIONS_PER_REQUEST } from '../server-constants';
 
 @Injectable()
@@ -15,7 +15,7 @@ export class TransactionsService {
     trnNatureCodes: number[],
     issuerName: string,
     insiderName: string,
-    insiderTitles: number[],
+    insiderTitles: relationstoissuer_type[],
   ): Promise<any> {
     const offset: number = page * limit;
 
@@ -35,12 +35,16 @@ export class TransactionsService {
           }
         : {},
       insiders: {
-        name: insiderName
-          ? {
-              contains: insiderName,
-            }
-          : {},
-        // TO COMPLETE ****
+        name: {
+          contains: insiderName ? insiderName : undefined,
+        },
+        relationstoissuer: {
+          some: {
+            type: {
+              in: insiderTitles.length > 0 ? insiderTitles : undefined,
+            },
+          },
+        },
       },
     };
 
