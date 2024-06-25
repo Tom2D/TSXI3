@@ -4,8 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f48acd8a-e246-4264-9ac4-41713844a250" name="Changes" comment="simplified enums to array">
+    <list default="true" id="f48acd8a-e246-4264-9ac4-41713844a250" name="Changes" comment="Added Pipes for insider titles and trn natures">
+      <change afterPath="$PROJECT_DIR$/apps/server/src/ParsePipes/parse-insider-titles.pipe.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apps/server/src/ParsePipes/parse-trn-nature-codes.pipe.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.eslintrc.js" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintrc.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/prettier.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/prettier.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/server/src/ParsePipes/ParseDatePipe.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/server/src/ParsePipes/parse-date-pipe.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/server/src/transactions/transactions.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/server/src/transactions/transactions.controller.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/shared/src/constants/enums-mapping.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/shared/src/constants/enums-mapping.ts" afterDir="false" />
     </list>
@@ -98,7 +103,7 @@
     "npm.server run.executor": "Debug",
     "prettierjs.PrettierConfiguration.Package": "E:\\Thomas\\Prog\\TSXInsiderJS2\\node_modules\\prettier",
     "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "preferences.sourceCode.TypeScript",
+    "settings.editor.selected.configurable": "preferences.keymap",
     "ts.external.directory.path": "E:\\Thomas\\Prog\\TSXI3\\apps\\client\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
   }
@@ -168,14 +173,6 @@
       <workItem from="1718674341773" duration="3076000" />
       <workItem from="1718686706976" duration="377000" />
       <workItem from="1718687098946" duration="614000" />
-    </task>
-    <task id="LOCAL-00045" summary="Fetch trn flags and show name">
-      <option name="closed" value="true" />
-      <created>1717987932008</created>
-      <option name="number" value="00045" />
-      <option name="presentableId" value="LOCAL-00045" />
-      <option name="project" value="LOCAL" />
-      <updated>1717987932008</updated>
     </task>
     <task id="LOCAL-00046" summary="minor">
       <option name="closed" value="true" />
@@ -561,7 +558,15 @@
       <option name="project" value="LOCAL" />
       <updated>1718946427566</updated>
     </task>
-    <option name="localTasksCounter" value="94" />
+    <task id="LOCAL-00094" summary="simplified enums to array">
+      <option name="closed" value="true" />
+      <created>1718947184127</created>
+      <option name="number" value="00094" />
+      <option name="presentableId" value="LOCAL-00094" />
+      <option name="project" value="LOCAL" />
+      <updated>1718947184127</updated>
+    </task>
+    <option name="localTasksCounter" value="95" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -592,7 +597,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Update light/dark icon" />
     <MESSAGE value="setup pour custom theme eventuel" />
     <MESSAGE value="Split App.tsx in multiple files" />
     <MESSAGE value="Extracted fetchTransactions logic into a callback" />
@@ -617,7 +621,8 @@
     <MESSAGE value="Added insider&amp;issuer fileter server side (WIP)" />
     <MESSAGE value="filtering by titles server side" />
     <MESSAGE value="simplified enums to array" />
-    <option name="LAST_COMMIT_MESSAGE" value="simplified enums to array" />
+    <MESSAGE value="Added Pipes for insider titles and trn natures" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Pipes for insider titles and trn natures" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -627,6 +632,12 @@
           <line>16</line>
           <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="27" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/apps/server/src/transactions/transactions.controller.ts</url>
+          <line>23</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="28" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>

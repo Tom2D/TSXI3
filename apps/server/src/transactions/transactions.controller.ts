@@ -1,9 +1,10 @@
 import { Controller, Get, Query, DefaultValuePipe, ParseIntPipe, Param } from '@nestjs/common';
 import { TransactionsService } from './transactions.service';
-import { ParseDatePipe } from '../ParsePipes/ParseDatePipe';
 import { relationstoissuer_type, transactions } from '@prisma/client';
 import { MAX_TRANSACTIONS_PER_REQUEST } from '../server-constants';
-import { convertToEnumArray, relationsToIssuerFromInt } from '@tsxinsider/shared';
+import { ParseTrnNatureCodesPipe } from '../ParsePipes/parse-trn-nature-codes.pipe';
+import { ParseInsiderTitlesPipe } from '../ParsePipes/parse-insider-titles.pipe';
+import { ParseDatePipe } from '../ParsePipes/parse-date-pipe';
 
 @Controller('transactions')
 export class TransactionsController {
@@ -15,24 +16,20 @@ export class TransactionsController {
     @Query('endFilingDate', ParseDatePipe) endFilingDate: Date,
     @Query('limit', new DefaultValuePipe(MAX_TRANSACTIONS_PER_REQUEST), ParseIntPipe) limit: number,
     @Query('page', new DefaultValuePipe(1), ParseIntPipe) page: number,
-    @Query('trnNatureCodes') trnNatureCodes: string,
+    @Query('trnNatureCodes', ParseTrnNatureCodesPipe) trnNatureCodes: number[],
     @Query('issuerName', new DefaultValuePipe('')) issuerName: string,
     @Query('insiderName', new DefaultValuePipe('')) insiderName: string,
-    @Query('insiderTitles') insiderTitles: string,
+    @Query('insiderTitles', ParseInsiderTitlesPipe) insiderTitles: relationstoissuer_type[],
   ): Promise<any> {
-    const codes = trnNatureCodes ? trnNatureCodes.split(',').map(Number) : [];
-
-    const titles: relationstoissuer_type[] = convertToEnumArray(relationsToIssuerFromInt, insiderTitles); //TDD_TODO Transformer en Pipe
-
     return this.transactionsService.findAll(
       beginFilingDate,
       endFilingDate,
       limit,
       page,
-      codes,
+      trnNatureCodes,
       issuerName,
       insiderName,
-      titles,
+      insiderTitles,
     );
   }
 

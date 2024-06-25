@@ -1,4 +1,4 @@
-//TDD_TODO EXPLAIN PKOI NECESSAIRE
+//E:\Thomas\Prog\TSXI3\packages\shared\src\constants\enums-mapping.tsTDD_TODO EXPLAIN PKOI NECESSAIRE
 
 export function relationsToIssuerFromInt<T>(value: number): T[keyof T] | undefined {
   const relationsToIssuerTypeMapping: { [key: number]: string } = {
