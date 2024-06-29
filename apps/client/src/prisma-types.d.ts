@@ -4204,17 +4204,20 @@ export namespace Prisma {
   export type InsidersAvgAggregateOutputType = {
     id: number | null
     issuerId: number | null
+    titles: number | null
   }
 
   export type InsidersSumAggregateOutputType = {
     id: number | null
     issuerId: number | null
+    titles: number | null
   }
 
   export type InsidersMinAggregateOutputType = {
     id: number | null
     name: string | null
     issuerId: number | null
+    titles: number | null
     ceasedToBeInsider: string | null
   }
 
@@ -4222,6 +4225,7 @@ export namespace Prisma {
     id: number | null
     name: string | null
     issuerId: number | null
+    titles: number | null
     ceasedToBeInsider: string | null
   }
 
@@ -4229,6 +4233,7 @@ export namespace Prisma {
     id: number
     name: number
     issuerId: number
+    titles: number
     ceasedToBeInsider: number
     _all: number
   }
@@ -4237,17 +4242,20 @@ export namespace Prisma {
   export type InsidersAvgAggregateInputType = {
     id?: true
     issuerId?: true
+    titles?: true
   }
 
   export type InsidersSumAggregateInputType = {
     id?: true
     issuerId?: true
+    titles?: true
   }
 
   export type InsidersMinAggregateInputType = {
     id?: true
     name?: true
     issuerId?: true
+    titles?: true
     ceasedToBeInsider?: true
   }
 
@@ -4255,6 +4263,7 @@ export namespace Prisma {
     id?: true
     name?: true
     issuerId?: true
+    titles?: true
     ceasedToBeInsider?: true
   }
 
@@ -4262,6 +4271,7 @@ export namespace Prisma {
     id?: true
     name?: true
     issuerId?: true
+    titles?: true
     ceasedToBeInsider?: true
     _all?: true
   }
@@ -4356,6 +4366,7 @@ export namespace Prisma {
     id: number
     name: string | null
     issuerId: number | null
+    titles: number | null
     ceasedToBeInsider: string | null
     _count: InsidersCountAggregateOutputType | null
     _avg: InsidersAvgAggregateOutputType | null
@@ -4382,6 +4393,7 @@ export namespace Prisma {
     id?: boolean
     name?: boolean
     issuerId?: boolean
+    titles?: boolean
     ceasedToBeInsider?: boolean
     issuers?: boolean | insiders$issuersArgs<ExtArgs>
     relationstoissuer?: boolean | insiders$relationstoissuerArgs<ExtArgs>
@@ -4393,6 +4405,7 @@ export namespace Prisma {
     id?: boolean
     name?: boolean
     issuerId?: boolean
+    titles?: boolean
     ceasedToBeInsider?: boolean
   }
 
@@ -4416,6 +4429,7 @@ export namespace Prisma {
       id: number
       name: string | null
       issuerId: number | null
+      titles: number | null
       ceasedToBeInsider: string | null
     }, ExtArgs["result"]["insiders"]>
     composites: {}
@@ -4819,6 +4833,7 @@ export namespace Prisma {
     readonly id: FieldRef<"insiders", 'Int'>
     readonly name: FieldRef<"insiders", 'String'>
     readonly issuerId: FieldRef<"insiders", 'Int'>
+    readonly titles: FieldRef<"insiders", 'Int'>
     readonly ceasedToBeInsider: FieldRef<"insiders", 'String'>
   }
     
@@ -15134,6 +15149,7 @@ export namespace Prisma {
     id: 'id',
     name: 'name',
     issuerId: 'issuerId',
+    titles: 'titles',
     ceasedToBeInsider: 'ceasedToBeInsider'
   };
 
@@ -15444,6 +15460,7 @@ export namespace Prisma {
     id?: IntFilter<"insiders"> | number
     name?: StringNullableFilter<"insiders"> | string | null
     issuerId?: IntNullableFilter<"insiders"> | number | null
+    titles?: IntNullableFilter<"insiders"> | number | null
     ceasedToBeInsider?: StringNullableFilter<"insiders"> | string | null
     issuers?: XOR<IssuersNullableRelationFilter, issuersWhereInput> | null
     relationstoissuer?: RelationstoissuerListRelationFilter
@@ -15454,6 +15471,7 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrderInput | SortOrder
     issuerId?: SortOrderInput | SortOrder
+    titles?: SortOrderInput | SortOrder
     ceasedToBeInsider?: SortOrderInput | SortOrder
     issuers?: issuersOrderByWithRelationInput
     relationstoissuer?: relationstoissuerOrderByRelationAggregateInput
@@ -15467,6 +15485,7 @@ export namespace Prisma {
     NOT?: insidersWhereInput | insidersWhereInput[]
     name?: StringNullableFilter<"insiders"> | string | null
     issuerId?: IntNullableFilter<"insiders"> | number | null
+    titles?: IntNullableFilter<"insiders"> | number | null
     ceasedToBeInsider?: StringNullableFilter<"insiders"> | string | null
     issuers?: XOR<IssuersNullableRelationFilter, issuersWhereInput> | null
     relationstoissuer?: RelationstoissuerListRelationFilter
@@ -15477,6 +15496,7 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrderInput | SortOrder
     issuerId?: SortOrderInput | SortOrder
+    titles?: SortOrderInput | SortOrder
     ceasedToBeInsider?: SortOrderInput | SortOrder
     _count?: insidersCountOrderByAggregateInput
     _avg?: insidersAvgOrderByAggregateInput
@@ -15492,6 +15512,7 @@ export namespace Prisma {
     id?: IntWithAggregatesFilter<"insiders"> | number
     name?: StringNullableWithAggregatesFilter<"insiders"> | string | null
     issuerId?: IntNullableWithAggregatesFilter<"insiders"> | number | null
+    titles?: IntNullableWithAggregatesFilter<"insiders"> | number | null
     ceasedToBeInsider?: StringNullableWithAggregatesFilter<"insiders"> | string | null
   }
 
@@ -16182,6 +16203,7 @@ export namespace Prisma {
 
   export type insidersCreateInput = {
     name?: string | null
+    titles?: number | null
     ceasedToBeInsider?: string | null
     issuers?: issuersCreateNestedOneWithoutInsidersInput
     relationstoissuer?: relationstoissuerCreateNestedManyWithoutInsidersInput
@@ -16192,6 +16214,7 @@ export namespace Prisma {
     id?: number
     name?: string | null
     issuerId?: number | null
+    titles?: number | null
     ceasedToBeInsider?: string | null
     relationstoissuer?: relationstoissuerUncheckedCreateNestedManyWithoutInsidersInput
     transactions?: transactionsUncheckedCreateNestedManyWithoutInsidersInput
@@ -16199,6 +16222,7 @@ export namespace Prisma {
 
   export type insidersUpdateInput = {
     name?: NullableStringFieldUpdateOperationsInput | string | null
+    titles?: NullableIntFieldUpdateOperationsInput | number | null
     ceasedToBeInsider?: NullableStringFieldUpdateOperationsInput | string | null
     issuers?: issuersUpdateOneWithoutInsidersNestedInput
     relationstoissuer?: relationstoissuerUpdateManyWithoutInsidersNestedInput
@@ -16209,6 +16233,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     name?: NullableStringFieldUpdateOperationsInput | string | null
     issuerId?: NullableIntFieldUpdateOperationsInput | number | null
+    titles?: NullableIntFieldUpdateOperationsInput | number | null
     ceasedToBeInsider?: NullableStringFieldUpdateOperationsInput | string | null
     relationstoissuer?: relationstoissuerUncheckedUpdateManyWithoutInsidersNestedInput
     transactions?: transactionsUncheckedUpdateManyWithoutInsidersNestedInput
@@ -16218,11 +16243,13 @@ export namespace Prisma {
     id?: number
     name?: string | null
     issuerId?: number | null
+    titles?: number | null
     ceasedToBeInsider?: string | null
   }
 
   export type insidersUpdateManyMutationInput = {
     name?: NullableStringFieldUpdateOperationsInput | string | null
+    titles?: NullableIntFieldUpdateOperationsInput | number | null
     ceasedToBeInsider?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
@@ -16230,6 +16257,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     name?: NullableStringFieldUpdateOperationsInput | string | null
     issuerId?: NullableIntFieldUpdateOperationsInput | number | null
+    titles?: NullableIntFieldUpdateOperationsInput | number | null
     ceasedToBeInsider?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
@@ -16961,18 +16989,21 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     issuerId?: SortOrder
+    titles?: SortOrder
     ceasedToBeInsider?: SortOrder
   }
 
   export type insidersAvgOrderByAggregateInput = {
     id?: SortOrder
     issuerId?: SortOrder
+    titles?: SortOrder
   }
 
   export type insidersMaxOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
     issuerId?: SortOrder
+    titles?: SortOrder
     ceasedToBeInsider?: SortOrder
   }
 
@@ -16980,12 +17011,14 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     issuerId?: SortOrder
+    titles?: SortOrder
     ceasedToBeInsider?: SortOrder
   }
 
   export type insidersSumOrderByAggregateInput = {
     id?: SortOrder
     issuerId?: SortOrder
+    titles?: SortOrder
   }
 
   export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -17791,6 +17824,14 @@ export namespace Prisma {
     connect?: transactionsWhereUniqueInput | transactionsWhereUniqueInput[]
   }
 
+  export type NullableIntFieldUpdateOperationsInput = {
+    set?: number | null
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
   export type issuersUpdateOneWithoutInsidersNestedInput = {
     create?: XOR<issuersCreateWithoutInsidersInput, issuersUncheckedCreateWithoutInsidersInput>
     connectOrCreate?: issuersCreateOrConnectWithoutInsidersInput
@@ -17827,14 +17868,6 @@ export namespace Prisma {
     update?: transactionsUpdateWithWhereUniqueWithoutInsidersInput | transactionsUpdateWithWhereUniqueWithoutInsidersInput[]
     updateMany?: transactionsUpdateManyWithWhereWithoutInsidersInput | transactionsUpdateManyWithWhereWithoutInsidersInput[]
     deleteMany?: transactionsScalarWhereInput | transactionsScalarWhereInput[]
-  }
-
-  export type NullableIntFieldUpdateOperationsInput = {
-    set?: number | null
-    increment?: number
-    decrement?: number
-    multiply?: number
-    divide?: number
   }
 
   export type relationstoissuerUncheckedUpdateManyWithoutInsidersNestedInput = {
@@ -19271,6 +19304,7 @@ export namespace Prisma {
 
   export type insidersCreateWithoutIssuersInput = {
     name?: string | null
+    titles?: number | null
     ceasedToBeInsider?: string | null
     relationstoissuer?: relationstoissuerCreateNestedManyWithoutInsidersInput
     transactions?: transactionsCreateNestedManyWithoutInsidersInput
@@ -19279,6 +19313,7 @@ export namespace Prisma {
   export type insidersUncheckedCreateWithoutIssuersInput = {
     id?: number
     name?: string | null
+    titles?: number | null
     ceasedToBeInsider?: string | null
     relationstoissuer?: relationstoissuerUncheckedCreateNestedManyWithoutInsidersInput
     transactions?: transactionsUncheckedCreateNestedManyWithoutInsidersInput
@@ -19418,6 +19453,7 @@ export namespace Prisma {
     id?: IntFilter<"insiders"> | number
     name?: StringNullableFilter<"insiders"> | string | null
     issuerId?: IntNullableFilter<"insiders"> | number | null
+    titles?: IntNullableFilter<"insiders"> | number | null
     ceasedToBeInsider?: StringNullableFilter<"insiders"> | string | null
   }
 
@@ -19495,6 +19531,7 @@ export namespace Prisma {
 
   export type insidersCreateWithoutRelationstoissuerInput = {
     name?: string | null
+    titles?: number | null
     ceasedToBeInsider?: string | null
     issuers?: issuersCreateNestedOneWithoutInsidersInput
     transactions?: transactionsCreateNestedManyWithoutInsidersInput
@@ -19504,6 +19541,7 @@ export namespace Prisma {
     id?: number
     name?: string | null
     issuerId?: number | null
+    titles?: number | null
     ceasedToBeInsider?: string | null
     transactions?: transactionsUncheckedCreateNestedManyWithoutInsidersInput
   }
@@ -19526,6 +19564,7 @@ export namespace Prisma {
 
   export type insidersUpdateWithoutRelationstoissuerInput = {
     name?: NullableStringFieldUpdateOperationsInput | string | null
+    titles?: NullableIntFieldUpdateOperationsInput | number | null
     ceasedToBeInsider?: NullableStringFieldUpdateOperationsInput | string | null
     issuers?: issuersUpdateOneWithoutInsidersNestedInput
     transactions?: transactionsUpdateManyWithoutInsidersNestedInput
@@ -19535,6 +19574,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     name?: NullableStringFieldUpdateOperationsInput | string | null
     issuerId?: NullableIntFieldUpdateOperationsInput | number | null
+    titles?: NullableIntFieldUpdateOperationsInput | number | null
     ceasedToBeInsider?: NullableStringFieldUpdateOperationsInput | string | null
     transactions?: transactionsUncheckedUpdateManyWithoutInsidersNestedInput
   }
@@ -19786,6 +19826,7 @@ export namespace Prisma {
 
   export type insidersCreateWithoutTransactionsInput = {
     name?: string | null
+    titles?: number | null
     ceasedToBeInsider?: string | null
     issuers?: issuersCreateNestedOneWithoutInsidersInput
     relationstoissuer?: relationstoissuerCreateNestedManyWithoutInsidersInput
@@ -19795,6 +19836,7 @@ export namespace Prisma {
     id?: number
     name?: string | null
     issuerId?: number | null
+    titles?: number | null
     ceasedToBeInsider?: string | null
     relationstoissuer?: relationstoissuerUncheckedCreateNestedManyWithoutInsidersInput
   }
@@ -19936,6 +19978,7 @@ export namespace Prisma {
 
   export type insidersUpdateWithoutTransactionsInput = {
     name?: NullableStringFieldUpdateOperationsInput | string | null
+    titles?: NullableIntFieldUpdateOperationsInput | number | null
     ceasedToBeInsider?: NullableStringFieldUpdateOperationsInput | string | null
     issuers?: issuersUpdateOneWithoutInsidersNestedInput
     relationstoissuer?: relationstoissuerUpdateManyWithoutInsidersNestedInput
@@ -19945,6 +19988,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     name?: NullableStringFieldUpdateOperationsInput | string | null
     issuerId?: NullableIntFieldUpdateOperationsInput | number | null
+    titles?: NullableIntFieldUpdateOperationsInput | number | null
     ceasedToBeInsider?: NullableStringFieldUpdateOperationsInput | string | null
     relationstoissuer?: relationstoissuerUncheckedUpdateManyWithoutInsidersNestedInput
   }
@@ -20619,6 +20663,7 @@ export namespace Prisma {
   export type insidersCreateManyIssuersInput = {
     id?: number
     name?: string | null
+    titles?: number | null
     ceasedToBeInsider?: string | null
   }
 
@@ -20651,6 +20696,7 @@ export namespace Prisma {
 
   export type insidersUpdateWithoutIssuersInput = {
     name?: NullableStringFieldUpdateOperationsInput | string | null
+    titles?: NullableIntFieldUpdateOperationsInput | number | null
     ceasedToBeInsider?: NullableStringFieldUpdateOperationsInput | string | null
     relationstoissuer?: relationstoissuerUpdateManyWithoutInsidersNestedInput
     transactions?: transactionsUpdateManyWithoutInsidersNestedInput
@@ -20659,6 +20705,7 @@ export namespace Prisma {
   export type insidersUncheckedUpdateWithoutIssuersInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: NullableStringFieldUpdateOperationsInput | string | null
+    titles?: NullableIntFieldUpdateOperationsInput | number | null
     ceasedToBeInsider?: NullableStringFieldUpdateOperationsInput | string | null
     relationstoissuer?: relationstoissuerUncheckedUpdateManyWithoutInsidersNestedInput
     transactions?: transactionsUncheckedUpdateManyWithoutInsidersNestedInput
@@ -20667,6 +20714,7 @@ export namespace Prisma {
   export type insidersUncheckedUpdateManyWithoutIssuersInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: NullableStringFieldUpdateOperationsInput | string | null
+    titles?: NullableIntFieldUpdateOperationsInput | number | null
     ceasedToBeInsider?: NullableStringFieldUpdateOperationsInput | string | null
   }
 

@@ -24,12 +24,15 @@ model insiders {
   id                Int                 @id @default(autoincrement())
   name              String?             @db.VarChar(255)
   issuerId          Int?
+  titles            Int?
   ceasedToBeInsider String?             @db.VarChar(255)
   issuers           issuers?            @relation(fields: [issuerId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "insiders_ibfk_1")
   relationstoissuer relationstoissuer[]
   transactions      transactions[]
 
   @@index([issuerId], map: "issuerId")
+  @@index([id], map: "insiders_index_10")
+  @@index([titles], map: "insiders_index_11")
 }
 
 model issuerexchanges {
@@ -67,7 +70,9 @@ model relationstoissuer {
   insiders  insiders               @relation(fields: [insiderId], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "relationstoissuer_ibfk_1")
 
   @@id([type, insiderId])
-  @@index([insiderId], map: "insiderId")
+  @@index([type], map: "relationsToIssuer_index_11")
+  @@index([insiderId], map: "relationsToIssuer_index_12")
+  @@index([insiderId, type], map: "relationstoissuer_comp_index")
 }
 
 model securitydesignations {

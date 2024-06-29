@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f48acd8a-e246-4264-9ac4-41713844a250" name="Changes" comment="Added log for prisma underlying sql queries">
-      <change beforePath="$PROJECT_DIR$/apps/client/src/components/TransactionTable.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/client/src/components/TransactionTable.tsx" afterDir="false" />
+    <list default="true" id="f48acd8a-e246-4264-9ac4-41713844a250" name="Changes" comment="minor">
+      <change beforePath="$PROJECT_DIR$/apps/client/src/prisma-types.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/client/src/prisma-types.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/server/prisma/schema.prisma" beforeDir="false" afterPath="$PROJECT_DIR$/apps/server/prisma/schema.prisma" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -166,14 +167,6 @@
       <workItem from="1718674341773" duration="3076000" />
       <workItem from="1718686706976" duration="377000" />
       <workItem from="1718687098946" duration="614000" />
-    </task>
-    <task id="LOCAL-00047" summary="null =&gt; &quot;&quot;&#10;+ other minor fixes">
-      <option name="closed" value="true" />
-      <created>1718059832428</created>
-      <option name="number" value="00047" />
-      <option name="presentableId" value="LOCAL-00047" />
-      <option name="project" value="LOCAL" />
-      <updated>1718059832428</updated>
     </task>
     <task id="LOCAL-00048" summary="Security Type == name instead of id">
       <option name="closed" value="true" />
@@ -559,7 +552,15 @@
       <option name="project" value="LOCAL" />
       <updated>1719640040397</updated>
     </task>
-    <option name="localTasksCounter" value="96" />
+    <task id="LOCAL-00096" summary="minor">
+      <option name="closed" value="true" />
+      <created>1719640106795</created>
+      <option name="number" value="00096" />
+      <option name="presentableId" value="LOCAL-00096" />
+      <option name="project" value="LOCAL" />
+      <updated>1719640106795</updated>
+    </task>
+    <option name="localTasksCounter" value="97" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -590,7 +591,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Split App.tsx in multiple files" />
     <MESSAGE value="Extracted fetchTransactions logic into a callback" />
     <MESSAGE value="Meilleur gestion d'erreur.&#10;Les trnNatures se font fetcher correctement meme si premier call a échoué" />
     <MESSAGE value="Fixed isLoading: only on initialFetch" />
@@ -615,7 +615,8 @@
     <MESSAGE value="simplified enums to array" />
     <MESSAGE value="Added Pipes for insider titles and trn natures" />
     <MESSAGE value="Added log for prisma underlying sql queries" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added log for prisma underlying sql queries" />
+    <MESSAGE value="minor" />
+    <option name="LAST_COMMIT_MESSAGE" value="minor" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
