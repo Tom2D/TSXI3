@@ -9,7 +9,7 @@ interface Props {
   isLoading: boolean;
   isRefetching: boolean;
   isError: boolean;
-  setPagination: (pagination: MRT_Updater<MRT_PaginationState>) => void;
+  setPagination: (_pagination: MRT_Updater<MRT_PaginationState>) => void;
 }
 
 const TransactionTable: React.FC<Props> = ({
