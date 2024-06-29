@@ -5,6 +5,7 @@ import { MAX_TRANSACTIONS_PER_REQUEST } from '../server-constants';
 import { ParseTrnNatureCodesPipe } from '../ParsePipes/parse-trn-nature-codes.pipe';
 import { ParseInsiderTitlesPipe } from '../ParsePipes/parse-insider-titles.pipe';
 import { ParseDatePipe } from '../ParsePipes/parse-date-pipe';
+import { TitlesBitfield } from '@tsxinsider/shared';
 
 @Controller('transactions')
 export class TransactionsController {
@@ -19,7 +20,7 @@ export class TransactionsController {
     @Query('trnNatureCodes', ParseTrnNatureCodesPipe) trnNatureCodes: number[],
     @Query('issuerName', new DefaultValuePipe('')) issuerName: string,
     @Query('insiderName', new DefaultValuePipe('')) insiderName: string,
-    @Query('insiderTitles', ParseInsiderTitlesPipe) insiderTitles: relationstoissuer_type[],
+    @Query('insiderTitles', new DefaultValuePipe(0), ParseInsiderTitlesPipe) insiderTitles: TitlesBitfield,
   ): Promise<any> {
     return this.transactionsService.findAll(
       beginFilingDate,

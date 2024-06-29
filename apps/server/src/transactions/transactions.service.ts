@@ -1,7 +1,9 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
-import { relationstoissuer_type, transactions } from '@prisma/client';
+import { transactions } from '@prisma/client';
 import { MAX_TRANSACTIONS_PER_REQUEST } from '../server-constants';
+import { TitlesBitfield } from '@tsxinsider/shared';
+import { getAllBitfieldCombinations } from '../prisma/util/ExpandedBitfield';
 
 @Injectable()
 export class TransactionsService {
@@ -15,9 +17,11 @@ export class TransactionsService {
     trnNatureCodes: number[],
     issuerName: string,
     insiderName: string,
-    insiderTitles: relationstoissuer_type[],
+    insiderTitles: TitlesBitfield,
   ): Promise<any> {
     const offset: number = page * limit;
+
+    const titlesCombinations = getAllBitfieldCombinations(TitlesBitfield, insiderTitles);
 
     const whereClause = {
       filingDate: {
@@ -38,13 +42,11 @@ export class TransactionsService {
         name: {
           contains: insiderName ? insiderName : undefined,
         },
-        relationstoissuer: {
-          some: {
-            type: {
-              in: insiderTitles.length > 0 ? insiderTitles : undefined,
-            },
-          },
-        },
+        titles: insiderTitles
+          ? {
+              in: titlesCombinations,
+            }
+          : {},
       },
     };
 

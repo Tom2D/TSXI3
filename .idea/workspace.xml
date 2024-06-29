@@ -4,9 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f48acd8a-e246-4264-9ac4-41713844a250" name="Changes" comment="minor">
-      <change beforePath="$PROJECT_DIR$/apps/client/src/prisma-types.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/client/src/prisma-types.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/server/prisma/schema.prisma" beforeDir="false" afterPath="$PROJECT_DIR$/apps/server/prisma/schema.prisma" afterDir="false" />
+    <list default="true" id="f48acd8a-e246-4264-9ac4-41713844a250" name="Changes" comment="Bitfield query&#10;Still slow in many case (ex:1)">
+      <change afterPath="$PROJECT_DIR$/apps/server/src/prisma/util/ExpandedBitfield.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/shared/src/insiders-titles.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/server/src/ParsePipes/parse-insider-titles.pipe.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/server/src/ParsePipes/parse-insider-titles.pipe.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/server/src/transactions/transactions.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/server/src/transactions/transactions.controller.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/server/src/transactions/transactions.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/server/src/transactions/transactions.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/shared/src/constants/enums-mapping.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/shared/src/enums-util.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/shared/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/shared/src/index.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,7 +100,7 @@
     "nodejs_package_manager_path": "C:\\Users\\TomDD\\AppData\\Roaming\\npm\\pnpm.cmd",
     "npm.client.executor": "Run",
     "npm.server debug.executor": "Run",
-    "npm.server run.executor": "Run",
+    "npm.server run.executor": "Debug",
     "prettierjs.PrettierConfiguration.Package": "E:\\Thomas\\Prog\\TSXInsiderJS2\\node_modules\\prettier",
     "run.code.analysis.last.selected.profile": "pProject Default",
     "settings.editor.selected.configurable": "preferences.keymap",
@@ -111,6 +117,7 @@
       <recent name="E:\Thomas\Prog\TSXI3\packages\shared" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\Thomas\Prog\TSXI3\packages\shared\src" />
       <recent name="E:\Thomas\Prog\TSXI3\apps\client\src\theme" />
       <recent name="E:\Thomas\Prog\TSXI3\packages\shared" />
       <recent name="E:\Thomas\Prog\TSXInsiderJS2\apps\client" />
@@ -167,14 +174,6 @@
       <workItem from="1718674341773" duration="3076000" />
       <workItem from="1718686706976" duration="377000" />
       <workItem from="1718687098946" duration="614000" />
-    </task>
-    <task id="LOCAL-00048" summary="Security Type == name instead of id">
-      <option name="closed" value="true" />
-      <created>1718061479796</created>
-      <option name="number" value="00048" />
-      <option name="presentableId" value="LOCAL-00048" />
-      <option name="project" value="LOCAL" />
-      <updated>1718061479796</updated>
     </task>
     <task id="LOCAL-00049" summary="Better prisma readme">
       <option name="closed" value="true" />
@@ -560,7 +559,15 @@
       <option name="project" value="LOCAL" />
       <updated>1719640106795</updated>
     </task>
-    <option name="localTasksCounter" value="97" />
+    <task id="LOCAL-00097" summary="Updated prisma schema for titles bitfield">
+      <option name="closed" value="true" />
+      <created>1719640617615</created>
+      <option name="number" value="00097" />
+      <option name="presentableId" value="LOCAL-00097" />
+      <option name="project" value="LOCAL" />
+      <updated>1719640617615</updated>
+    </task>
+    <option name="localTasksCounter" value="98" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -591,8 +598,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Extracted fetchTransactions logic into a callback" />
-    <MESSAGE value="Meilleur gestion d'erreur.&#10;Les trnNatures se font fetcher correctement meme si premier call a échoué" />
     <MESSAGE value="Fixed isLoading: only on initialFetch" />
     <MESSAGE value="Added grid.css&#10;Set min grid witdh (when removing many columns)" />
     <MESSAGE value="columns grow not working" />
@@ -616,7 +621,9 @@
     <MESSAGE value="Added Pipes for insider titles and trn natures" />
     <MESSAGE value="Added log for prisma underlying sql queries" />
     <MESSAGE value="minor" />
-    <option name="LAST_COMMIT_MESSAGE" value="minor" />
+    <MESSAGE value="Updated prisma schema for titles bitfield" />
+    <MESSAGE value="Bitfield query&#10;Still slow in many case (ex:1)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Bitfield query&#10;Still slow in many case (ex:1)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
