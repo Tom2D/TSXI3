@@ -1,6 +1,6 @@
 import { Controller, Get, Query, DefaultValuePipe, ParseIntPipe, Param } from '@nestjs/common';
 import { TransactionsService } from './transactions.service';
-import { relationstoissuer_type, transactions } from '@prisma/client';
+import { transactions } from '@prisma/client';
 import { MAX_TRANSACTIONS_PER_REQUEST } from '../server-constants';
 import { ParseTrnNatureCodesPipe } from '../ParsePipes/parse-trn-nature-codes.pipe';
 import { ParseInsiderTitlesPipe } from '../ParsePipes/parse-insider-titles.pipe';

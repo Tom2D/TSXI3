@@ -1,5 +1,3 @@
-import { TitlesBitfield } from '@tsxinsider/shared/src/insiders-titles';
-
 export class ExpandedBitwiseEnumArray<T extends number> extends Array<T> {
   merge() {
     return this.reduce((acc, cur) => acc | cur, 0);

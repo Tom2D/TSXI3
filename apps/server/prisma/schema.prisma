@@ -33,6 +33,7 @@ model insiders {
   @@index([issuerId], map: "issuerId")
   @@index([id], map: "insiders_index_10")
   @@index([titles], map: "insiders_index_11")
+  @@index([id, titles], map: "idx_insiders_id_titles")
 }
 
 model issuerexchanges {
@@ -135,6 +136,7 @@ model transactions {
   @@index([trnDate], map: "transactions_index_7")
   @@index([filingDate], map: "transactions_index_8")
   @@index([trnNatureCode], map: "transactions_index_9")
+  @@index([filingDate, insiderId], map: "idx_transactions_filingDate_insiderId")
 }
 
 model trnflag {

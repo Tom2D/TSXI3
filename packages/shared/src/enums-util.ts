@@ -9,7 +9,7 @@ export function enumFromInt<T>(value: number, enumMapping: { [key: number]: stri
 
 // Convert an enum param string ex "1,2,3" to an enum array
 export function convertToEnumArray<T>(
-  conversionFunction: (value: number) => T[keyof T] | undefined,
+  conversionFunction: (_value: number) => T[keyof T] | undefined,
   paramString: string,
 ): T[keyof T][] {
   if (!paramString) {
