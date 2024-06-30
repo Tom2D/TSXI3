@@ -22,6 +22,8 @@ import { columnsGet } from './grid/columns-get.ts';
 import dayjs, { Dayjs } from 'dayjs';
 import { MRT_PaginationState } from 'material-react-table';
 import { appTheme2 } from './theme/theme2.ts';
+import { enumToString, getEnumStringValues, stringToEnum, TitlesBitfield } from '@tsxinsider/shared';
+
 //import { appTheme1 } from './theme/theme.tsx';
 
 const APP_THEME = appTheme2;
@@ -45,6 +47,9 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [isRefetching, setIsRefetching] = useState(false);
   const [isError, setIsError] = useState(false);
+  const [issuerName, setIssuerName] = useState('');
+  const [insiderName, setInsiderName] = useState('');
+  const [selectedTitles, setSelectedTitles] = useState<TitlesBitfield[]>([]);
 
   const theme = useMemo(() => APP_THEME(themeMode), [themeMode]);
 
@@ -52,14 +57,20 @@ function App() {
     setThemeMode((prevMode) => (prevMode === 'light' ? 'dark' : 'light'));
   };
 
-  const endDateRef = useRef(endDate);
-  const selectedTrnNaturesRef = useRef(selectedTrnNatures);
   const startDateRef = useRef(startDate);
+  const endDateRef = useRef(endDate);
+  const issuerNameRef = useRef(issuerName);
+  const insiderNameRef = useRef(insiderName);
+  const selectedTrnNaturesRef = useRef(selectedTrnNatures);
+  const selectedTitlesRef = useRef(selectedTitles);
   useEffect(() => {
-    endDateRef.current = endDate;
-    selectedTrnNaturesRef.current = selectedTrnNatures;
     startDateRef.current = startDate;
-  }, [startDate, endDate, selectedTrnNatures, trns]);
+    endDateRef.current = endDate;
+    issuerNameRef.current = issuerName;
+    insiderNameRef.current = insiderName;
+    selectedTrnNaturesRef.current = selectedTrnNatures;
+    selectedTitlesRef.current = selectedTitles;
+  }, [startDate, endDate, issuerName, insiderName, selectedTrnNatures, selectedTitles, trns]);
 
   const isInitialFetch = useRef(true);
   const initialPagination = useRef(pagination);
@@ -92,6 +103,9 @@ function App() {
           startDateRef,
           endDateRef,
           selectedTrnNaturesRef,
+          issuerNameRef,
+          insiderNameRef,
+          selectedTitlesRef,
           setTransactions,
           setIssuers,
           setTickers,
@@ -132,6 +146,19 @@ function App() {
     setSelectedTrnNatures(values);
   };
 
+  const handleIssuerNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setIssuerName(event.target.value);
+  };
+
+  const handleInsiderNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setInsiderName(event.target.value);
+  };
+
+  const handleTitlesChange = (_event: any, values: string[]) => {
+    const selectedEnumValues = values.map((value) => stringToEnum(TitlesBitfield, value));
+    setSelectedTitles(selectedEnumValues);
+  };
+
   // prettier-ignore
   const columns = useMemo(() =>
       columnsGet(issuers, tickers, insiders, relationsToIssuer, securityDesignations, trnFlags, trnNatures,),
@@ -159,6 +186,27 @@ function App() {
                 renderInput={(params) => <TextField {...params} label="Trade Types" />}
               />
             </div>
+            <TextField
+              label="Issuer Name"
+              value={issuerName}
+              onChange={handleIssuerNameChange}
+              style={{ marginRight: 10 }}
+            />
+            <TextField
+              label="Insider Name"
+              value={insiderName}
+              onChange={handleInsiderNameChange}
+              style={{ marginRight: 10 }}
+            />
+            <Autocomplete
+              multiple
+              limitTags={2}
+              options={getEnumStringValues(TitlesBitfield)}
+              getOptionLabel={(option: string) => option}
+              value={selectedTitles.map((title) => enumToString(TitlesBitfield, title) as string)}
+              onChange={handleTitlesChange}
+              renderInput={(params) => <TextField {...params} label="Titles" />}
+            />
             <Button variant="contained" color="primary" onClick={() => fetchTransactionsCallback(pagination)}>
               Fetch Transactions
             </Button>

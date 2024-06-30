@@ -4,6 +4,7 @@ import { SERVER_AUTHORITY } from '@tsxinsider/shared';
 import { transactions, trnnatures, trnflag } from '../prisma-types';
 import { Dispatch, MutableRefObject, SetStateAction } from 'react';
 import { Dayjs } from 'dayjs';
+import { TitlesBitfield } from '@tsxinsider/shared';
 
 export const fetchTransactions = async (
   pageIndex: number,
@@ -11,6 +12,9 @@ export const fetchTransactions = async (
   startDateRef: MutableRefObject<Dayjs | null>,
   endDateRef: MutableRefObject<Dayjs | null>,
   selectedTrnNaturesRef: MutableRefObject<trnnatures[]>,
+  issuerName: MutableRefObject<string>,
+  insiderName: MutableRefObject<string>,
+  selectedTitles: MutableRefObject<TitlesBitfield[]>,
   setTransactions: Dispatch<SetStateAction<transactions[]>>,
   setIssuers: Dispatch<SetStateAction<any[]>>,
   setTickers: Dispatch<SetStateAction<any[]>>,
@@ -28,9 +32,20 @@ export const fetchTransactions = async (
     const startDateStr = FormatDateUTC(startDateRef.current);
     const endDateStr = FormatDateUTC(endDateRef.current);
     const trnNatureCodes = selectedTrnNaturesRef.current.map((option) => option.code).join(',');
-    const response = await fetch(
-      `${SERVER_AUTHORITY}/transactions?beginFilingDate=${startDateStr}&endFilingDate=${endDateStr}&limit=${pageSize}&page=${pageIndex}&trnNatureCodes=${trnNatureCodes}`,
-    );
+    const titlesBitfield = selectedTitles.current.reduce((acc, cur) => acc | cur, 0);
+
+    const url =
+      `${SERVER_AUTHORITY}/transactions?` +
+      `beginFilingDate=${startDateStr}&` +
+      `endFilingDate=${endDateStr}&` +
+      `limit=${pageSize}&` +
+      `page=${pageIndex}&` +
+      `trnNatureCodes=${trnNatureCodes}&` +
+      `issuerName=${issuerName.current}&` +
+      `insiderName=${insiderName.current}&` +
+      `insiderTitles=${titlesBitfield}`;
+
+    const response = await fetch(url);
 
     if (response.ok) {
       const data = await response.json();

@@ -9,7 +9,7 @@ module.exports = {
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
     'linebreak-style': ['error', 'windows'],
-    //'no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
+    //'no-unused-vars': ['error', { argsIgnorePattern: '^_' }], // TDD_TODO Fait apparaitre des faux positifs...
     //'@typescript-eslint/no-unused-vars': ['error'],
     'max-len': ['error', { code: 125 }],
   },

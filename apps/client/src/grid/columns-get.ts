@@ -37,9 +37,7 @@ export const columnsGet = (
   };
 
   const getTitles = (insiderId: number): string => {
-    const relations = relationsToIssuer.filter(
-      (relation) => relation.insiderId === insiderId,
-    );
+    const relations = relationsToIssuer.filter((relation) => relation.insiderId === insiderId);
     return relations.map((relation) => relation.type).join(', ');
   };
 
@@ -72,8 +70,7 @@ export const columnsGet = (
 
       case 'trnDate':
       case 'filingDate':
-        accessorFn = (row) =>
-          new Date(row[column.accessorKey]).toLocaleDateString();
+        accessorFn = (row) => new Date(row[column.accessorKey]).toLocaleDateString();
         break;
 
       case 'trnNatureCode':
