@@ -174,6 +174,12 @@ function App() {
     setUseTradeDate(Number(event.target.value));
   };
 
+  const handleKeyPress = (event: React.KeyboardEvent) => {
+    if (event.key === 'Enter') {
+      fetchTransactionsCallback(pagination);
+    }
+  };
+
   // prettier-ignore
   const columns = useMemo(() =>
       columnsGet(issuers, tickers, insiders, relationsToIssuer, securityDesignations, trnFlags, trnNatures,),
@@ -189,13 +195,24 @@ function App() {
           <ThemeToggleButton onToggle={handleThemeToggle} />
           <div className="filters">
             <div className="date-filters">
-              <DatePickers startDate={startDate} endDate={endDate} setStartDate={setStartDate} setEndDate={setEndDate} />
+              <DatePickers
+                startDate={startDate}
+                endDate={endDate}
+                setStartDate={setStartDate}
+                setEndDate={setEndDate}
+                onKeyUp={handleKeyPress}
+              />
               <DateFilter useTradeDate={useTradeDate} handleUseTradeDateChange={handleUseTradeDateChange} />
             </div>
             <div className="stock-filters">
-              <TextField label="Issuer Name" value={issuerName} onChange={handleIssuerNameChange} />
-              <TextField label="Insider Name" value={insiderName} onChange={handleInsiderNameChange} />
-              <TextField label="Ticker" value={ticker} onChange={handleTickerChange} />
+              <TextField label="Issuer Name" value={issuerName} onChange={handleIssuerNameChange} onKeyUp={handleKeyPress} />
+              <TextField
+                label="Insider Name"
+                value={insiderName}
+                onChange={handleInsiderNameChange}
+                onKeyUp={handleKeyPress}
+              />
+              <TextField label="Ticker" value={ticker} onChange={handleTickerChange} onKeyUp={handleKeyPress} />
             </div>
             <Autocomplete
               multiple
@@ -206,8 +223,8 @@ function App() {
               value={selectedTrnNatures}
               onChange={handleTrnNatureChange}
               renderInput={(params) => <TextField {...params} label="Trade Types" />}
+              onKeyUp={handleKeyPress}
             />
-
             <Autocomplete
               multiple
               limitTags={4}
@@ -216,6 +233,7 @@ function App() {
               value={selectedTitles.map((title) => enumToString(TitlesBitfield, title) as string)}
               onChange={handleTitlesChange}
               renderInput={(params) => <TextField {...params} label="Titles" />}
+              onKeyUp={handleKeyPress}
             />
             <Button id="fetch-btn" variant="contained" color="primary" onClick={() => fetchTransactionsCallback(pagination)}>
               Fetch Transactions

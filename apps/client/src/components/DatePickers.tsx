@@ -10,22 +10,33 @@ interface DatePickersProps {
   endDate: Dayjs | null;
   setStartDate: (date: Dayjs | null) => void;
   setEndDate: (date: Dayjs | null) => void;
+  onKeyUp: (event: React.KeyboardEvent<HTMLInputElement>) => void;
 }
 
-export const DatePickers: FC<DatePickersProps> = ({ startDate, endDate, setStartDate, setEndDate }) => (
+export const DatePickers: FC<DatePickersProps> = ({ startDate, endDate, setStartDate, setEndDate, onKeyUp }) => (
   <LocalizationProvider dateAdapter={AdapterDayjs}>
     <DatePicker
       label="Start Date"
       value={startDate}
       onChange={(newDate) => setStartDate(newDate)}
-      slotProps={{ field: { clearable: true } }}
+      slotProps={{
+        field: { clearable: true },
+        textField: {
+          onKeyUp: onKeyUp,
+        },
+      }}
       format={DATE_FORMAT}
     />
     <DatePicker
       label="End Date"
       value={endDate}
       onChange={(newDate) => setEndDate(newDate)}
-      slotProps={{ field: { clearable: true } }}
+      slotProps={{
+        field: { clearable: true },
+        textField: {
+          onKeyUp: onKeyUp,
+        },
+      }}
       format={DATE_FORMAT}
     />
   </LocalizationProvider>
