@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f48acd8a-e246-4264-9ac4-41713844a250" name="Changes" comment="combox instead if checkbox for date filter (useTradeDate)">
+    <list default="true" id="f48acd8a-e246-4264-9ac4-41713844a250" name="Changes" comment="fixed dates, always in UTC">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/client/src/grid/columns-get.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/client/src/grid/columns-get.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/client/src/grid/fetching.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/client/src/grid/fetching.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/client/src/components/DatePickers.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/client/src/components/DatePickers.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/client/src/util/date.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/client/src/util/date.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -170,15 +170,7 @@
       <workItem from="1718686706976" duration="377000" />
       <workItem from="1718687098946" duration="614000" />
       <workItem from="1719731387176" duration="2706000" />
-      <workItem from="1719782878881" duration="17639000" />
-    </task>
-    <task id="LOCAL-00057" summary="Switch to MaterialReactTable v1&#10;This is sick, never looking back!!">
-      <option name="closed" value="true" />
-      <created>1718250771885</created>
-      <option name="number" value="00057" />
-      <option name="presentableId" value="LOCAL-00057" />
-      <option name="project" value="LOCAL" />
-      <updated>1718250771885</updated>
+      <workItem from="1719782878881" duration="18190000" />
     </task>
     <task id="LOCAL-00058" summary="Switch to MaterialReactTable v1&#10;This is sick, never looking back!!">
       <option name="closed" value="true" />
@@ -564,7 +556,15 @@
       <option name="project" value="LOCAL" />
       <updated>1719799019755</updated>
     </task>
-    <option name="localTasksCounter" value="106" />
+    <task id="LOCAL-00106" summary="fixed dates, always in UTC">
+      <option name="closed" value="true" />
+      <created>1719806809423</created>
+      <option name="number" value="00106" />
+      <option name="presentableId" value="LOCAL-00106" />
+      <option name="project" value="LOCAL" />
+      <updated>1719806809423</updated>
+    </task>
+    <option name="localTasksCounter" value="107" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -595,7 +595,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Renamed columns file&#10;...NoWrap on specific columns" />
     <MESSAGE value="SecurityId column moved" />
     <MESSAGE value="added value column" />
     <MESSAGE value="Value column:&#10;- no decimals&#10;- 0 == empty" />
@@ -620,7 +619,8 @@
     <MESSAGE value="Order by filing or trnDate" />
     <MESSAGE value="ticker + useTradeDate (checkbox) client side" />
     <MESSAGE value="combox instead if checkbox for date filter (useTradeDate)" />
-    <option name="LAST_COMMIT_MESSAGE" value="combox instead if checkbox for date filter (useTradeDate)" />
+    <MESSAGE value="fixed dates, always in UTC" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed dates, always in UTC" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
