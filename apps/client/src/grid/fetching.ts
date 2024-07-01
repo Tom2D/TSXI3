@@ -49,7 +49,7 @@ export const fetchTransactions = async (
       `useTradeDate=${useTradeDateRef.current}`;
 
     const response = await fetch(url);
-
+    //TDD_TODO HERE : FIX DATES LOCAL TIME!?!?
     if (response.ok) {
       const data = await response.json();
       setTransactions(data.transactions);

@@ -11,6 +11,8 @@ import {
   securitydesignations,
 } from '../prisma-types';
 import { initialColumns } from './columns-def.ts';
+import { FormatDateUTC } from '../util/date.ts';
+import dayjs from 'dayjs';
 
 export const columnsGet = (
   issuers: issuers[],
@@ -70,7 +72,7 @@ export const columnsGet = (
 
       case 'trnDate':
       case 'filingDate':
-        accessorFn = (row) => new Date(row[column.accessorKey]).toLocaleDateString();
+        accessorFn = (row) => FormatDateUTC(dayjs(row[column.accessorKey]));
         break;
 
       case 'trnNatureCode':
