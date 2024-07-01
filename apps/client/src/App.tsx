@@ -1,7 +1,18 @@
 import { useEffect, useState, useMemo, useRef, useCallback } from 'react';
 import './App.css';
 import './grid/grid.css';
-import { ThemeProvider, CssBaseline, Autocomplete, TextField, Button, Checkbox, FormControlLabel } from '@mui/material';
+import {
+  ThemeProvider,
+  CssBaseline,
+  Autocomplete,
+  TextField,
+  Button,
+  FormControl,
+  InputLabel,
+  MenuItem,
+  Select,
+  SelectChangeEvent,
+} from '@mui/material';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import ThemeToggleButton from './components/ThemeToggleButton';
@@ -25,7 +36,6 @@ import { appTheme2 } from './theme/theme2.ts';
 import { enumToString, getEnumStringValues, stringToEnum, TitlesBitfield } from '@tsxinsider/shared';
 
 //import { appTheme1 } from './theme/theme.tsx';
-
 const APP_THEME = appTheme2;
 const DEFAULT_TRN_NATURE = 10;
 
@@ -51,7 +61,7 @@ function App() {
   const [insiderName, setInsiderName] = useState('');
   const [selectedTitles, setSelectedTitles] = useState<TitlesBitfield[]>([]);
   const [ticker, setTicker] = useState('');
-  const [useTradeDate, setUseTradeDate] = useState(false);
+  const [useTradeDate, setUseTradeDate] = useState(0); // 0 for Filing Date, 1 for Trade Date
 
   const theme = useMemo(() => APP_THEME(themeMode), [themeMode]);
 
@@ -171,8 +181,8 @@ function App() {
     setTicker(event.target.value);
   };
 
-  const handleUseTradeDateChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setUseTradeDate(event.target.checked);
+  const handleUseTradeDateChange = (event: SelectChangeEvent<number>) => {
+    setUseTradeDate(Number(event.target.value));
   };
 
   // prettier-ignore
@@ -224,10 +234,13 @@ function App() {
               onChange={handleTitlesChange}
               renderInput={(params) => <TextField {...params} label="Titles" />}
             />
-            <FormControlLabel
-              control={<Checkbox checked={useTradeDate} onChange={handleUseTradeDateChange} />}
-              label="Use Trade Date"
-            />
+            <FormControl style={{ minWidth: 120, marginRight: 10 }}>
+              <InputLabel id="date-filter-label">Date Filter</InputLabel>
+              <Select labelId="date-filter-label" value={useTradeDate} onChange={handleUseTradeDateChange}>
+                <MenuItem value={0}>Filing Date</MenuItem>
+                <MenuItem value={1}>Trade Date</MenuItem>
+              </Select>
+            </FormControl>
             <Button variant="contained" color="primary" onClick={() => fetchTransactionsCallback(pagination)}>
               Fetch Transactions
             </Button>

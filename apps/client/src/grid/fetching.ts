@@ -11,11 +11,11 @@ export const fetchTransactions = async (
   startDateRef: MutableRefObject<Dayjs | null>,
   endDateRef: MutableRefObject<Dayjs | null>,
   selectedTrnNaturesRef: MutableRefObject<trnnatures[]>,
-  issuerName: MutableRefObject<string>,
-  insiderName: MutableRefObject<string>,
-  selectedTitles: MutableRefObject<TitlesBitfield[]>,
+  issuerNameRef: MutableRefObject<string>,
+  insiderNameRef: MutableRefObject<string>,
+  selectedTitlesRef: MutableRefObject<TitlesBitfield[]>,
   tickerRef: MutableRefObject<string>,
-  useTradeDateRef: MutableRefObject<boolean>,
+  useTradeDateRef: MutableRefObject<number>,
   setTransactions: Dispatch<SetStateAction<transactions[]>>,
   setIssuers: Dispatch<SetStateAction<any[]>>,
   setTickers: Dispatch<SetStateAction<any[]>>,
@@ -33,7 +33,7 @@ export const fetchTransactions = async (
     const startDateStr = FormatDateUTC(startDateRef.current);
     const endDateStr = FormatDateUTC(endDateRef.current);
     const trnNatureCodes = selectedTrnNaturesRef.current.map((option) => option.code).join(',');
-    const titlesBitfield = selectedTitles.current.reduce((acc, cur) => acc | cur, 0);
+    const titlesBitfield = selectedTitlesRef.current.reduce((acc, cur) => acc | cur, 0);
 
     const url =
       `${SERVER_AUTHORITY}/transactions?` +
@@ -42,11 +42,11 @@ export const fetchTransactions = async (
       `limit=${pageSize}&` +
       `page=${pageIndex}&` +
       `trnNatureCodes=${trnNatureCodes}&` +
-      `issuerName=${issuerName.current}&` +
-      `insiderName=${insiderName.current}&` +
+      `issuerName=${issuerNameRef.current}&` +
+      `insiderName=${insiderNameRef.current}&` +
       `insiderTitles=${titlesBitfield}&` +
       `ticker=${tickerRef.current}&` +
-      `useTradeDate=${useTradeDateRef.current ? 1 : 0}`;
+      `useTradeDate=${useTradeDateRef.current}`;
 
     const response = await fetch(url);
 
