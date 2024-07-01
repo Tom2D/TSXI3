@@ -1,7 +1,7 @@
 import { useEffect, useState, useMemo, useRef, useCallback } from 'react';
 import './App.css';
 import './grid/grid.css';
-import { ThemeProvider, CssBaseline, Autocomplete, TextField, Button } from '@mui/material';
+import { ThemeProvider, CssBaseline, Autocomplete, TextField, Button, Checkbox, FormControlLabel } from '@mui/material';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import ThemeToggleButton from './components/ThemeToggleButton';
@@ -50,6 +50,8 @@ function App() {
   const [issuerName, setIssuerName] = useState('');
   const [insiderName, setInsiderName] = useState('');
   const [selectedTitles, setSelectedTitles] = useState<TitlesBitfield[]>([]);
+  const [ticker, setTicker] = useState('');
+  const [useTradeDate, setUseTradeDate] = useState(false);
 
   const theme = useMemo(() => APP_THEME(themeMode), [themeMode]);
 
@@ -63,6 +65,8 @@ function App() {
   const insiderNameRef = useRef(insiderName);
   const selectedTrnNaturesRef = useRef(selectedTrnNatures);
   const selectedTitlesRef = useRef(selectedTitles);
+  const tickerRef = useRef(ticker);
+  const useTradeDateRef = useRef(useTradeDate);
   useEffect(() => {
     startDateRef.current = startDate;
     endDateRef.current = endDate;
@@ -70,7 +74,9 @@ function App() {
     insiderNameRef.current = insiderName;
     selectedTrnNaturesRef.current = selectedTrnNatures;
     selectedTitlesRef.current = selectedTitles;
-  }, [startDate, endDate, issuerName, insiderName, selectedTrnNatures, selectedTitles, trns]);
+    tickerRef.current = ticker;
+    useTradeDateRef.current = useTradeDate;
+  }, [startDate, endDate, issuerName, insiderName, selectedTrnNatures, selectedTitles, ticker, useTradeDate, trns]);
 
   const isInitialFetch = useRef(true);
   const initialPagination = useRef(pagination);
@@ -106,6 +112,8 @@ function App() {
           issuerNameRef,
           insiderNameRef,
           selectedTitlesRef,
+          tickerRef,
+          useTradeDateRef,
           setTransactions,
           setIssuers,
           setTickers,
@@ -159,6 +167,14 @@ function App() {
     setSelectedTitles(selectedEnumValues);
   };
 
+  const handleTickerChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setTicker(event.target.value);
+  };
+
+  const handleUseTradeDateChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setUseTradeDate(event.target.checked);
+  };
+
   // prettier-ignore
   const columns = useMemo(() =>
       columnsGet(issuers, tickers, insiders, relationsToIssuer, securityDesignations, trnFlags, trnNatures,),
@@ -198,6 +214,7 @@ function App() {
               onChange={handleInsiderNameChange}
               style={{ marginRight: 10 }}
             />
+            <TextField label="Ticker" value={ticker} onChange={handleTickerChange} style={{ marginRight: 10 }} />
             <Autocomplete
               multiple
               limitTags={2}
@@ -206,6 +223,10 @@ function App() {
               value={selectedTitles.map((title) => enumToString(TitlesBitfield, title) as string)}
               onChange={handleTitlesChange}
               renderInput={(params) => <TextField {...params} label="Titles" />}
+            />
+            <FormControlLabel
+              control={<Checkbox checked={useTradeDate} onChange={handleUseTradeDateChange} />}
+              label="Use Trade Date"
             />
             <Button variant="contained" color="primary" onClick={() => fetchTransactionsCallback(pagination)}>
               Fetch Transactions

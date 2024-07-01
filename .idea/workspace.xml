@@ -4,8 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f48acd8a-e246-4264-9ac4-41713844a250" name="Changes" comment="Ajout ticker + UseTradeDate server side">
+    <list default="true" id="f48acd8a-e246-4264-9ac4-41713844a250" name="Changes" comment="Order by filing or trnDate">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/client/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/client/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/client/src/grid/fetching.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/client/src/grid/fetching.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -168,15 +170,7 @@
       <workItem from="1718686706976" duration="377000" />
       <workItem from="1718687098946" duration="614000" />
       <workItem from="1719731387176" duration="2706000" />
-      <workItem from="1719782878881" duration="12514000" />
-    </task>
-    <task id="LOCAL-00054" summary="Mise en commun eslint/prettier">
-      <option name="closed" value="true" />
-      <created>1718152804908</created>
-      <option name="number" value="00054" />
-      <option name="presentableId" value="LOCAL-00054" />
-      <option name="project" value="LOCAL" />
-      <updated>1718152804908</updated>
+      <workItem from="1719782878881" duration="13660000" />
     </task>
     <task id="LOCAL-00055" summary="Mise en commun de code de getter">
       <option name="closed" value="true" />
@@ -562,7 +556,15 @@
       <option name="project" value="LOCAL" />
       <updated>1719796391104</updated>
     </task>
-    <option name="localTasksCounter" value="103" />
+    <task id="LOCAL-00103" summary="Order by filing or trnDate">
+      <option name="closed" value="true" />
+      <created>1719797106330</created>
+      <option name="number" value="00103" />
+      <option name="presentableId" value="LOCAL-00103" />
+      <option name="project" value="LOCAL" />
+      <updated>1719797106330</updated>
+    </task>
+    <option name="localTasksCounter" value="104" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -593,7 +595,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Allow columns to grow when the is space" />
     <MESSAGE value="Minor" />
     <MESSAGE value="Hide column &quot;Security Type&quot; by default" />
     <MESSAGE value="Renamed columns file&#10;...NoWrap on specific columns" />
@@ -618,7 +619,8 @@
     <MESSAGE value="Working filters on titles, insider&amp;issuer names" />
     <MESSAGE value="Cleanup&#10;Removed unused enum util fonctions" />
     <MESSAGE value="Ajout ticker + UseTradeDate server side" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ajout ticker + UseTradeDate server side" />
+    <MESSAGE value="Order by filing or trnDate" />
+    <option name="LAST_COMMIT_MESSAGE" value="Order by filing or trnDate" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

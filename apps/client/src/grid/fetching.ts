@@ -1,4 +1,3 @@
-// ./grid/fetching.ts
 import { FormatDateUTC } from '../util/date';
 import { SERVER_AUTHORITY } from '@tsxinsider/shared';
 import { transactions, trnnatures, trnflag } from '../prisma-types';
@@ -15,6 +14,8 @@ export const fetchTransactions = async (
   issuerName: MutableRefObject<string>,
   insiderName: MutableRefObject<string>,
   selectedTitles: MutableRefObject<TitlesBitfield[]>,
+  tickerRef: MutableRefObject<string>,
+  useTradeDateRef: MutableRefObject<boolean>,
   setTransactions: Dispatch<SetStateAction<transactions[]>>,
   setIssuers: Dispatch<SetStateAction<any[]>>,
   setTickers: Dispatch<SetStateAction<any[]>>,
@@ -43,7 +44,9 @@ export const fetchTransactions = async (
       `trnNatureCodes=${trnNatureCodes}&` +
       `issuerName=${issuerName.current}&` +
       `insiderName=${insiderName.current}&` +
-      `insiderTitles=${titlesBitfield}`;
+      `insiderTitles=${titlesBitfield}&` +
+      `ticker=${tickerRef.current}&` +
+      `useTradeDate=${useTradeDateRef.current ? 1 : 0}`;
 
     const response = await fetch(url);
 
