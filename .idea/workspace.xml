@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f48acd8a-e246-4264-9ac4-41713844a250" name="Changes" comment="Working filters on titles, insider&amp;issuer names">
+    <list default="true" id="f48acd8a-e246-4264-9ac4-41713844a250" name="Changes" comment="Cleanup&#10;Removed unused enum util fonctions">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/server/src/ParsePipes/parse-insider-titles.pipe.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/server/src/ParsePipes/parse-insider-titles.pipe.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/server/src/transactions/transactions.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/server/src/transactions/transactions.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/shared/src/enums-util.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/shared/src/enums-util.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/server/src/transactions/transactions.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/server/src/transactions/transactions.service.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -171,15 +170,7 @@
       <workItem from="1718686706976" duration="377000" />
       <workItem from="1718687098946" duration="614000" />
       <workItem from="1719731387176" duration="2706000" />
-      <workItem from="1719782878881" duration="9098000" />
-    </task>
-    <task id="LOCAL-00052" summary="minor fix">
-      <option name="closed" value="true" />
-      <created>1718149877229</created>
-      <option name="number" value="00052" />
-      <option name="presentableId" value="LOCAL-00052" />
-      <option name="project" value="LOCAL" />
-      <updated>1718149877229</updated>
+      <workItem from="1719782878881" duration="11916000" />
     </task>
     <task id="LOCAL-00053" summary="Fixed newlines: now CRLF (windows default)">
       <option name="closed" value="true" />
@@ -565,7 +556,15 @@
       <option name="project" value="LOCAL" />
       <updated>1719791796939</updated>
     </task>
-    <option name="localTasksCounter" value="101" />
+    <task id="LOCAL-00101" summary="Cleanup&#10;Removed unused enum util fonctions">
+      <option name="closed" value="true" />
+      <created>1719792052993</created>
+      <option name="number" value="00101" />
+      <option name="presentableId" value="LOCAL-00101" />
+      <option name="project" value="LOCAL" />
+      <updated>1719792052993</updated>
+    </task>
+    <option name="localTasksCounter" value="102" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -596,7 +595,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="columns grow not working" />
     <MESSAGE value="grid width: min==max==90%" />
     <MESSAGE value="Allow columns to grow when the is space" />
     <MESSAGE value="Minor" />
@@ -621,7 +619,8 @@
     <MESSAGE value="Bitfield query&#10;Still slow in many case (ex:1)" />
     <MESSAGE value="minor fixes" />
     <MESSAGE value="Working filters on titles, insider&amp;issuer names" />
-    <option name="LAST_COMMIT_MESSAGE" value="Working filters on titles, insider&amp;issuer names" />
+    <MESSAGE value="Cleanup&#10;Removed unused enum util fonctions" />
+    <option name="LAST_COMMIT_MESSAGE" value="Cleanup&#10;Removed unused enum util fonctions" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

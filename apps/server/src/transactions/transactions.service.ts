@@ -18,26 +18,34 @@ export class TransactionsService {
     issuerName: string,
     insiderName: string,
     insiderTitles: TitlesBitfield,
+    ticker: string,
+    useTradeDate: boolean,
   ): Promise<any> {
     const offset: number = page * limit;
-
     const titlesCombinations = getAllBitfieldCombinations(TitlesBitfield, insiderTitles);
 
+    const dateFilter = useTradeDate ? 'trnDate' : 'filingDate';
+
     const whereClause = {
-      filingDate: {
+      [dateFilter]: {
         gte: beginFilingDate,
         lte: endFilingDate,
       },
       trnNatureCode: {
         in: trnNatureCodes.length > 0 ? trnNatureCodes : undefined,
       },
-      issuers: issuerName
-        ? {
-            name: {
-              contains: issuerName,
-            },
-          }
-        : {},
+      issuers: {
+        name: {
+          contains: issuerName ? issuerName : undefined,
+        },
+        tickers: ticker
+          ? {
+              name: {
+                equals: ticker,
+              },
+            }
+          : {},
+      },
       insiders: {
         name: {
           contains: insiderName ? insiderName : undefined,

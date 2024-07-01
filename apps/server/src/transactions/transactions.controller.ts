@@ -21,6 +21,8 @@ export class TransactionsController {
     @Query('issuerName', new DefaultValuePipe('')) issuerName: string,
     @Query('insiderName', new DefaultValuePipe('')) insiderName: string,
     @Query('insiderTitles', new DefaultValuePipe(0), ParseInsiderTitlesPipe) insiderTitles: TitlesBitfield,
+    @Query('ticker', new DefaultValuePipe('')) ticker: string,
+    @Query('useTradeDate', new DefaultValuePipe(0), ParseIntPipe) useTradeDate: number,
   ): Promise<any> {
     return this.transactionsService.findAll(
       beginFilingDate,
@@ -31,6 +33,8 @@ export class TransactionsController {
       issuerName,
       insiderName,
       insiderTitles,
+      ticker,
+      useTradeDate === 1,
     );
   }
 
