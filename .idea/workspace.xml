@@ -4,10 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f48acd8a-e246-4264-9ac4-41713844a250" name="Changes" comment="fixed dates, always in UTC">
+    <list default="true" id="f48acd8a-e246-4264-9ac4-41713844a250" name="Changes" comment="Updated date format in pickers">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/client/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/apps/client/src/App.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/client/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/client/src/App.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/client/src/components/DatePickers.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/client/src/components/DatePickers.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/client/src/util/date.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/client/src/util/date.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -170,15 +171,7 @@
       <workItem from="1718686706976" duration="377000" />
       <workItem from="1718687098946" duration="614000" />
       <workItem from="1719731387176" duration="2706000" />
-      <workItem from="1719782878881" duration="18190000" />
-    </task>
-    <task id="LOCAL-00058" summary="Switch to MaterialReactTable v1&#10;This is sick, never looking back!!">
-      <option name="closed" value="true" />
-      <created>1718251683778</created>
-      <option name="number" value="00058" />
-      <option name="presentableId" value="LOCAL-00058" />
-      <option name="project" value="LOCAL" />
-      <updated>1718251683778</updated>
+      <workItem from="1719782878881" duration="20487000" />
     </task>
     <task id="LOCAL-00059" summary="Button to toggle light and dark mode">
       <option name="closed" value="true" />
@@ -564,7 +557,15 @@
       <option name="project" value="LOCAL" />
       <updated>1719806809423</updated>
     </task>
-    <option name="localTasksCounter" value="107" />
+    <task id="LOCAL-00107" summary="Updated date format in pickers">
+      <option name="closed" value="true" />
+      <created>1719807291304</created>
+      <option name="number" value="00107" />
+      <option name="presentableId" value="LOCAL-00107" />
+      <option name="project" value="LOCAL" />
+      <updated>1719807291304</updated>
+    </task>
+    <option name="localTasksCounter" value="108" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -595,7 +596,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="SecurityId column moved" />
     <MESSAGE value="added value column" />
     <MESSAGE value="Value column:&#10;- no decimals&#10;- 0 == empty" />
     <MESSAGE value="Fixed columns length for not horizontal scroll by default" />
@@ -620,7 +620,8 @@
     <MESSAGE value="ticker + useTradeDate (checkbox) client side" />
     <MESSAGE value="combox instead if checkbox for date filter (useTradeDate)" />
     <MESSAGE value="fixed dates, always in UTC" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed dates, always in UTC" />
+    <MESSAGE value="Updated date format in pickers" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated date format in pickers" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

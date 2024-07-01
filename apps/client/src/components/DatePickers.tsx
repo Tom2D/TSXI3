@@ -2,33 +2,46 @@ import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { Dayjs } from 'dayjs';
 import { DATE_FORMAT } from '../util/date.ts';
+import { FC } from 'react';
+import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
 
-interface Props {
+interface DatePickersProps {
   startDate: Dayjs | null;
   endDate: Dayjs | null;
   setStartDate: (date: Dayjs | null) => void;
   setEndDate: (date: Dayjs | null) => void;
 }
 
-const DatePickers: React.FC<Props> = ({ startDate, endDate, setStartDate, setEndDate }) => (
+export const DatePickers: FC<DatePickersProps> = ({ startDate, endDate, setStartDate, setEndDate }) => (
   <LocalizationProvider dateAdapter={AdapterDayjs}>
-    <div>
-      <DatePicker
-        label="Start Date"
-        value={startDate}
-        onChange={(newDate) => setStartDate(newDate)}
-        slotProps={{ field: { clearable: true } }}
-        format={DATE_FORMAT}
-      />
-      <DatePicker
-        label="End Date"
-        value={endDate}
-        onChange={(newDate) => setEndDate(newDate)}
-        slotProps={{ field: { clearable: true } }}
-        format={DATE_FORMAT}
-      />
-    </div>
+    <DatePicker
+      label="Start Date"
+      value={startDate}
+      onChange={(newDate) => setStartDate(newDate)}
+      slotProps={{ field: { clearable: true } }}
+      format={DATE_FORMAT}
+    />
+    <DatePicker
+      label="End Date"
+      value={endDate}
+      onChange={(newDate) => setEndDate(newDate)}
+      slotProps={{ field: { clearable: true } }}
+      format={DATE_FORMAT}
+    />
   </LocalizationProvider>
 );
 
-export default DatePickers;
+interface DateFilterProps {
+  useTradeDate: number;
+  handleUseTradeDateChange: any;
+}
+
+export const DateFilter: FC<DateFilterProps> = ({ useTradeDate, handleUseTradeDateChange }) => (
+  <FormControl>
+    <InputLabel id="date-filter-label">Date Filter</InputLabel>
+    <Select labelId="date-filter-label" value={useTradeDate} onChange={handleUseTradeDateChange}>
+      <MenuItem value={0}>Filing Date</MenuItem>
+      <MenuItem value={1}>Trade Date</MenuItem>
+    </Select>
+  </FormControl>
+);

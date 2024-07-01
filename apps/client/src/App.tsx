@@ -1,22 +1,11 @@
-import { useEffect, useState, useMemo, useRef, useCallback } from 'react';
+import React, { useEffect, useState, useMemo, useRef, useCallback } from 'react';
 import './App.css';
 import './grid/grid.css';
-import {
-  ThemeProvider,
-  CssBaseline,
-  Autocomplete,
-  TextField,
-  Button,
-  FormControl,
-  InputLabel,
-  MenuItem,
-  Select,
-  SelectChangeEvent,
-} from '@mui/material';
+import { ThemeProvider, CssBaseline, Autocomplete, TextField, Button, SelectChangeEvent } from '@mui/material';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import ThemeToggleButton from './components/ThemeToggleButton';
-import DatePickers from './components/DatePickers';
+import { DateFilter, DatePickers } from './components/DatePickers';
 import TransactionTable from './components/TransactionTable';
 import { fetchTransactions, fetchTrnNatures, fetchTrnFlags } from './grid/fetching';
 import {
@@ -199,32 +188,26 @@ function App() {
           <h1>Transactions</h1>
           <ThemeToggleButton onToggle={handleThemeToggle} />
           <div className="filters">
-            <DatePickers startDate={startDate} endDate={endDate} setStartDate={setStartDate} setEndDate={setEndDate} />
-            <div>
-              <Autocomplete
-                multiple
-                limitTags={1}
-                options={trnNatures}
-                getOptionLabel={(option) => option.description}
-                isOptionEqualToValue={(option, value) => option.code === value.code || option.code === value}
-                value={selectedTrnNatures}
-                onChange={handleTrnNatureChange}
-                renderInput={(params) => <TextField {...params} label="Trade Types" />}
-              />
+            <div className="date-filters">
+              <DatePickers startDate={startDate} endDate={endDate} setStartDate={setStartDate} setEndDate={setEndDate} />
+              <DateFilter useTradeDate={useTradeDate} handleUseTradeDateChange={handleUseTradeDateChange} />
             </div>
-            <TextField
-              label="Issuer Name"
-              value={issuerName}
-              onChange={handleIssuerNameChange}
-              style={{ marginRight: 10 }}
+            <div className="stock-filters">
+              <TextField label="Issuer Name" value={issuerName} onChange={handleIssuerNameChange} />
+              <TextField label="Insider Name" value={insiderName} onChange={handleInsiderNameChange} />
+              <TextField label="Ticker" value={ticker} onChange={handleTickerChange} />
+            </div>
+            <Autocomplete
+              multiple
+              limitTags={1}
+              options={trnNatures}
+              getOptionLabel={(option) => option.description}
+              isOptionEqualToValue={(option, value) => option.code === value.code || option.code === value}
+              value={selectedTrnNatures}
+              onChange={handleTrnNatureChange}
+              renderInput={(params) => <TextField {...params} label="Trade Types" />}
             />
-            <TextField
-              label="Insider Name"
-              value={insiderName}
-              onChange={handleInsiderNameChange}
-              style={{ marginRight: 10 }}
-            />
-            <TextField label="Ticker" value={ticker} onChange={handleTickerChange} style={{ marginRight: 10 }} />
+
             <Autocomplete
               multiple
               limitTags={2}
@@ -234,13 +217,6 @@ function App() {
               onChange={handleTitlesChange}
               renderInput={(params) => <TextField {...params} label="Titles" />}
             />
-            <FormControl style={{ minWidth: 120, marginRight: 10 }}>
-              <InputLabel id="date-filter-label">Date Filter</InputLabel>
-              <Select labelId="date-filter-label" value={useTradeDate} onChange={handleUseTradeDateChange}>
-                <MenuItem value={0}>Filing Date</MenuItem>
-                <MenuItem value={1}>Trade Date</MenuItem>
-              </Select>
-            </FormControl>
             <Button variant="contained" color="primary" onClick={() => fetchTransactionsCallback(pagination)}>
               Fetch Transactions
             </Button>
