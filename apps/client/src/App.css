@@ -27,9 +27,13 @@
 }
 
 .stock-filters {
-
 }
 
 .stock-filters * {
     flex-grow: 1;
+}
+
+#fetch-btn {
+    margin-bottom: 10px;
+    width: 250px;
 }

@@ -217,7 +217,7 @@ function App() {
               onChange={handleTitlesChange}
               renderInput={(params) => <TextField {...params} label="Titles" />}
             />
-            <Button variant="contained" color="primary" onClick={() => fetchTransactionsCallback(pagination)}>
+            <Button id="fetch-btn" variant="contained" color="primary" onClick={() => fetchTransactionsCallback(pagination)}>
               Fetch Transactions
             </Button>
           </div>
