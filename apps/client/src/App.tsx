@@ -199,7 +199,7 @@ function App() {
             </div>
             <Autocomplete
               multiple
-              limitTags={1}
+              limitTags={2}
               options={trnNatures}
               getOptionLabel={(option) => option.description}
               isOptionEqualToValue={(option, value) => option.code === value.code || option.code === value}
@@ -210,7 +210,7 @@ function App() {
 
             <Autocomplete
               multiple
-              limitTags={2}
+              limitTags={4}
               options={getEnumStringValues(TitlesBitfield)}
               getOptionLabel={(option: string) => option}
               value={selectedTitles.map((title) => enumToString(TitlesBitfield, title) as string)}

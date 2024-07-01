@@ -8,6 +8,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/client/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/apps/client/src/App.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/client/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/client/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/client/src/components/DatePickers.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/client/src/components/DatePickers.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -170,15 +171,7 @@
       <workItem from="1718686706976" duration="377000" />
       <workItem from="1718687098946" duration="614000" />
       <workItem from="1719731387176" duration="2706000" />
-      <workItem from="1719782878881" duration="20746000" />
-    </task>
-    <task id="LOCAL-00060" summary="Using built in pagination!">
-      <option name="closed" value="true" />
-      <created>1718255290323</created>
-      <option name="number" value="00060" />
-      <option name="presentableId" value="LOCAL-00060" />
-      <option name="project" value="LOCAL" />
-      <updated>1718255290323</updated>
+      <workItem from="1719782878881" duration="21887000" />
     </task>
     <task id="LOCAL-00061" summary="Fix error dependency fetchTransactions">
       <option name="closed" value="true" />
@@ -564,7 +557,15 @@
       <option name="project" value="LOCAL" />
       <updated>1719809572373</updated>
     </task>
-    <option name="localTasksCounter" value="109" />
+    <task id="LOCAL-00109" summary="Better css">
+      <option name="closed" value="true" />
+      <created>1719809857652</created>
+      <option name="number" value="00109" />
+      <option name="presentableId" value="LOCAL-00109" />
+      <option name="project" value="LOCAL" />
+      <updated>1719809857652</updated>
+    </task>
+    <option name="localTasksCounter" value="110" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

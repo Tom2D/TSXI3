@@ -39,7 +39,13 @@ interface DateFilterProps {
 export const DateFilter: FC<DateFilterProps> = ({ useTradeDate, handleUseTradeDateChange }) => (
   <FormControl>
     <InputLabel id="date-filter-label">Date Filter</InputLabel>
-    <Select labelId="date-filter-label" value={useTradeDate} onChange={handleUseTradeDateChange}>
+    <Select
+      labelId="date-filter-label"
+      value={useTradeDate}
+      onChange={handleUseTradeDateChange}
+      label="Date Filter"
+      style={{ textAlign: 'left' }}
+    >
       <MenuItem value={0}>Filing Date</MenuItem>
       <MenuItem value={1}>Trade Date</MenuItem>
     </Select>
