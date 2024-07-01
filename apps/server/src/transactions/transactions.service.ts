@@ -62,6 +62,9 @@ export class TransactionsService {
       where: whereClause,
       take: Math.min(limit, MAX_TRANSACTIONS_PER_REQUEST),
       skip: offset,
+      orderBy: {
+        [dateFilter]: 'desc',
+      },
     });
 
     const total = await this.prisma.transactions.count({
