@@ -4,16 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f48acd8a-e246-4264-9ac4-41713844a250" name="Changes" comment="minor fixes">
-      <change beforePath="$PROJECT_DIR$/.eslintrc.js" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintrc.js" afterDir="false" />
+    <list default="true" id="f48acd8a-e246-4264-9ac4-41713844a250" name="Changes" comment="Working filters on titles, insider&amp;issuer names">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/client/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/client/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/client/src/grid/columns-get.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/client/src/grid/columns-get.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/client/src/grid/fetching.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/client/src/grid/fetching.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/server/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/apps/server/tsconfig.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/server/src/ParsePipes/parse-insider-titles.pipe.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/server/src/ParsePipes/parse-insider-titles.pipe.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/server/src/transactions/transactions.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/apps/server/src/transactions/transactions.controller.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/shared/src/enums-util.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/shared/src/enums-util.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/shared/src/insiders-titles.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/shared/src/insiders-titles.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -176,15 +171,7 @@
       <workItem from="1718686706976" duration="377000" />
       <workItem from="1718687098946" duration="614000" />
       <workItem from="1719731387176" duration="2706000" />
-      <workItem from="1719782878881" duration="8822000" />
-    </task>
-    <task id="LOCAL-00051" summary="robot.txt">
-      <option name="closed" value="true" />
-      <created>1718148707620</created>
-      <option name="number" value="00051" />
-      <option name="presentableId" value="LOCAL-00051" />
-      <option name="project" value="LOCAL" />
-      <updated>1718148707620</updated>
+      <workItem from="1719782878881" duration="9098000" />
     </task>
     <task id="LOCAL-00052" summary="minor fix">
       <option name="closed" value="true" />
@@ -570,7 +557,15 @@
       <option name="project" value="LOCAL" />
       <updated>1719784154439</updated>
     </task>
-    <option name="localTasksCounter" value="100" />
+    <task id="LOCAL-00100" summary="Working filters on titles, insider&amp;issuer names">
+      <option name="closed" value="true" />
+      <created>1719791796939</created>
+      <option name="number" value="00100" />
+      <option name="presentableId" value="LOCAL-00100" />
+      <option name="project" value="LOCAL" />
+      <updated>1719791796939</updated>
+    </task>
+    <option name="localTasksCounter" value="101" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -601,7 +596,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Added grid.css&#10;Set min grid witdh (when removing many columns)" />
     <MESSAGE value="columns grow not working" />
     <MESSAGE value="grid width: min==max==90%" />
     <MESSAGE value="Allow columns to grow when the is space" />
@@ -626,7 +620,8 @@
     <MESSAGE value="Updated prisma schema for titles bitfield" />
     <MESSAGE value="Bitfield query&#10;Still slow in many case (ex:1)" />
     <MESSAGE value="minor fixes" />
-    <option name="LAST_COMMIT_MESSAGE" value="minor fixes" />
+    <MESSAGE value="Working filters on titles, insider&amp;issuer names" />
+    <option name="LAST_COMMIT_MESSAGE" value="Working filters on titles, insider&amp;issuer names" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

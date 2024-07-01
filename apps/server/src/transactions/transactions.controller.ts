@@ -3,9 +3,9 @@ import { TransactionsService } from './transactions.service';
 import { transactions } from '@prisma/client';
 import { MAX_TRANSACTIONS_PER_REQUEST } from '../server-constants';
 import { ParseTrnNatureCodesPipe } from '../ParsePipes/parse-trn-nature-codes.pipe';
-import { ParseInsiderTitlesPipe } from '../ParsePipes/parse-insider-titles.pipe';
 import { ParseDatePipe } from '../ParsePipes/parse-date-pipe';
 import { TitlesBitfield } from '@tsxinsider/shared';
+import { ParseInsiderTitlesPipe } from '../ParsePipes/parse-insider-titles.pipe';
 
 @Controller('transactions')
 export class TransactionsController {

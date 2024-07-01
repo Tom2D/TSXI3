@@ -1,6 +1,4 @@
 import { PipeTransform, Injectable, ArgumentMetadata, ParseIntPipe } from '@nestjs/common';
-import { convertToEnumArray } from '@tsxinsider/shared';
-import { relationstoissuer_type } from '@prisma/client';
 import { TitlesBitfield } from '@tsxinsider/shared';
 
 @Injectable()
